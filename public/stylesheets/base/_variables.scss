@@ -1,0 +1,78 @@
+@import "../../node_modules/breakpoint-sass/stylesheets/breakpoint";
+$rem-base: 16px;
+
+@function em($px, $base: $rem-base) {
+    @return ($px / $base) * 1em;
+}
+
+@function rem($px, $base: $rem-base) {
+    @return ($px / $base) * 1rem;
+}
+
+// Replace `em` with `rem` in `$string`
+@function rem-replace($string) {
+    $index: str-index($string, "em");
+
+    @if $index {
+        @return str-slice($string, 1, $index - 1) + "rem";
+    }
+
+    @return $string;
+}
+
+$padding-for-bands:ms(1);
+$column-number: 12;
+$screen-xxs-min: em(320px);
+$screen-xs-min:  em(540px);
+$screen-sm-min:  em(720px);
+$screen-md-min:  em(960px);
+$screen-lg-min:  em(1200px);
+$screen-xl-min: em(1440px);
+
+$screen-xxs-max: ($screen-xs-min - em(1px));
+$screen-xs-max:  ($screen-sm-min - em(1px));
+$screen-sm-max:  ($screen-md-min - em(1px));
+$screen-md-max:  ($screen-lg-min - em(1px));
+$screen-lg-max:  ($screen-xl-min - em(1px));
+
+$screen-xxs-only: $screen-xxs-min $screen-xxs-max;
+$screen-xs-only:  $screen-xs-min $screen-xs-max;
+$screen-sm-only:  $screen-sm-min $screen-sm-max;
+$screen-md-only:  $screen-md-min $screen-md-max;
+$screen-lg-only: $screen-lg-min $screen-lg-max;
+
+@mixin disappeared() {
+    // scss-lint:disable ImportantRule
+    visibility: hidden !important;
+    display: none !important;
+}
+
+%hidden-xxs {
+    @include breakpoint(max-width $screen-xxs-max) {
+        @include disappeared;
+    }
+}
+
+%hidden-xs {
+    @include breakpoint(max-width $screen-xs-max) {
+        @include disappeared;
+    }
+}
+
+%hidden-sm {
+    @include breakpoint($screen-sm-min $screen-sm-max) {
+        @include disappeared;
+    }
+}
+
+%hidden-md {
+    @include breakpoint($screen-md-min $screen-md-max) {
+        @include disappeared;
+    }
+}
+
+%hidden-lg {
+    @include breakpoint($screen-lg-min) {
+        @include disappeared;
+    }
+}

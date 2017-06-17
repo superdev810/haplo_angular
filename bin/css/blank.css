@@ -1,0 +1,492 @@
+
+/*.......................... iphone 6 and +................................*/
+
+@media screen and (min-device-width:375px) and (max-device-width: 667px)
+  
+ { 
+
+
+
+
+
+/*------------------------------------------------------------------------*/
+/* Header */
+/*-------------------------------------------------------------------------*/
+
+.header {
+	display: none !important;
+}
+
+.mobile-header {
+	display: block !important;
+	height: auto;
+}
+
+#mobile-header-logo {
+	position: relative;
+	left: 47%;
+}
+
+.mobile-search-bar {
+	position: relative;
+	top: 20px;
+	left: 10%;
+	width: auto;
+}
+
+.mobile-header-links {
+	position: relative;
+	list-style: none;
+	top: 10px;
+
+}
+
+.mobile-header-links li {
+	padding: 10px;
+}
+
+.mobile-header-links li a {
+	color: #333333;
+	font-size: 20px !important;
+
+}
+
+
+/*------------------------------------------------------------------------*/
+/* End of Header */
+/*-------------------------------------------------------------------------*/
+
+
+
+
+
+/*------------------------------------------------------------------------*/
+/* Feed Page */
+/*-------------------------------------------------------------------------*/
+
+.feed {
+	margin-top: -70% !important;
+}
+
+.feed-name {
+	font-size: 60px !important;
+	
+}
+
+.-posts {
+	font-size: 35px !important;
+	
+}
+
+.First-Post, 
+.Second-Post, 
+.post-avatar,
+.post-content  {
+	width: auto !important;
+	height: auto !important;
+}
+
+.post-username,
+.post-timestamp {
+	left: 17%;
+}
+
+
+.post-avatar {
+	left: -1%;
+}
+
+.post-content {
+	font-size: 25px !important;
+	text-align: center;
+	left: 3%;
+	top: -55px;
+
+}
+
+.post-img {
+	left: 0;
+	width: 568px;
+}
+
+.polling-icons {
+	left: 0;
+}
+
+.polling-icons li {
+	padding: 60px !important;
+}
+
+
+
+/*------------------------------------------------------------------------*/
+/* End of Feed Page */
+/*-------------------------------------------------------------------------*/
+
+
+
+/*------------------------------------------------------------------------*/
+/*  Popup */
+/*-------------------------------------------------------------------------*/
+
+
+.mobile-card {
+	display: block !important;
+	left: 10% !important;
+	
+}
+
+
+.mobile-card p {
+	font-size: 18px !important;
+	text-align: center;
+	left: 0 !important;
+	top: 30% !important;
+	position: relative;
+	width: auto !important;
+}
+
+.U-Logo-USE-FIRST {
+	height: auto;
+	width: auto;
+	position: relative;
+	left: 0;
+	top: 8%;
+	z-index: -1;
+
+}
+
+.phone-number {
+	width: auto !important;
+	left: 15%;
+	top: 55% !important;
+}
+
+.submit-email2 {
+	width: auto !important;
+	top: 50%;
+	left: 10%;
+}
+
+#email2-btn {
+	top: 70%;
+	left: 30%;
+
+}
+
+
+#this-is-just-the-beginning {
+	top: 20% !important;
+}
+
+input[type='text'].submit-email2::-webkit-input-placeholder {
+
+  left: 15%;
+  
+}
+
+
+
+
+
+/*------------------------------------------------------------------------*/
+/* Popup Ends*/
+/*-------------------------------------------------------------------------*/
+
+
+
+
+/*------------------------------------------------------------------------*/
+/* Sign Up Section */
+/*-------------------------------------------------------------------------*/
+
+
+
+.submit-email {
+
+	position: relative;
+	top: 20px;
+	left: 10%;
+	width: auto;
+}
+
+.btn {
+
+	margin-top: 10% !important;
+	left: -35%;
+}
+
+
+
+/*------------------------------------------------------------------------*/
+/* End of Sign Up Section */
+/*-------------------------------------------------------------------------*/
+
+
+
+/*------------------------------------------------------------------------*/
+/* Footer */
+/*-------------------------------------------------------------------------*/
+
+.footer {
+
+	height: 300px;
+}
+
+
+
+/*------------------------------------------------------------------------*/
+/* End of Footer */
+/*-------------------------------------------------------------------------*/
+
+
+
+
+
+
+
+
+
+  }
+
+  /*.....................................end of iPhone 6 and +...................*/
+
+
+  /*............................iPhone Landscape........................*/
+
+
+  @media (min-width: 375px) and (max-width: 667px) and (orientation: landscape)  {
+	
+
+
+/*------------------------------------------------------------------------*/
+/* Header */
+/*-------------------------------------------------------------------------*/
+
+.header {
+	display: none !important;
+}
+
+.mobile-header {
+	display: block !important;
+	height: auto;
+}
+
+#mobile-header-logo {
+	position: relative;
+	left: 47%;
+}
+
+.mobile-search-bar {
+	position: relative;
+	top: 20px;
+	left: 25%;
+	width: auto;
+}
+
+.mobile-header-links {
+	position: relative;
+	list-style: none;
+	top: 10px;
+
+}
+
+.mobile-header-links li {
+	padding: 10px;
+}
+
+.mobile-header-links li a {
+	color: #333333;
+	font-size: 20px !important;
+
+}
+
+
+/*------------------------------------------------------------------------*/
+/* End of Header */
+/*-------------------------------------------------------------------------*/
+
+
+
+
+
+/*------------------------------------------------------------------------*/
+/* Feed Page */
+/*-------------------------------------------------------------------------*/
+
+.feed {
+	margin-top: -40% !important;
+}
+
+.feed-name {
+	font-size: 60px !important;
+	
+}
+
+.-posts {
+	font-size: 35px !important;
+	
+}
+
+.First-Post, 
+.Second-Post, 
+.post-avatar,
+.post-content  {
+	width: auto !important;
+	height: auto !important;
+}
+
+.post-username,
+.post-timestamp {
+	left: 11%;
+}
+
+
+.post-avatar {
+	left: -1%;
+}
+
+.post-content {
+	font-size: 25px;
+	text-align: center;
+	left: 3%;
+	top: -55px;
+
+}
+
+.post-img {
+	left: 10%;
+	width: auto;
+}
+
+.polling-icons {
+	left: 0;
+}
+
+.polling-icons li {
+	padding: 100px !important;
+}
+
+
+
+/*------------------------------------------------------------------------*/
+/* End of Feed Page */
+/*-------------------------------------------------------------------------*/
+
+
+
+
+/*------------------------------------------------------------------------*/
+/*  Popup */
+/*-------------------------------------------------------------------------*/
+
+
+.mobile-card {
+	display: block !important;
+	margin-left: 17% !important;
+	margin-top: -12% !important;
+	width: 100% auto !important;
+
+}
+
+
+.card {
+	display: none !important;
+}
+
+
+/*------------------------------------------------------------------------*/
+/* Popup Ends*/
+/*-------------------------------------------------------------------------*/
+
+
+/*------------------------------------------------------------------------*/
+/* Sign Up Section */
+/*-------------------------------------------------------------------------*/
+
+
+
+.submit-email {
+
+	position: relative;
+	top: 20px;
+	left: 25%;
+	width: auto;
+}
+
+.btn {
+
+	margin-top: 4% !important;
+	left: -43%;
+}
+
+
+
+/*------------------------------------------------------------------------*/
+/* End of Sign Up Section */
+/*-------------------------------------------------------------------------*/
+
+
+
+/*------------------------------------------------------------------------*/
+/* Footer */
+/*-------------------------------------------------------------------------*/
+
+.footer {
+
+	height: 300px;
+}
+
+
+
+/*------------------------------------------------------------------------*/
+/* End of Footer */
+/*-------------------------------------------------------------------------*/
+
+
+  
+
+  }
+
+
+
+
+
+  /*.............................end of iPhone Landscape.....................*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ /*.............................iPhone6+ Landscape.....................*/
+
+
+    @media (min-width: 414px) and (max-width: 736px) and (orientation: landscape)  {
+
+
+		
+.card {
+	left: 5% !important;
+	top: 5% !important;
+}
+
+  	
+  }
+
+
+
+
+
+  /*.............................end of iPhone6+ Landscape.....................*/
+
+
+

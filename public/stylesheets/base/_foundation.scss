@@ -1,0 +1,32 @@
+
+@import "../../node_modules/sass-toolkit/stylesheets/toolkit";
+%full-width {
+    @include clearfix();
+    width: 100%;
+    clear: both;
+}
+
+%container {
+    $gutter-width: padding-for-bands + padding-for-bands;
+    margin: 0 auto;
+
+    @include breakpoint($screen-sm-min) {
+        width: $screen-sm-min - $gutter-width;
+        padding: {
+            left: 0;
+            right: 0;
+        }
+    }
+
+    @include breakpoint($screen-md-min) {
+        width: $screen-md-min - $gutter-width;
+    }
+
+    @include breakpoint($screen-lg-min) {
+        width: $screen-lg-min - $gutter-width;
+    }
+
+    @include breakpoint($screen-xl-min) {
+        width: $screen-xl-min - $gutter-width;
+    }
+}

@@ -1,0 +1,29 @@
+.footer {
+  @extend %container;
+	height: 300px !important;
+	background-color: #34c083;
+	bottom:0 !important;
+
+  &-logo {
+    width: 139px;
+  	height: 139px;
+  	object-fit: contain;
+  }
+
+  &-links {
+    list-style: none;
+	top: 60px;
+  }
+
+  &-appstore {
+	height: 50px;
+	width: auto !important;
+  @include breakpoint($screen-xs-min) {
+    height: 100px;
+  }
+  }
+}
+
+.logo-container {
+  @extend %container
+}
