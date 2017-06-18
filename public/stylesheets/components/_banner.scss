@@ -1,7 +1,0 @@
-.first {
-    @include grid-container();
-}
-
-.innerone {
-    @include grid-span(7,5);
-}

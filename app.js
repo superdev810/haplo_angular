@@ -27,6 +27,7 @@ app.use(require('node-sass-middleware')({
     outputStyle: 'compressed'
 }));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/js', express.static(__dirname + '/node_modules/bootstrap-sass/assets/javascripts')); // redirect bootstrap JS
 
 app.use('/', index);
 app.use('/users', users);
