@@ -8,12 +8,10 @@
   }
 
   &-appstore {
-	// height: 50px;
-	// //width: auto !important;
-  // @include breakpoint($screen-xs-min) {
-  //   height: 100px;
-  // }
-	width: inherit;
+		width: 139px;
+		@include breakpoint($screen-sm) {
+			width: 250px;
+		}
   }
 
 	&-disclaimer {

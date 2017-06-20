@@ -8,6 +8,7 @@ var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
+var autoprefixer = require('express-autoprefixer');
 
 var app = express();
 
@@ -26,6 +27,7 @@ app.use(require('node-sass-middleware')({
     debug: true,
     outputStyle: 'compressed'
 }));
+autoprefixer({ browsers: 'last 2 versions', cascade: false });
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/js', express.static(__dirname + '/node_modules/bootstrap-sass/assets/javascripts')); // redirect bootstrap JS
 

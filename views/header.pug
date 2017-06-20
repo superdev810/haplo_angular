@@ -1,16 +1,19 @@
 //-
   Header Begins
-header.container-fluid.header-band
-  div.header.container-fluid
-    div.row-fluid
-      img#header-logo.span2(src="img/u-logo-usefirst.png" alt="")
-      div
-        form#form-search.search(action="#" method='get')
-          div.form-group
-            input#search-bar.form-control.search-bar(type="text" name='search-bar' placeholder="Search")
-      div
-        ul.header-links
-          li
-            a (href="#") Create an account
-          li
-            a (href="#") FAQ
+header
+  div.header
+    div.container-fluid
+      div.row
+        div.col-sm-2
+          img#header-logo.logo-logo(src="img/u-logo-usefirst.png" alt="")
+        div.col-sm-4
+          form#form-search.search(action="#" method='get')
+            div.form-group
+              input#search-bar.form-control.search-bar(type="text" name='search-bar' placeholder="Search")
+        //-
+          div.col-sm-4
+            ul.header-links
+              li
+                a (href="#") Create an account
+              li
+                a (href="#") FAQ
