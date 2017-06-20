@@ -2,18 +2,20 @@ footer
   div.footer
     div.container
       div.row
-        div.col-md-12.text-center
-          div.logo-container
-            a(href="/")
-              img.footer-logo.U-Logo-FIRST(src="img/u-logo-usefirst.png" alt="")
-          //-
-            ul.footer-links
-              li
-                a(href="") Create an account
-              li
-                a(href="") Support
-              li
-              a(href="") FAQ
+        div.logo-container.col-sm-8
+          a.logo-wrapper(href="/")
+            img.logo-logo(src="img/u-logo-usefirst.png" alt="")
+        //-
+          ul.footer-links
+            li
+              a(href="") Create an account
+            li
+              a(href="") Support
+            li
+            a(href="") FAQ
+        div.col-sm-4
           a(href="https://itunes.apple.com/us/app/ustadium/id1184610766?mt=8")
             img.footer-appstore(src="img/app_store.png" alt="")
-          p Copyright 2017 Next Gen Sports Inc. All Rights Reserved
+        div.row
+          div.col-sm-12.text-center
+            p.footer-disclaimer Copyright 2017 Next Gen Sports Inc. All Rights Reserved

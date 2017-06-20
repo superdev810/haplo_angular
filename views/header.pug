@@ -1,33 +1,17 @@
 //-
   Header Begins
-header.container-fluid.header-band
-  div.header.container-fluid
-    div.container
+header
+  div.header
+    div.container-fluid
       div.row
-        div.col-md-12
-        div.col-sm-3.col-sm-6
-          img#header-logo.logo-first(src="img/u-logo-usefirst.png" alt="")
-        div.col-sm-3.col-sm-6
+        div.col-sm-2
+          img#header-logo.logo-logo(src="img/u-logo-usefirst.png" alt="")
+        div.col-sm-4
           form#form-search.search(action="#" method='get')
             div.form-group
-              div!=searchSymbol
               input#search-bar.form-control.search-bar(type="text" name='search-bar' placeholder="Search")
-        div.col-sm-3.col-sm-6
-          ul.header-links
-            li
-              a (href="#") Create an account
-            li
-              a (href="#") FAQ
-//-
-  mobile-header
-  div class="mobile-header
-    div.container
-      div.row
-         div.col-md-12
-          img#mobile-header-logo.U-Logo-FIRST.text-center(src="img/u-logo-usefirst.png"   alt="")
-          form#form-search.search(action="#" method='get')
-            div.form-group
-              input#search-bar.form-control.mobile-search-bar.text-center(type="text"  name='search-bar')
+        //-
+          div.col-sm-4
             ul.header-links
               li
                 a (href="#") Create an account
