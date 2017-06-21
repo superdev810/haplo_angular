@@ -4,6 +4,7 @@ block content
   include header
   h1= title
   p Welcome to #{title}
+  p=name
   if (typeof(data) === 'object')
     ul
       each thing in data
