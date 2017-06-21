@@ -4,5 +4,7 @@ block content
   include header
   h1= title
   p Welcome to #{title}
+  each thing in data
+    p=thing.name
 
   include footer

@@ -1,21 +1,36 @@
 var express = require('express');
 var router = express.Router();
 var http = require('http');
-http.get({
-  hostname: 'ustadium-development.herokuapp.com',
-  path:'/api/feeds'
-}, (res) => {
-  var body = '';
-  res.on('data', function(chunk) {
-    body += chunk;
-  });
-  res.on('end', function() {
-    console.log(body);
-  });
+
+
+router.use(function (req, res, next){
+  http.get({
+    hostname: 'ustadium-development.herokuapp.com',
+    path:'/api/feeds'
+  }, (response) => {
+    var body = '';
+    response.on('data', function(chunk) {
+      body += chunk;
+    });
+    response.on('end', function() {
+      res.locals.data = body;
+      next();
+    });
+  })
 })
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express', searchSymbol: searchSymbol });
+router.get('/ustadium/', function(req, res, next) {
+  res.render('index', { title: 'Express'});
+});
+
+router.get('/ustadium/feeds', function(req, res, next) {
+  var data = JSON.parse(res.locals.data).data.feeds;
+  console.log(data)
+  res.render('index', { title: 'feeds', data: data});
+});
+
+router.get('/ustadium/feeds/:name', function(req, res, next) {
+  res.render('index', { title: 'individual feed'});
 });
 
 module.exports = router;
