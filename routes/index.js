@@ -25,7 +25,6 @@ router.get('/ustadium/', function(req, res, next) {
 
 router.get('/ustadium/feeds', function(req, res, next) {
   var data = JSON.parse(res.locals.data).data.feeds;
-  console.log(data)
   res.render('index', { title: 'feeds', data: data, host:req.get('host')});
 });
 
