@@ -4,7 +4,10 @@ block content
   include header
   h1= title
   p Welcome to #{title}
-  each thing in data
-    p=thing.name
+  if (typeof(data) === 'object')
+    ul
+      each thing in data
+        li
+          a(href=""+host+"/ustadium/feeds/"+thing.name)=thing.name
 
   include footer
