@@ -8,8 +8,10 @@ block content
   if (typeof(data) === 'object')
     ul
       each thing in data
+        script().
+          var url = !{thing.url}
         li
-          a(href="http://"+host+"/ustadium/feeds/"+thing.name)=thing.name
+          a(href=thing.url)=thing.name
   if (typeof(posts) === 'object')
     p total #{posts.total}
     ul
