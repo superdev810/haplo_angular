@@ -31,7 +31,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/ustadium/', express.static(path.join(__dirname, 'public')));
 app.use('/js', express.static(__dirname + '/node_modules/bootstrap-sass/assets/javascripts')); // redirect bootstrap JS
 
-app.use('/', index);
+app.use('/feeds', index);
 app.use('/users', users);
 
 // catch 404 and forward to error handler
