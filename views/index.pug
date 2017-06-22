@@ -10,5 +10,11 @@ block content
       each thing in data
         li
           a(href="http://"+host+"/ustadium/feeds/"+thing.name)=thing.name
+  if (typeof(posts) === 'object')
+    p total #{posts.total}
+    ul
+      each thing in posts.data
+        li
+          p=thing.text
 
   include footer

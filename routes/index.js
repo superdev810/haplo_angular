@@ -39,16 +39,28 @@ router.get('/ustadium/feeds/:name', function(req, res, next) {
       body += chunk;
     });
     response.on('end', function() {
-      res.locals.data = body;
+      res.locals.feedData = body;
       next();
     });
   })
 }, function(req, res, next){
   //get the posts by using the feed id
-  next()
+  console.log('1', JSON.parse(res.locals.feedData).data._id);
+  http.get({
+    hostname: 'ustadium-development.herokuapp.com',
+    path:'/api/feeds/' + JSON.parse(res.locals.feedData).data._id+'/posts'
+  }, (response) => {
+    var body = '';
+    response.on('data', function(chunk) {
+      body += chunk;
+    });
+    response.on('end', function() {
+      res.locals.feedPosts = body;
+      next();
+    });
+  })
 }, function (req, res, next){
-  console.log(JSON.parse(res.locals.data).data.feeds);
-  res.render('index', { title: req.params.name});
+  res.render('index', { title: req.params.name, posts: JSON.parse(res.locals.feedPosts)});
 });
 
 module.exports = router;
