@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  include header
+  form(method='post')
+    p
+      label(for='username') Username
+      input(type='text', name='username')
+    p
+      label(for='password') Password
+      input(type='password', name='password')
+    input(type='submit')
+  include footer
