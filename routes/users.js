@@ -46,4 +46,22 @@ router.post('/login', function(req, res, next) {
   }
 });
 
+router.get('/verify', function (req, res, next) {
+  res.render('verify', {title: 'verify'});
+});
+
+router.post('/verify', function (req, res, next) {
+  var data = {
+    verifyCode: req.body.code,
+    email: req.body.email
+  }
+  post(res, req, next, '/auth/verify', 'POST', data);
+}, function (req, res, next) {
+  responseFromServer = JSON.parse(res.locals.status);
+  if (responseFromServer && responseFromServer.status === 200) {
+    res.render('index', {title: 'logged in'})
+  }else {
+    res.render('verify', {title: 'try again', data: responseFromServer})
+  })
+
 module.exports = router;

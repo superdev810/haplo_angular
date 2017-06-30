@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  include header
+  include message
+  form(method='post')
+    p
+      label(for='code') Code
+      input(type='text', name='code')
+    p
+      label(for='email') Email
+      input(type='email', name='email')
+    input(type='submit')
+  include footer
