@@ -1,38 +1,15 @@
 var express = require('express');
 var router = express.Router();
 var http = require('http');
+var get = require('../lib/middleware/get');
 
 
 router.use(function (req, res, next){
-  http.get({
-    hostname: 'ustadium-development.herokuapp.com',
-    path:'/api/feeds'
-  }, (response) => {
-    var body = '';
-    response.on('data', function(chunk) {
-      body += chunk;
-    });
-    response.on('end', function() {
-      res.locals.data = body;
-      next();
-    });
-  })
+  get('/api/feeds', res, next, 'data');
 })
 
 router.use(function (req, res, next){
-  http.get({
-    hostname: 'ustadium-development.herokuapp.com',
-    path:'/api/feeds/trending'
-  }, (response) => {
-    var body = '';
-    response.on('data', function(chunk) {
-      body += chunk;
-    });
-    response.on('end', function() {
-      res.locals.trending = body;
-      next();
-    });
-  })
+  get('/api/feeds/trending', res, next, 'trending');
 })
 /* GET home page. */
 router.get('/trending', function(req, res, next) {
@@ -55,35 +32,10 @@ router.get('/all', function(req, res, next) {
 
 
 router.get('/:name', function(req, res, next) {
-  http.get({
-    hostname: 'ustadium-development.herokuapp.com',
-    path:'/api/feeds/name/'+encodeURIComponent(req.params.name)
-  }, (response) => {
-    var body = '';
-    response.on('data', function(chunk) {
-      body += chunk;
-    });
-    response.on('end', function() {
-      res.locals.feedData = body;
-      next();
-    });
-  })
+  get('/api/feeds/name/'+encodeURIComponent(req.params.name), res, next, 'feedData');
 }, function(req, res, next){
   //get the posts by using the feed id
-  console.log('1', JSON.parse(res.locals.feedData).data._id);
-  http.get({
-    hostname: 'ustadium-development.herokuapp.com',
-    path:'/api/feeds/' + JSON.parse(res.locals.feedData).data._id+'/posts'
-  }, (response) => {
-    var body = '';
-    response.on('data', function(chunk) {
-      body += chunk;
-    });
-    response.on('end', function() {
-      res.locals.feedPosts = body;
-      next();
-    });
-  })
+  get('/api/feeds/' + JSON.parse(res.locals.feedData).data._id+'/posts', res, next, 'feedPosts');
 }, function (req, res, next){
   res.render('index', { title: req.params.name, posts: JSON.parse(res.locals.feedPosts)});
 });
