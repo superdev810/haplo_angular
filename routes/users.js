@@ -10,7 +10,13 @@ router.get('/signup', function(req, res, next) {
 });
 
 router.post('/signup', function(req, res, next) {
-  post(res, req, next, '/auth/signup', 'POST');
+  var data = {
+    username: req.body.username,
+    password: req.body.password,
+    phone: req.body.phone,
+    email: req.body.email
+  }
+  post(res, req, next, '/auth/signup', 'POST', data);
 }, function (req, res, next) {
   responseFromServer = JSON.parse(res.locals.status);
   if (responseFromServer && responseFromServer.status === 200) {
@@ -26,7 +32,11 @@ router.get('/login', function(req, res, next) {
 });
 
 router.post('/login', function(req, res, next) {
-  post(res, req, next, '/auth/token', 'POST');
+  var data = {
+    username: req.body.username,
+    password: req.body.password
+  }
+  post(res, req, next, '/auth/token', 'POST', data);
 }, function (req, res, next) {
   responseFromServer = JSON.parse(res.locals.status);
   if (responseFromServer && responseFromServer.status === 200) {
