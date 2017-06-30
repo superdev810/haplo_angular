@@ -2,9 +2,7 @@ extends layout
 
 block content
   include header
-  if (typeof(data) === 'object' && typeof(data.data) === 'object')
-    #{typeof(data.data.message)}
-    p=data.data.message
+  include message
   form(method='post')
     p
       label(for='username') Username

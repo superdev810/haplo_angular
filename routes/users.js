@@ -46,4 +46,16 @@ router.post('/login', function(req, res, next) {
   }
 });
 
+router.get('/verify', function (req, res, next) {
+  res.render('verify', {title: 'verify'});
+});
+
+router.post('/verify', function (req, res, next) {
+  var data = {
+    verifyCode: req.body.code,
+    email: req.body.email
+  }
+  post(res, req, next, '/auth/verify', 'POST', data);
+})
+
 module.exports = router;
