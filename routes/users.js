@@ -66,7 +66,7 @@ router.post('/verify', function (req, res, next) {
 })
 
   router.get('/request-reset', (req, res, next) => {
-    res.render('request-reset-password', {title: 'Reset'});
+    res.render('request-reset-password', {title: 'Request reset'});
   })
 
   router.post('/request-reset', (req, res, next) => {
@@ -80,9 +80,31 @@ router.post('/verify', function (req, res, next) {
   }, (req, res, next) => {
     responseFromServer = JSON.parse(res.locals.status);
     if (responseFromServer && responseFromServer.status === 200) {
-      res.render('index', {title: 'reset'})
+      res.render('reset-forgotten-password', {title: 'reset'})
     }else {
       res.render('request-reset-password', {title: 'try again', data: responseFromServer})
+    }
+  })
+
+  router.get('/reset-forgotten-password', () => {
+    res.render('reset-forgotten-password', {title: 'Reset forgotten password'})
+  })
+
+  router.post('/reset-forgotten-password', (req, res, next) => {
+    var data = {
+      code: req.body.code,
+      email: req.body.email,
+      phone: req.body.phone,
+      password: req.body.password
+    }
+    post(res, req, next, '/auth/reset-forgotten-password', 'POST', data);
+
+  }, (req, res, next) => {
+    responseFromServer = JSON.parse(res.locals.status);
+    if (responseFromServer && responseFromServer.status === 200) {
+      res.render('index', {title: 'password reset'})
+    }else {
+      res.render('reset-forgotten-password', {title: 'try again', data: responseFromServer})
     }
   })
 
