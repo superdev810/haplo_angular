@@ -62,6 +62,28 @@ router.post('/verify', function (req, res, next) {
     res.render('index', {title: 'logged in'})
   }else {
     res.render('verify', {title: 'try again', data: responseFromServer})
+  }
+})
+
+  router.get('/request-reset', (req, res, next) => {
+    res.render('request-reset-password', {title: 'Reset'});
+  })
+
+  router.post('/request-reset', (req, res, next) => {
+    var data = {
+      username: req.body.username,
+      email: req.body.email,
+      phone: req.body.phone
+    }
+    post(res, req, next, '/auth/forgot-password', 'POST', data);
+
+  }, (req, res, next) => {
+    responseFromServer = JSON.parse(res.locals.status);
+    if (responseFromServer && responseFromServer.status === 200) {
+      res.render('index', {title: 'reset'})
+    }else {
+      res.render('request-reset-password', {title: 'try again', data: responseFromServer})
+    }
   })
 
 module.exports = router;
