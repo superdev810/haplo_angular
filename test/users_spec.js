@@ -60,12 +60,39 @@ describe('The users route', () => {
            'email': 'a@gmail.com'
          })
          .reply(200, {
+           'status': 200,
            'username': 'ab',
            'password': 'a1'
          });
     })
 
     it('processes the post signup page', () => {
+      return request(app)
+          .post('/users/signup')
+          .type("form")
+          .send({'username': 'ab',
+          'password': 'a1',
+          'phone': '777-555-8975',
+          'email': 'a@gmail.com'
+          })
+          .expect(200);
+    })
+
+    before(()=> {
+      api = nock("http://localhost:3000")
+         .post("/auth/signup", {
+           'username': 'ab',
+           'password': 'a1',
+           'phone': '777-555-8975',
+           'email': 'a@gmail.com'
+         })
+         .reply(200, {
+           'username': 'ab',
+           'password': 'a1'
+         });
+    })
+
+    it('processes the post signup page without a 200 status from api', () => {
       return request(app)
           .post('/users/signup')
           .type("form")
@@ -92,12 +119,35 @@ describe('The users route', () => {
            'password': 'a1'
          })
          .reply(200, {
+           'status': 200,
            'username': 'ab',
            'password': 'a1'
          });
     })
 
     it('processes the post login page', () => {
+      return request(app)
+          .post('/users/login')
+          .type("form")
+          .send({'username': 'ab',
+          'password': 'a1'
+          })
+          .expect(200);
+    })
+
+    before(()=> {
+      api = nock("http://localhost:3000")
+         .post("/auth/token", {
+           'username': 'ab',
+           'password': 'a1'
+         })
+         .reply(200, {
+           'username': 'ab',
+           'password': 'a1'
+         });
+    })
+
+    it('processes the post login page without a 200 staus from api', () => {
       return request(app)
           .post('/users/login')
           .type("form")
@@ -120,7 +170,7 @@ describe('The users route', () => {
          .post("/auth/verify", {
            'email': 'a@gmail.com'
          })
-         .reply(200, {
+         .reply(200, {'status': 200,
            'email': 'a@gmail.com'
          });
     })
@@ -134,6 +184,151 @@ describe('The users route', () => {
           })
           .expect(200);
     })
+
+    before(()=> {
+      api = nock("http://localhost:3000")
+         .post("/auth/verify", {
+           'email': 'a@gmail.com'
+         })
+         .reply(200, {
+           'email': 'a@gmail.com'
+         });
+    })
+
+    it('processes the post verify page without a status 200 from api', () => {
+      return request(app)
+          .post('/users/verify')
+          .type("form")
+          .send({
+          'email': 'a@gmail.com'
+          })
+          .expect(200);
+    })
   });
+
+  describe('request-reset page  ', () => {
+    it('serves the get request', ()=> {
+      return request(app)
+          .get('/users/request-reset')
+          .expect(200);
+    })
+
+    before(()=> {
+      api = nock("http://localhost:3000")
+         .post("/auth/forgot-password", {
+           'username': 'ab',
+           'phone': '777-555-8975',
+           'email': 'a@gmail.com'
+         })
+         .reply(200, {'status': 200,
+         'username': 'ab',
+         'phone': '777-555-8975',
+           'email': 'a@gmail.com'
+         });
+    })
+
+    it('processes the post request-reset page', () => {
+      return request(app)
+          .post('/users/request-reset')
+          .type("form")
+          .send({
+            'username': 'ab',
+            'phone': '777-555-8975',
+          'email': 'a@gmail.com'
+          })
+          .expect(200);
+    })
+
+    before(()=> {
+      api = nock("http://localhost:3000")
+         .post("/auth/forgot-password", {
+           'username': 'ab',
+           'phone': '777-555-8975',
+           'email': 'a@gmail.com'
+         })
+         .reply(200, {
+           'username': 'ab',
+           'phone': '777-555-8975',
+             'email': 'a@gmail.com'
+         });
+    })
+
+    it('processes the post request-reset page without a status 200 from api', () => {
+      return request(app)
+          .post('/users/request-reset')
+          .type("form")
+          .send({
+            'username': 'ab',
+            'phone': '777-555-8975',
+              'email': 'a@gmail.com'
+          })
+          .expect(200);
+    })
+  });
+
+  describe('reset-forgotten-password page  ', () => {
+    it('serves the get request', ()=> {
+      return request(app)
+          .get('/users/reset-forgotten-password')
+          .expect(200);
+    })
+
+    before(()=> {
+      api = nock("http://localhost:3000")
+         .post("/auth/reset-forgotten-password", {
+           'code': '234567',
+           'password': 'ab',
+           'phone': '777-555-8975',
+           'email': 'a@gmail.com'
+         })
+         .reply(200, {'status': 200,
+           'password': 'ab',
+           'phone': '777-555-8975',
+           'email': 'a@gmail.com'
+         });
+    })
+
+    it('processes the post reset-forgotten-password page', () => {
+      return request(app)
+          .post('/users/reset-forgotten-password')
+          .type("form")
+          .send({
+            'code': '234567',
+            'password': 'ab',
+            'phone': '777-555-8975',
+            'email': 'a@gmail.com'
+          })
+          .expect(200);
+    })
+
+    before(()=> {
+      api = nock("http://localhost:3000")
+         .post("/auth/reset-forgotten-password", {
+           'code': '234567',
+           'password': 'ab',
+           'phone': '777-555-8975',
+           'email': 'a@gmail.com'
+         })
+         .reply(200, {
+           'password': 'ab',
+           'phone': '777-555-8975',
+           'email': 'a@gmail.com'
+         });
+    })
+
+    it('processes the post reset-forgotten-password page without a status 200 from api', () => {
+      return request(app)
+          .post('/users/reset-forgotten-password')
+          .type("form")
+          .send({
+            'code': '234567',
+            'password': 'ab',
+            'phone': '777-555-8975',
+            'email': 'a@gmail.com'
+          })
+          .expect(200);
+    })
+  });
+
 
 })
