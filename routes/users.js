@@ -86,7 +86,7 @@ router.post('/verify', function (req, res, next) {
     }
   })
 
-  router.get('/reset-forgotten-password', () => {
+  router.get('/reset-forgotten-password', (req, res, next) => {
     res.render('reset-forgotten-password', {title: 'Reset forgotten password'})
   })
 

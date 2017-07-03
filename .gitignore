@@ -3,3 +3,4 @@ public/stylesheets/style.css
 package-lock.json
 .nyc_output
 alternative
+coverage
