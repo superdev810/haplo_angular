@@ -3,7 +3,8 @@ const request = require('supertest'),
     rewire = require('rewire'),
     index = require('../routes/users.js'),
     nock = require('nock'),
-    path = require('path');
+    path = require('path'),
+    bodyParser = require('body-parser');
 
 describe('The users route', () => {
   let app;
@@ -11,17 +12,13 @@ describe('The users route', () => {
     process.env.HOST_NAME='localhost';
     process.env.IS_LOCAL=true;
     app = express();
+    app.use(bodyParser.json());
+    app.use(bodyParser.urlencoded({ extended: false }));
     app.set('views', path.join(__dirname, '../views'));
     app.set('view engine', 'pug');
     app.use('/users', index);
   })
   describe('returns get request pages', () => {
-    it('serves the signup page', ()=> {
-      return request(app)
-          .get('/users/signup')
-          .expect(200);
-    })
-
     it('serves the login page', ()=> {
       return request(app)
           .get('/users/login')
@@ -46,5 +43,97 @@ describe('The users route', () => {
           .expect(200);
     })
   })
+
+  describe('signup page  ', () => {
+    it('serves the get request', ()=> {
+      return request(app)
+          .get('/users/signup')
+          .expect(200);
+    })
+
+    before(()=> {
+      api = nock("http://localhost:3000")
+         .post("/auth/signup", {
+           'username': 'ab',
+           'password': 'a1',
+           'phone': '777-555-8975',
+           'email': 'a@gmail.com'
+         })
+         .reply(200, {
+           'username': 'ab',
+           'password': 'a1'
+         });
+    })
+
+    it('processes the post signup page', () => {
+      return request(app)
+          .post('/users/signup')
+          .type("form")
+          .send({'username': 'ab',
+          'password': 'a1',
+          'phone': '777-555-8975',
+          'email': 'a@gmail.com'
+          })
+          .expect(200);
+    })
+  });
+
+  describe('login page  ', () => {
+    it('serves the get request', ()=> {
+      return request(app)
+          .get('/users/login')
+          .expect(200);
+    })
+
+    before(()=> {
+      api = nock("http://localhost:3000")
+         .post("/auth/token", {
+           'username': 'ab',
+           'password': 'a1'
+         })
+         .reply(200, {
+           'username': 'ab',
+           'password': 'a1'
+         });
+    })
+
+    it('processes the post login page', () => {
+      return request(app)
+          .post('/users/login')
+          .type("form")
+          .send({'username': 'ab',
+          'password': 'a1'
+          })
+          .expect(200);
+    })
+  });
+
+  describe('verify page  ', () => {
+    it('serves the get request', ()=> {
+      return request(app)
+          .get('/users/verify')
+          .expect(200);
+    })
+
+    before(()=> {
+      api = nock("http://localhost:3000")
+         .post("/auth/verify", {
+           'email': 'a@gmail.com'
+         })
+         .reply(200, {
+           'email': 'a@gmail.com'
+         });
+    })
+
+    it('processes the post verify page', () => {
+      return request(app)
+          .post('/users/verify')
+          .type("form")
+          .send({
+          'email': 'a@gmail.com'
+          })
+          .expect(200);
+    })
+  });
 
 })
