@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "test": "nyc mocha"
+    "test": "nyc --reporter=html --reporter=text mocha"
   },
   "dependencies": {
     "autoprefixer": "^6.7.7",
@@ -32,7 +32,10 @@
     "singularitygs": "^1.8.0"
   },
   "devDependencies": {
+    "assert": "^1.4.1",
     "mocha": "^3.4.2",
-    "nyc": "^11.0.3"
+    "nock": "^9.0.13",
+    "nyc": "^11.0.3",
+    "supertest": "^3.0.0"
   }
 }
