@@ -167,6 +167,4 @@ describe('The feed route', () => {
           .get('/feeds/test1')
           .expect(200);
     })
-
-
 });
