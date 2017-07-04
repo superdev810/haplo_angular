@@ -16,4 +16,15 @@ describe('The Express App ', () => {
     .get('/hello')
     .expect(404)
   })
+
+  it('404s when the wrong route is requested ', () => {
+    process.env.NODE_ENV='development';
+    return request(app)
+    .get('/heel/all/what')
+    .expect(404)
+  })
+
+  it('500s when the route is not defined', () => {
+    // still need to figure it out
+  })
 })
