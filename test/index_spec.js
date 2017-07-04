@@ -150,9 +150,6 @@ describe('The feed route', () => {
 
     })
 
-
-
-
     it('return feed all', () => {
         return request(app)
             .get('/feeds/all')
