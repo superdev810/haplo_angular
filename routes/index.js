@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var get = require('../lib/middleware/get');
+var globals = require('../lib/config/global');
 
 
 router.use(function (req, res, next){
@@ -25,7 +26,8 @@ router.get('/all', function(req, res) {
     data.forEach((feed) => {
         feed.url = 'http://'+req.get('host')+'/feeds/'+feed.name;
     });
-    res.render('index', { title: 'feeds', data: data, host:req.get('host')});
+    console.log(data);
+    res.render('index', { company: globals().company, title: 'feeds', data: data, host:req.get('host')});
 });
 
 
