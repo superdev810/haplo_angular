@@ -6,10 +6,17 @@ block content
   p Welcome to #{title}
   p=name
   if (typeof(data) === 'object')
-    ul
-      each thing in data
-        li
-          a(href=thing.url)=thing.name
+    div#testimonials.page
+      div.container-fluid
+        h2=title
+        div.row
+          each thing in data
+            blockquote#janeh.col-md-6.col-lg-3(style="background:url("+thing.mediaFile+") no-repeat center center;")
+              div.quote
+                span.intro=thing.name
+                span.more
+                  a(href=thing.url)=thing.name
+                span.customer=thing.author.username
   if (typeof(posts) === 'object')
     p total #{posts.total}
     ul
