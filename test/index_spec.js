@@ -152,7 +152,7 @@ describe('The feed route', () => {  //eslint-disable-line no-undef
 
     it('return feed all', () => { //eslint-disable-line no-undef
         return request(app)
-            .get('/feeds/all')
+            .get('/feeds')
             .expect(200);
     });
 

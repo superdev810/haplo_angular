@@ -64,11 +64,11 @@ router.post('/verify', function (req, res, next) {
     }
 });
 
-router.get('/request-reset', (req, res) => {
-    res.render('request-reset-password', {title: 'Request reset'});
+router.get('/forgot-password', (req, res) => {
+    res.render('forgot-password', {title: 'Request reset'});
 });
 
-router.post('/request-reset', (req, res, next) => {
+router.post('/forgot-password', (req, res, next) => {
     var data = {
         username: req.body.username,
         email: req.body.email,
@@ -81,7 +81,7 @@ router.post('/request-reset', (req, res, next) => {
     if (responseFromServer && responseFromServer.status === 200) {
         res.render('reset-forgotten-password', {title: 'reset'});
     }else {
-        res.render('request-reset-password', {title: 'try again', data: responseFromServer});
+        res.render('forgot-password', {title: 'try again', data: responseFromServer});
     }
 });
 
@@ -106,5 +106,26 @@ router.post('/reset-forgotten-password', (req, res, next) => {
         res.render('reset-forgotten-password', {title: 'try again', data: responseFromServer});
     }
 });
+
+router.get('/reset-forgotten', (req, res) => {
+    res.render('reset-forgotten', {title: 'Reset forgotten password'});
+});
+
+router.post('/reset-forgotten', (req, res, next) => {
+    var data = {
+        newPassword: req.body.phone,
+        oldPassword: req.body.password
+    };
+    post(res, req, next, '/auth/reset-forgotten', 'POST', data);
+
+}, (req, res) => {
+    responseFromServer = JSON.parse(res.locals.status);
+    if (responseFromServer && responseFromServer.status === 200) {
+        res.render('index', {title: 'password reset'});
+    }else {
+        res.render('reset-forgotten', {title: 'try again', data: responseFromServer});
+    }
+});
+
 
 module.exports = router;

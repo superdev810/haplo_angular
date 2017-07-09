@@ -21,10 +21,13 @@ router.get('/trending', function(req, res) {
     res.render('index', { title: 'Trending', data: trending.data.feeds});
 });
 
-router.get('/all', function(req, res) {
+router.get('/', function(req, res) {
     var data = JSON.parse(res.locals.data).data.feeds;
     data.forEach((feed) => {
         feed.url = 'http://'+req.get('host')+'/feeds/'+feed.name;
+        if (!feed.mediaFile) {
+          feed.mediaFile = "/img/final-flow@3x.png";
+        }
     });
     console.log(data);
     res.render('index', { company: globals().company, title: 'feeds', data: data, host:req.get('host')});
