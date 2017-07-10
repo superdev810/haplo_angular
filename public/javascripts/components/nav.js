@@ -1,5 +1,5 @@
 module.exports = function () {
-  let navs = document.querySelectorAll(".ab-nav-item-SOLID, .ab-nav-item-EMPTY");
+  var navs = document.querySelectorAll(".ab-nav-item-SOLID, .ab-nav-item-EMPTY");
   console.log(navs[0].children[0].href)
   console.log(window.location)
   navs = Array.prototype.slice.call(navs);

@@ -13,7 +13,7 @@ router.use(function (req, res, next){
 });
 /* GET home page. */
 router.get('/trending', function(req, res) {
-    let trending = JSON.parse(res.locals.trending);
+    var trending = JSON.parse(res.locals.trending);
     trending.data.feeds.forEach((feed) => {
         feed.url = 'http://'+req.get('host')+'/feeds/'+feed.name;
     });
