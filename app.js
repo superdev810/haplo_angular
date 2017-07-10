@@ -29,8 +29,10 @@ app.use(require('node-sass-middleware')({
 autoprefixer({ browsers: 'last 2 versions', cascade: false });
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/ustadium/', express.static(path.join(__dirname, 'public')));
-app.use('/js', express.static(__dirname + '/node_modules/bootstrap-sass/assets/javascripts')); // redirect bootstrap JS
-app.use('/fonts', express.static(__dirname + '/node_modules/bootstrap-sass/assets/fonts')); // redirect bootstrap JS
+app.use('/bs', express.static(__dirname + '/node_modules/bootstrap/dist/js')); // redirect bootstrap JS
+app.use('/jq', express.static(__dirname + '/node_modules/jquery/dist')); // redirect bootstrap JS
+app.use('/te', express.static(__dirname + '/node_modules/tether/dist/js')); // redirect bootstrap JS
+app.use('/fonts', express.static(__dirname + '/node_modules/font-awesome/fonts')); // redirect bootstrap JS
 
 app.use('/feeds', index);
 app.use('/users', users);

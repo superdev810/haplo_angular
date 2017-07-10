@@ -1,13 +1,12 @@
 $(function() {
-
   "use strict";
-
+  console.log('hello');
   var topoffset = 50; //variable for menu height
   var slideqty = $('#featured .item').length;
   var wheight = $(window).height(); //get the height of the window
   var randSlide = Math.floor(Math.random()*slideqty);
 
-  $('#featured .item').eq(randSlide).addClass('active');
+  // $('#featured .item').eq(randSlide).addClass('active');
 
 
   $('.fullheight').css('height', wheight); //set to window tallness
@@ -26,7 +25,10 @@ $(function() {
     $('.fullheight').css('height', wheight); //set to window tallness
   });
 
-
+  $(document).on('shown.bs.tab', 'a[data-toggle="tab"]', function (e) {
+      console.log(e.target.href)
+      window.location = e.target.href
+  })
 
   //Activate Scrollspy
   $('body').scrollspy({
@@ -55,7 +57,8 @@ $(function() {
 
 
   //Use smooth scrolling when clicking on navigation
-  $('.navbar a[href*=#]:not([href=#])').click(function() {
+  $('.navbar a[href*=\\#]:not([href=\\#])').click(function() {
+    console.log('inside scrollspy');
     if (location.pathname.replace(/^\//,'') ===
       this.pathname.replace(/^\//,'') &&
       location.hostname === this.hostname) {
@@ -83,5 +86,7 @@ $(function() {
   $('.carousel').carousel({
     pause: false
   });
+
+  $('myTag')
 
 });
