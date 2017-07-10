@@ -2,10 +2,11 @@ var express = require('express');
 var router = express.Router();
 var post = require('../lib/middleware/post');
 var responseFromServer;
+var globals = require('../lib/config/global');
 
 /* GET users listing. */
 router.get('/signup', function(req, res) {
-    res.render('signup', { title: 'hello'});
+    res.render('user/signup', {bgType: 'EMPTY', colorClass: "bg-faded", title: 'hello'});
 });
 
 router.post('/signup', function(req, res, next) {
@@ -21,13 +22,13 @@ router.post('/signup', function(req, res, next) {
     if (responseFromServer && responseFromServer.status === 200) {
         res.render('index', {title: 'signed up'});
     }else {
-        res.render('signup', {title: 'try again', data: responseFromServer});
+        res.render('user/signup', {bgType: 'EMPTY', colorClass: "bg-faded", title: 'try again', data: responseFromServer});
     }
 
 });
 
 router.get('/login', function(req, res) {
-    res.render('login', { title: 'hello'});
+    res.render('user/official-login-page', {bgType: 'SOLID', colorClass: "bg-success text-white", globalStrings: globals(), title: 'hello'});
 });
 
 router.post('/login', function(req, res, next) {
@@ -41,7 +42,7 @@ router.post('/login', function(req, res, next) {
     if (responseFromServer && responseFromServer.status === 200) {
         res.render('index', {title: 'logged in'});
     }else {
-        res.render('login', {title: 'try again', data: responseFromServer});
+        res.render('user/official-login-page', {bgType: 'SOLID', colorClass: "bg-danger text-white", globalStrings: globals(), title: 'try again', data: responseFromServer});
     }
 });
 

@@ -3,12 +3,19 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "build":"./node_modules/.bin/webpack --config webpack.config.js",
     "start": "node ./bin/www",
     "test": "nyc --reporter=html --reporter=text mocha"
   },
   "dependencies": {
     "autoprefixer": "^6.7.7",
+    "babel-cli": "^6.24.1",
+    "babel-loader": "^7.1.1",
+    "babel-preset-latest": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
     "body-parser": "~1.17.1",
+    "bootstrap": "^4.0.0-alpha.6",
     "bootstrap-sass": "^3.3.7",
     "breakpoint-sass": "^2.7.1",
     "connect-flash": "^0.1.1",
@@ -17,6 +24,9 @@
     "express": "~4.15.2",
     "express-autoprefixer": "^5.1.1",
     "express-session": "^1.15.3",
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.2.1",
+    "json-loader": "^0.5.4",
     "modularscale-sass": "^3.0.3",
     "morgan": "~1.8.1",
     "node-sass-middleware": "^0.9.8",
@@ -29,7 +39,10 @@
     "querystring": "^0.2.0",
     "sass-toolkit": "^2.10.2",
     "serve-favicon": "~2.4.2",
-    "singularitygs": "^1.8.0"
+    "singularitygs": "^1.8.0",
+    "tether": "^1.4.0",
+    "webpack": "^3.1.0",
+    "webpack-dev-server": "^2.5.1"
   },
   "devDependencies": {
     "assert": "^1.4.1",
