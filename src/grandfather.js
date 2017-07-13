@@ -1,4 +1,4 @@
-angular.module('angular-login.grandfather', ['ui.router', 'templates-app'])
+angular.module('ustadium.grandfather', ['ui.router', 'templates-app'])
 .config(function ($stateProvider) {
   $stateProvider
     .state('app', {

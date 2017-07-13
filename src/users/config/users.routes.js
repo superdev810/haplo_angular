@@ -1,8 +1,9 @@
 /**
  * Created by superdev on 7/13/2017.
  */
-angular.module('angular-login.register', ['angular-login.grandfather'])
+angular.module('ustadium.register', ['ustadium.grandfather'])
   .config(function ($stateProvider) {
+    console.log($stateProvider);
     $stateProvider
       .state('app.register', {
         url: '/register',

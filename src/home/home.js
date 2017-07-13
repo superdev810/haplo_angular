@@ -1,4 +1,4 @@
-angular.module('angular-login.home', ['angular-login.grandfather'])
+angular.module('ustadium.home', ['ustadium.grandfather'])
 .config(function ($stateProvider) {
   $stateProvider
     .state('app.home', {

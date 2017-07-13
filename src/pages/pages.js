@@ -1,4 +1,4 @@
-angular.module('angular-login.pages', ['angular-login.grandfather'])
+angular.module('ustadium.pages', ['ustadium.grandfather'])
 .config(function ($stateProvider) {
   $stateProvider
     .state('app.admin', {

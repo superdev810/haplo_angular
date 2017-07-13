@@ -1,5 +1,5 @@
 /* jshint -W084 */
-angular.module('angular-login.mock', ['ngMockE2E'])
+angular.module('ustadium.mock', ['ngMockE2E'])
 .factory('delayHTTP', function ($q, $timeout) {
   return {
     request: function (request) {

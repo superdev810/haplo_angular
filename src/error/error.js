@@ -1,4 +1,4 @@
-angular.module('angular-login.error', ['angular-login.grandfather'])
+angular.module('ustadium.error', ['ustadium.grandfather'])
 .config(function ($stateProvider) {
   $stateProvider
     .state('app.error', {

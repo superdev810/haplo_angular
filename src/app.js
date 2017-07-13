@@ -1,13 +1,13 @@
-angular.module('angular-login', [
+angular.module('ustadium', [
   // login service
   'loginService',
-  'angular-login.mock',
-  'angular-login.directives',
+  'ustadium.mock',
+  'ustadium.directives',
   // different app sections
-  'angular-login.home',
-  'angular-login.pages',
-  'angular-login.register',
-  'angular-login.error',
+  'ustadium.home',
+  'ustadium.pages',
+  'ustadium.register',
+  'ustadium.error',
   // components
   'ngAnimate'
 ])

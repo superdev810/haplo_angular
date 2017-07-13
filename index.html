@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html ng-app="angular-login">
+<html ng-app="ustadium">
   <head>
-    <title>angular-login-service</title>
+    <title>ustadium-service</title>
 
     <!-- BootstrapCDN -->
     <link href="//netdna.bootstrapcdn.com/bootswatch/3.3.1/slate/bootstrap.min.css" rel="stylesheet">
@@ -32,16 +32,16 @@
         <div class="navbar-collapse">
           <!-- Navbar links -->
           <ul class="nav navbar-nav">
-            <li ng-class="{ active: $state.is('app.home') }">
+            <li ng-class="active">
               <a ui-sref="app.home">Home</a>
             </li>
-            <li ng-class="{ active: $state.is('app.admin') }">
+            <li ng-class="active">
               <a ui-sref="app.admin">Admin-Only page</a>
             </li>
-            <li ng-class="{ active: $state.is('app.user') }">
+            <li ng-class="active">
               <a ui-sref="app.user">Registered-Only page</a>
             </li>
-            <li ng-class="{ active: $state.is('app.register') }">
+            <li ng-class="active">
               <a ui-sref="app.register">Register <i class="fa fa-user"></i>+</a>
             </li>
           </ul>
@@ -81,7 +81,7 @@
       <!-- version footer -->
       <div class="panel panel-default">
         <div class="panel-body">
-          <a href="https://github.com/mrgamer/angular-login-example/tree/<%=version %>" target="_blank"><b>angular-login-version:</b> <%=version %></a>
+          <a href="https://github.com/mrgamer/ustadium-example/tree/<%=version %>" target="_blank"><b>ustadium-version:</b> <%=version %></a>
         </div>
       </div>
     </div>

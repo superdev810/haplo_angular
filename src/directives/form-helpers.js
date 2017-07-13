@@ -1,4 +1,4 @@
-angular.module('angular-login.directives', [])
+angular.module('ustadium.directives', [])
 /**
  * Simple directive to check password equality
  *
