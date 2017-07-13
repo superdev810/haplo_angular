@@ -3,7 +3,7 @@ angular.module('angular-login.register', ['angular-login.grandfather'])
   $stateProvider
     .state('app.register', {
       url: '/register',
-      templateUrl: 'register/register.tpl.html',
+      templateUrl: 'register/users.tpl.html',
       controller: 'RegisterController',
       accessLevel: accessLevels.anon
     });
