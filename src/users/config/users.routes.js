@@ -1,7 +1,7 @@
 /**
  * Created by superdev on 7/13/2017.
  */
-angular.module('ustadium.register', ['ustadium.grandfather'])
+angular.module('ustadium.register', ['ustadium.grandfather', 'ustadium.ucontroller'])
   .config(function ($stateProvider) {
     console.log($stateProvider);
     $stateProvider

@@ -1,4 +1,4 @@
-angular.module('ustadium.register', ['ustadium.grandfather'])
+angular.module('ustadium.ucontroller', ['ustadium.grandfather'])
   .controller('RegisterController', function ($scope, $http, $timeout, $state) {
     $scope.xhr = false;
     $scope.redirect = false;
