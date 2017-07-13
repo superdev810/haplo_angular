@@ -22,3 +22,5 @@ build/
 
 # release dir
 dest/
+
+package-lock.json
