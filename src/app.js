@@ -5,6 +5,7 @@ angular.module('ustadium', [
   'ustadium.directives',
   // different app sections
   'ustadium.home',
+  'ustadium.feeds',
   'ustadium.pages',
   'ustadium.register',
   'ustadium.error',
