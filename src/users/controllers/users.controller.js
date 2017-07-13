@@ -1,13 +1,4 @@
 angular.module('angular-login.register', ['angular-login.grandfather'])
-.config(function ($stateProvider) {
-  $stateProvider
-    .state('app.register', {
-      url: '/register',
-      templateUrl: 'register/users.tpl.html',
-      controller: 'RegisterController',
-      accessLevel: accessLevels.anon
-    });
-})
 .controller('RegisterController', function ($scope, $http, $timeout, $state) {
   $scope.xhr = false;
   $scope.redirect = false;
