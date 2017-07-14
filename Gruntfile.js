@@ -7,6 +7,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-concat-sourcemap');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-connect-proxy');
   grunt.loadNpmTasks('grunt-karma');
 
 
@@ -34,14 +35,23 @@ module.exports = function (grunt) {
       }
     },
     connect: {
-      serve: {
+      server: {
         options: {
           port: 8080,
           base: 'build/',
           hostname: '*',
           debug: true
-        }
-      }
+        },
+        proxies: [{
+    context: '/api/feeds', // the context of the data service
+    host: 'https://ustadium-api-dev.herokuapp.com/', // wherever the data service is running
+    port: 443, // the port that the data service is running on
+    https: true,
+    xforward: false,
+    hideHeaders: ['x-removed-header']
+  }],
+}
+
     },
     watch: {
       options: {
@@ -126,6 +136,6 @@ module.exports = function (grunt) {
   // - concatenates all the libraries in build/libs.js
   // - copies index.html over build/
   grunt.registerTask('build', ['clean', 'html2js', 'less', 'concat_sourcemap:app', 'concat_sourcemap:libs', 'copy']);
-  grunt.registerTask('default', ['clean', 'concat_sourcemap:libs', 'connect', 'watch']);
+  grunt.registerTask('default', ['clean', 'concat_sourcemap:libs', 'configureProxies:server', 'connect', 'watch']);
   grunt.registerTask('test', ['karma']);
 };
