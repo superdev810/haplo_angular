@@ -11,7 +11,8 @@
   "scripts": {
     "build": "bower install",
     "test": "grunt karma",
-    "start": "grunt"
+    "start": "grunt",
+    "postinstall": "bower install"
   },
   "devDependencies": {
     "grunt": "~0.4.5",
