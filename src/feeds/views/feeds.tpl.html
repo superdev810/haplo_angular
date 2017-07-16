@@ -6,6 +6,7 @@
         <div class="image" style="background-image: url({{x.mediaFile}}); background-repeat: no-repeat;   background-size: cover;">
           <div class="image-h2">
             <div class="name"> {{x.name}}</div>
+            <a ui-sref="app.feed({ name: x.name })">{{x.name}}</a>
           </div>
         </div>
       </div>

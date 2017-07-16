@@ -1,31 +1,24 @@
 
-angular.module('ustadium.fcontroller',['ustadium.grandfather'])
-.controller('FeedsController', function ($http, $scope) {
-  $http({
-  method: 'GET',
-  url: 'https://ustadium-api-dev.herokuapp.com/api/feeds'
-}).then(function successCallback(response) {
-    // this callback will be called asynchronously
-    // when the response is available
-    console.log('hello', response.data)
-    $scope.feeds = response.data;
-  }, function errorCallback(response) {
-    // called asynchronously if an error occurs
-    // or server returns response with an error status.
-    console.log('error', response);
-  });
+angular.module('feeds.controllers',[])
+.controller('FeedsController', function ($http, $scope, FeedRequest, $stateParams) {
+  console.log($stateParams);
+  FeedRequest.feedData('feeds').then(function(data){
+    $scope.feeds = data.data;
+    console.info('status', data.status);
+    console.info('headers', data.headers);
+    console.info('config', data.config);
 
-  $http({
-  method: 'GET',
-  url: 'https://ustadium-api-dev.herokuapp.com/api/feeds/trending'
-}).then(function successCallback(response) {
-    // this callback will be called asynchronously
-    // when the response is available
-    console.log('hello', response.data)
-    $scope.trending = response.data;
-  }, function errorCallback(response) {
-    // called asynchronously if an error occurs
-    // or server returns response with an error status.
-    console.log('error', response);
+  },function(data){
+    console.log('error', data)
+  })
+
+  FeedRequest.feedData('feeds/trending').then(function(data){
+    $scope.trending = data.data;
+    console.info('status', data.status);
+    console.info('headers', data.headers);
+    console.info('config', data.config);
+
+  },function(data){
+    console.log('error', data)
   });
 });

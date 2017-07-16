@@ -1,4 +1,4 @@
-angular.module('ustadium.feeds',['ustadium.grandfather', 'ustadium.fcontroller'])
+angular.module('feeds.routes',[])
 .config(function ($stateProvider) {
   console.log($stateProvider);
   $stateProvider
@@ -7,10 +7,10 @@ angular.module('ustadium.feeds',['ustadium.grandfather', 'ustadium.fcontroller']
       templateUrl: 'feeds/views/feeds.tpl.html',
       controller: 'FeedsController',
       accessLevel: accessLevels.anon
-    }).state('app.feeds.indi', {
+    }).state('app.feed', {
       url: '/feeds/:name',
       templateUrl: 'feeds/views/feed.tpl.html',
-      controller: 'FeedsController',
+      controller: 'FeedController',
       accessLevel: accessLevels.anon
-    });
+    })
 });

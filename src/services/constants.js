@@ -24,5 +24,9 @@ angular.module('ustadium.constants', [])
     api_feedlist_url: {
       url: "https://ustadium-api-dev.herokuapp.com/api/feeds",
       method: "GET"
+    },
+    api_trending_feedlist_url: {
+      url: "https://ustadium-api-dev.herokuapp.com/api/feeds/trending",
+      method: "GET"
     }
   });
