@@ -1,6 +1,6 @@
 <div class="container feedPage">
     <div class="row">
-      <div class="trending"> Hot feeds</div>
+      <div class="category"> Hot feeds</div>
 
       <div class="col-xs-12 col-sm-4" ng-repeat="x in trending.data">
         <div class="image" style="background-image: url({{x.mediaFile}}); background-repeat: no-repeat;   background-size: cover;">
@@ -12,7 +12,7 @@
     </div>
 
     <div class="row">
-      <div class="feeds">New</div>
+      <div class="category">New</div>
       <div class="card col-xs-6 col-sm-4" ng-repeat="x in feeds.data.feeds">
         <div class="image" style="background-image: url({{x.mediaFile}}); background-repeat: no-repeat;   background-size: cover;">
           <div class="image-h2">
