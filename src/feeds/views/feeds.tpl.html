@@ -1,7 +1,27 @@
-<div class="jumbotron">
-  <h1>This is feeds</h1>
-  <p>Everybody can access this page, the other credentials stored are:</p>
+<div class="container feedPage">
+    <div class="row">
+      <div class="trending"> Hot feeds</div>
 
+      <div class="col-xs-12 col-sm-4" ng-repeat="x in trending.data">
+        <div class="image" style="background-image: url({{x.mediaFile}}); background-repeat: no-repeat;   background-size: cover;">
+          <div class="image-h2">
+            <div class="name"> {{x.name}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="feeds">New</div>
+      <div class="card col-xs-6 col-sm-4" ng-repeat="x in feeds.data.feeds">
+        <div class="image" style="background-image: url({{x.mediaFile}}); background-repeat: no-repeat;   background-size: cover;">
+          <div class="image-h2">
+            <div class="name"> {{x.name}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
 </div>
+
 
 <p>Just open the console of your favourite browser and the ngMock will print out the requests as console.info.</p>
