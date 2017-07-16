@@ -43,15 +43,14 @@ module.exports = function (grunt) {
           debug: true
         },
         proxies: [{
-    context: '/api/feeds', // the context of the data service
-    host: 'https://ustadium-api-dev.herokuapp.com/', // wherever the data service is running
-    port: 443, // the port that the data service is running on
-    https: true,
-    xforward: false,
-    hideHeaders: ['x-removed-header']
-  }],
-}
-
+          context: '/api/feeds', // the context of the data service
+          host: 'https://ustadium-api-dev.herokuapp.com/', // wherever the data service is running
+          port: 443, // the port that the data service is running on
+          https: true,
+          xforward: false,
+          hideHeaders: ['x-removed-header']
+        }],
+      }
     },
     watch: {
       options: {
@@ -72,6 +71,12 @@ module.exports = function (grunt) {
       index: {
         files: 'index.html',
         tasks: ['copy:index']
+      },
+      css: {
+        files: [
+          'libs/angular-toastr/dist/angular-toastr.css'
+        ],
+        tasks: ['copy:css']
       }
       // Useful for watching / rerunning karma tests
       // jsTest: {
@@ -92,7 +97,9 @@ module.exports = function (grunt) {
           'libs/angular/angular.js',
           'libs/angular-animate/angular-animate.js',
           'libs/angular-mocks/angular-mocks.js',
-          'libs/angular-ui-router/release/angular-ui-router.js'
+          'libs/angular-ui-router/release/angular-ui-router.js',
+          'libs/angular-toastr/dist/angular-toastr.tpls.js',
+          'libs/angular-ui-notification/dist/angular-ui-notification.js'
         ],
         dest: 'build/libs.js'
       }
@@ -101,6 +108,24 @@ module.exports = function (grunt) {
       index: {
         src: 'index.html',
         dest: 'build/',
+        options: {
+          processContent: function (content, srcpath) {
+            // Compiling index.html file!
+            var packageVersion = require('./package.json').version;
+            return grunt.template.process(content, {
+              data: {
+                version: packageVersion
+              }
+            });
+          }
+        }
+      },
+      css: {
+        src: [
+          'libs/angular-toastr/dist/angular-toastr.css',
+          'libs/angular-ui-notification/dist/angular-ui-notification.css',
+        ],
+        dest: 'build/angular-libs.css',
         options: {
           processContent: function (content, srcpath) {
             // Compiling index.html file!

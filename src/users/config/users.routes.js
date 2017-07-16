@@ -1,7 +1,7 @@
 /**
  * Created by superdev on 7/13/2017.
  */
-angular.module('ustadium.register', ['ustadium.grandfather', 'ustadium.ucontroller'])
+angular.module('users.routes', [])
   .config(function ($stateProvider) {
     console.log($stateProvider);
     $stateProvider

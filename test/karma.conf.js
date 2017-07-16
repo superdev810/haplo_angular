@@ -17,6 +17,7 @@ module.exports = function(config) {
       'libs/angular-animate/angular-animate.js',
       'libs/angular-mocks/angular-mocks.js',
       'libs/angular-ui-router/release/angular-ui-router.js',
+      'libs/AngularJS-Toaster/toaster.js',
       'src/**/*.js',
       'test/spec/**/*.js'
     ],

@@ -1,31 +1,27 @@
-angular.module('ustadium.ucontroller', ['ustadium.grandfather'])
-  .controller('RegisterController', function ($scope, $http, $timeout, $state) {
+angular.module('users.controllers', [])
+  .controller('RegisterController', function ($scope, $http, $timeout, $state, Authentication, toastr, Notification) {
     $scope.xhr = false;
     $scope.redirect = false;
 
-    $scope.registerObj = {
-      role: 'user'
-    };
-
     $scope.submit = function (formInstance) {
-      // xhr is departing
+      console.log('submit post');
+
       $scope.xhr = true;
-      $http.post('/user', $scope.registerObj)
-      .success(function (data, status, headers, config) {
-        console.info('post success - ', data);
-        $scope.xhr = false;
-        $scope.redirect = true;
-        $timeout(function () {
-          $state.go('app.home');
-        }, 2000);
-      })
-      .error(function (data, status, headers, config) {
-        data.errors.forEach(function (error, index, array) {
-          formInstance[error.field].$error[error.name] = true;
+      var data = $scope.registerObj;
+      Authentication.signup(data)
+        .then(function (data, status, headers, config) {
+          console.info('post success - ', data);
+          $scope.redirect = true;
+          Notification.success({message: 'Successfully Registered', delay: 2000});
+          $timeout(function () {
+            $scope.xhr = false;
+            $scope.xhr = false;
+            $state.go('app.home');
+          }, 2000);
+        }, function (data, status, headers, config) {
+          console.log(data);
+          $scope.xhr = false;
+          Notification.error({message: data.data.data.message, delay: 5000});
         });
-        formInstance.$setPristine();
-        console.info('post error - ', data);
-        $scope.xhr = false;
-      });
     };
   });

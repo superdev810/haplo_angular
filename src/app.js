@@ -3,17 +3,34 @@ angular.module('ustadium', [
   'loginService',
   'ustadium.mock',
   'ustadium.directives',
+
   // different app sections
   'ustadium.home',
+  'ustadium.users',
   'ustadium.feeds',
   'ustadium.pages',
-  'ustadium.register',
   'ustadium.error',
+  'ustadium.constants',
+  'ustadium.restapi',
+
   // components
-  'ngAnimate'
+  'ngAnimate',
+  'toastr',
+  'ui-notification'
 ])
 .config(function ($urlRouterProvider) {
   $urlRouterProvider.otherwise('/');
+})
+.config(function (NotificationProvider) {
+  NotificationProvider.setOptions({
+    delay: 10000,
+    startTop: 20,
+    startRight: 10,
+    verticalSpacing: 50,
+    horizontalSpacing: 50,
+    positionX: 'right',
+    positionY: 'top'
+  });
 })
 .run(function ($rootScope, $window) {
   // google analytics

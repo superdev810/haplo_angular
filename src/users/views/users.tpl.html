@@ -1,7 +1,7 @@
 <form class="form-signin" name="registerForm" role="registration" ng-submit="submit(registerForm)">
   <div class="alert alert-warning">
     <p class="text-center"><strong>Please NOTE</strong></p>
-    <p class="text-center">All the data here is fake, it gets stored in your localStorage, it will <strong>NEVER</strong> leave your browser.</p>
+    <p class="text-center">You have to input real <strong>Phone Number</strong> for register</p>
   </div>
   <h2 class="form-signin-heading"><i class="fa fa-user"></i> New User</h2>
   <!--div class="form-group">
@@ -10,6 +10,7 @@
       <input type="text" class="form-control" id="username" placeholder="Username">
     </div>
   </div-->
+  <toaster-container></toaster-container>
   <div class="form-input username">
     <input type="text" class="form-control" placeholder="Username" name="username" ng-model="registerObj.username" autofocus="true"
       ng-minlength="4" ng-maxlength="16" ng-required="true" remote-validated="used">
@@ -25,14 +26,14 @@
       </div>
     </div>
   </div>
-  <div class="form-input name">
-    <input type="text" class="form-control" placeholder="Real Name" name="name" ng-model="registerObj.name" ng-minlength="4" ng-maxlength="32" ng-required="true">
-    <div class="errors" ng-class="{ active: registerForm.name.$invalid && registerForm.name.$dirty }">
-      <div class="error ng-hide" ng-show="registerForm.name.$error.minlength">
-        <p>Provided name is too short!</p>
+  <div class="form-input phone">
+    <input type="text" class="form-control" placeholder="Phone Number" name="phone" ng-model="registerObj.phone" ng-minlength="4" ng-maxlength="12" ng-required="true">
+    <div class="errors" ng-class="{ active: registerForm.phone.$invalid && registerForm.phone.$dirty }">
+      <div class="error ng-hide" ng-show="registerForm.phone.$error.minlength">
+        <p>Provided phone number is too short!</p>
       </div>
-      <div class="error ng-hide" ng-show="registerForm.name.$error.maxlength">
-        <p>Max name length is 32, please shorten it.</p>
+      <div class="error ng-hide" ng-show="registerForm.phone.$error.maxlength">
+        <p>Max phone number length is 12, please shorten it.</p>
       </div>
     </div>
   </div>
