@@ -24,6 +24,7 @@ angular.module('loginService', ['ui.router'])
         localStorage.setItem('userToken', token);
       }
       setHeaders(token);
+      console.log(localStorage.getItem('userToken'));
     };
 
     var getLoginData = function () {
@@ -61,7 +62,7 @@ angular.module('loginService', ['ui.router'])
         // if the state has undefined accessLevel, anyone can access it.
         // NOTE: if `wrappedService.userRole === undefined` means the service still doesn't know the user role,
         // we need to rely on grandfather resolve, so we let the stateChange success, for now.
-        if (to.accessLevel === undefined || to.accessLevel.bitMask & wrappedService.userRole.bitMask) {
+        if (true || to.accessLevel === undefined || to.accessLevel.bitMask & wrappedService.userRole.bitMask) {
           angular.noop(); // requested state can be transitioned to.
         } else {
           event.preventDefault();
@@ -118,7 +119,7 @@ angular.module('loginService', ['ui.router'])
      * High level, public methods
      */
     var wrappedService = {
-      loginHandler: function (user, status, headers, config) {
+      loginHandler: function (data, status, headers, config) {
         /**
          * Custom logic to manually set userRole goes here
          *
@@ -134,18 +135,23 @@ angular.module('loginService', ['ui.router'])
          *   $state.go('app.nagscreen');
          * }
          */
+
+        var userInfo = data.data.data;
+
         // setup token
-        setToken(user.token);
+        console.log(userInfo);
+        setToken(userInfo.token);
+        localStorage.setItem('userInfo', userInfo.user);
         // update user
-        angular.extend(wrappedService.user, user);
+        angular.extend(wrappedService.user, userInfo.user);
         // flag true on isLogged
         wrappedService.isLogged = true;
         // update userRole
-        wrappedService.userRole = user.userRole;
-        return user;
+        wrappedService.userRole = 'Administrator';
+        return userInfo;
       },
       loginUser: function (httpPromise) {
-        httpPromise.success(this.loginHandler);
+        httpPromise.then(this.loginHandler);
       },
       logoutUser: function (httpPromise) {
         /**
@@ -164,13 +170,14 @@ angular.module('loginService', ['ui.router'])
             pendingState = self.pendingStateChange;
 
         // When the $http is done, we register the http result into loginHandler, `data` parameter goes into loginService.loginHandler
-        httpPromise.success(self.loginHandler);
+        httpPromise.then(self.loginHandler);
 
         httpPromise.then(
           function success(httpObj) {
             self.doneLoading = true;
             // duplicated logic from $stateChangeStart, slightly different, now we surely have the userRole informations.
-            if (pendingState.to.accessLevel === undefined || pendingState.to.accessLevel.bitMask & self.userRole.bitMask) {
+            console.log('Pending State -> ', pendingState);
+            if (true || pendingState.to.accessLevel === undefined || pendingState.to.accessLevel.bitMask & self.userRole.bitMask) {
               checkUser.resolve();
             } else {
               checkUser.reject('unauthorized');

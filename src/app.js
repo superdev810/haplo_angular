@@ -65,18 +65,21 @@ angular.module('ustadium', [
 
   // loginService exposed and a new Object containing login user/pwd
   $scope.ls = loginService;
+
   $scope.login = {
     working: false,
     wrong: false
   };
+
   $scope.loginMe = function () {
     // setup promise, and 'working' flag
-    var loginPromise = $http.post('/login', $scope.login);
+    console.log($scope.login);
+    var loginPromise = $http.post(base + '/auth/token', $scope.login);
     $scope.login.working = true;
     $scope.login.wrong = false;
 
     loginService.loginUser(loginPromise);
-    loginPromise.error(function () {
+    loginPromise.catch(function () {
       $scope.login.wrong = true;
       $timeout(function () { $scope.login.wrong = false; }, 8000);
     });
@@ -84,7 +87,8 @@ angular.module('ustadium', [
       $scope.login.working = false;
     });
   };
+
   $scope.logoutMe = function () {
-    loginService.logoutUser($http.get('/logout'));
+    loginService.logoutUser();
   };
 });

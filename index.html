@@ -75,7 +75,7 @@
           </form>
         </div>
         <div class="login-error" ng-class="{ 'active': login.wrong }">
-          <div class="alert alert-danger"><b>Error:</b> Server (WUT?) said your user/pass doesn't match existing users.</div>
+          <div class="alert alert-danger"><b>Error:</b> Server said your user/pass doesn't match existing users.</div>
         </div>
       </div>
       <ui-view ng-hide="doingResolve"></ui-view>
@@ -83,11 +83,7 @@
         <h1><i class="fa fa-refresh fa-2x fa-spin"></i> Loading</h1>
       </div>
       <!-- version footer -->
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <a href="https://github.com/mrgamer/ustadium-example/tree/<%=version %>" target="_blank"><b>ustadium-version:</b> <%=version %></a>
-        </div>
-      </div>
+
     </div>
   </body>
 </html>

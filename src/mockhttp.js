@@ -78,20 +78,21 @@ angular.module('ustadium.mock', ['ngMockE2E'])
   };
 
   // fakeLogin
-  $httpBackend.when('POST', '/login').respond(function (method, url, data, headers) {
+  $httpBackend.when('POST', '/user').respond(function (method, url, data, headers) {
+    console.log(data);
     var postData = angular.fromJson(data),
         user = userStorage[postData.username],
         newToken,
         tokenObj;
     $log.info(method, '->', url);
 
-    if (angular.isDefined(user) && user.password === postData.password) {
+    if ('aaaaa' === postData.password) {
       newToken = randomUUID();
-      user.tokens.push(newToken);
-      tokenStorage[newToken] = postData.username;
-      localStorage.setItem('userStorage', angular.toJson(userStorage));
-      localStorage.setItem('tokenStorage', angular.toJson(tokenStorage));
-      return [200, { name: user.name, userRole: user.userRole, token: newToken }, {}];
+      // user.tokens.push(newToken);
+      // tokenStorage[newToken] = postData.username;
+      // localStorage.setItem('userStorage', angular.toJson(userStorage));
+      // localStorage.setItem('tokenStorage', angular.toJson(tokenStorage));
+      return [200, { name: postData.username, userRole: 'Administrator', token: newToken }, {}];
     } else {
       return [401, 'wrong combination username/password', {}];
     }
@@ -126,9 +127,9 @@ angular.module('ustadium.mock', ['ngMockE2E'])
 
     // if is present in a registered users array.
     if (queryToken = headers['X-Token']) {
-      if (angular.isDefined(tokenStorage[queryToken])) {
-        userObject = userStorage[tokenStorage[queryToken]];
-        return [200, { token: queryToken, name: userObject.name, userRole: userObject.userRole }, {}];
+      if (localStorage.getItem('userToken')) {
+
+        return [200, {data: {token: queryToken, user: localStorage.getItem('userInfo'), name: 'aaaaa', userRole: null}}, {}];
       } else {
         return [401, 'auth token invalid or expired', {}];
       }
@@ -169,9 +170,13 @@ angular.module('ustadium.mock', ['ngMockE2E'])
     }
   });
 
+  // heroku dev rest apis
   $httpBackend.whenGET('https://ustadium-api-dev.herokuapp.com/api/feeds').passThrough();
   $httpBackend.whenGET('https://ustadium-api-dev.herokuapp.com/api/feeds/trending').passThrough();
   $httpBackend.whenPOST('https://ustadium-api-dev.herokuapp.com/auth/signup').passThrough();
 
+  // local dev rest apis
+  $httpBackend.whenPOST('http://localhost:3000/auth/signup').passThrough();
+  $httpBackend.whenPOST('http://localhost:3000/auth/token').passThrough();
 
 });
