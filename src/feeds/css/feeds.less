@@ -17,3 +17,40 @@
 .name {
   color: white;
 }
+
+.secondary-nav {
+  display: flex;
+  flex-direction: row;
+}
+
+.secondary-nav-tab {
+  margin-left: 10px;
+  border-bottom: thick solid white;
+
+  @media (min-width : @screen-xs) {
+    margin-left: 50px;
+  }
+
+  @media (min-width : @screen-sm) {
+    margin-left: 100px;
+  }
+
+
+  &:hover {
+    a {
+      cursor: pointer;
+      cursor: hand;
+      color: green;
+    }
+    cursor: pointer;
+    cursor: hand;
+    color: green;
+    border-bottom: thick solid green;
+  }
+}
+
+.secondary-nav-anchor {
+  &:hover {
+    color: green;
+  }
+}
