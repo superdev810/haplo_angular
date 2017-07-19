@@ -128,6 +128,8 @@ angular.module('ustadium', [
 
     $scope.logoutMe = function () {
       loginService.logoutUser();
+      $scope.login.working = false;
+
     };
 
     $scope.forgetPassword =function () {
