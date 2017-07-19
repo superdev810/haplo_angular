@@ -174,9 +174,12 @@ angular.module('ustadium.mock', ['ngMockE2E'])
   $httpBackend.whenGET('https://ustadium-api-dev.herokuapp.com/api/feeds').passThrough();
   $httpBackend.whenGET('https://ustadium-api-dev.herokuapp.com/api/feeds/trending').passThrough();
   $httpBackend.whenPOST('https://ustadium-api-dev.herokuapp.com/auth/signup').passThrough();
+  $httpBackend.whenPOST('https://ustadium-api-dev.herokuapp.com/auth/token').passThrough();
+  $httpBackend.whenPOST('https://ustadium-api-dev.herokuapp.com/auth/verify').passThrough();
 
   // local dev rest apis
   $httpBackend.whenPOST('http://localhost:3000/auth/signup').passThrough();
   $httpBackend.whenPOST('http://localhost:3000/auth/token').passThrough();
+  $httpBackend.whenPOST('http://localhost:3000/auth/verify').passThrough();
 
 });

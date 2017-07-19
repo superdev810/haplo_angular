@@ -9,7 +9,8 @@ Authentication.$inject = ['$window', '$http', 'RestAPI', 'ApiEndpoints', 'toastr
 function Authentication($window, $http, RestAPI, ApiEndpoints) {
   var auth = {
     user: $window.user,
-    signup: signUp
+    signup: signUp,
+    verify: verify
   };
 
   return auth;
@@ -17,6 +18,10 @@ function Authentication($window, $http, RestAPI, ApiEndpoints) {
   function signUp(data) {
     console.log(data);
     return $http.post(base + '/auth/signup', data);
+  }
 
+  function verify(data) {
+    console.log(data);
+    return $http.post(base + '/auth/verify', data);
   }
 }

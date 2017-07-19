@@ -135,11 +135,16 @@ angular.module('loginService', ['ui.router'])
          *   $state.go('app.nagscreen');
          * }
          */
-
+        console.log(data);
         var userInfo = data.data.data;
 
         // setup token
         console.log(userInfo);
+        if(!userInfo.user.isVerified){
+          localStorage.clear();
+          $state.go('app.home');
+          return;
+        }
         setToken(userInfo.token);
         localStorage.setItem('userInfo', userInfo.user);
         // update user

@@ -9,6 +9,7 @@
     "bootstrap": "^3.3.1",
     "AngularJS-Toaster": "angularjs-toaster#^2.1.0",
     "angular-toastr": "^2.1.1",
-    "angular-ui-notification": "^0.3.6"
+    "angular-ui-notification": "^0.3.6",
+    "angular-bootstrap": "^2.5.0"
   }
 }
