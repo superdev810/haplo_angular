@@ -132,8 +132,17 @@ angular.module('ustadium', [
 
     };
 
-    $scope.forgetPassword =function () {
-      console.log('forget');
+    $scope.forgetPassword =function (size) {
+      var forgotInstance = $uibModal.open({
+        templateUrl: 'forgotPassword.html',
+        controller: ForgotPasswordCtrl,
+        size: size,
+        resolve: {
+          forgot: function () {
+            return $scope.login;
+          }
+        }
+      })
     }
 
     $scope.items = ['item1', 'item2', 'item3'];
@@ -157,9 +166,9 @@ angular.module('ustadium', [
         $log.info('Modal dismissed at: ' + new Date());
       });
     };
-
   });
 
+// Verify Modal Controller
 var ModalInstanceCtrl = function ($scope, $rootScope, $uibModalInstance, login, Authentication, loginService) {
 
   $scope.send = function () {
@@ -177,6 +186,65 @@ var ModalInstanceCtrl = function ($scope, $rootScope, $uibModalInstance, login, 
     // close the modal
     $uibModalInstance.close();
   };
+
+  $scope.cancel = function () {
+    $uibModalInstance.dismiss('cancel');
+  };
+};
+
+// Forgot Password Controller
+var ForgotPasswordCtrl = function ($scope, $rootScope, $uibModalInstance, forgot, Authentication, loginService, Notification) {
+
+  $scope.fp = forgot;
+  $scope.fp.reset = false;
+
+  $scope.sendForgotPassword = function () {
+    var forgotParams = {
+      username: $scope.fp.username,
+      phone: $scope.fp.phone,
+      email: $scope.fp.email?$scope.fp.email:null
+    }
+    // call verify rest api
+    console.log('Forgot Params: ', forgotParams);
+    var forgotPromise = Authentication.forgotPassword(forgotParams);
+    forgotPromise.then(function (success) {
+      console.log(success);
+      $scope.fp.reset = true;
+    }, function (err) {
+      console.log(err);
+      Notification.error({message: err.statusText, delay: 5000});
+    })
+
+    // Send Broadcast with verify promise
+    // $rootScope.$broadcast('VERIFY_CALLBACK', verifyPromise);
+
+    // close the modal
+    // $uibModalInstance.close();
+  };
+
+  $scope.setNewPassword = function () {
+    console.log('Set New Password');
+    var resetParams = {
+      username: $scope.fp.username,
+      phone: $scope.fp.phone,
+      password: $scope.fp.password,
+      code: $scope.fp.code
+    }
+
+    console.log(resetParams);
+    var resetPromise = Authentication.resetForgotPassword(resetParams);
+    resetPromise.then(function (success) {
+      console.log(success);
+      Notification.success({message: "Password reset success", delay: 5000});
+      // close the modal
+      $uibModalInstance.close();
+
+    }, function (err) {
+      console.log(err);
+      Notification.error({message: err.statusText, delay: 5000});
+    })
+
+  }
 
   $scope.cancel = function () {
     $uibModalInstance.dismiss('cancel');

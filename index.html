@@ -93,6 +93,27 @@
       <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
     </div>
   </script>
+  <script id="forgotPassword.html" type="text/ng-template">
+    <div class="modal-header">
+      <h3 class="modal-title">Forgot Password</h3>
+    </div>
+    <div class="modal-body text-center">
+      <div ng-hide="fp.reset">
+        <input type="text" class="form-control" ng-model="fp.username" placeholder="Username"/>
+        <input type="text" class="form-control mt-10" ng-model="fp.phone" placeholder="Phone Number"/>
+        <input type="text" class="form-control mt-10" ng-model="fp.email" placeholder="Email"/>
+      </div>
+      <div ng-show="fp.reset">
+        <input type="text" class="form-control" ng-model="fp.code" placeholder="PIN Code"/>
+        <input type="password" class="form-control mt-10" ng-model="fp.password" placeholder="New Password"/>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-primary" ng-click="sendForgotPassword()" ng-hide="fp.reset">Send</button>
+      <button class="btn btn-primary" ng-click="setNewPassword()" ng-show="fp.reset">Set Password</button>
+      <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+    </div>
+  </script>
 </div>
 </body>
 </html>

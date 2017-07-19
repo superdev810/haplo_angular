@@ -10,7 +10,9 @@ function Authentication($window, $http, RestAPI, ApiEndpoints) {
   var auth = {
     user: $window.user,
     signup: signUp,
-    verify: verify
+    verify: verify,
+    forgotPassword: forgotPassword,
+    resetForgotPassword: resetForgotPassword
   };
 
   return auth;
@@ -23,5 +25,15 @@ function Authentication($window, $http, RestAPI, ApiEndpoints) {
   function verify(data) {
     console.log(data);
     return $http.post(base + '/auth/verify', data);
+  }
+
+  function forgotPassword(data) {
+    console.log(data);
+    return $http.post(base + '/auth/forgot-password', data);
+  }
+
+  function resetForgotPassword(data) {
+    console.log(data);
+    return $http.post(base + '/auth/reset-forgotten-password', data);
   }
 }
