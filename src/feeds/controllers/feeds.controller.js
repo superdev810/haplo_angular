@@ -4,9 +4,7 @@ angular.module('feeds.controllers',[])
   console.log($stateParams);
   FeedRequest.feedData('feeds').then(function(data){
     $scope.feeds = data.data;
-    console.info('status', data.status);
-    console.info('headers', data.headers);
-    console.info('config', data.config);
+    console.log($scope.feeds);
 
   },function(data){
     console.log('error', data)
@@ -14,9 +12,7 @@ angular.module('feeds.controllers',[])
 
   FeedRequest.feedData('feeds/trending').then(function(data){
     $scope.trending = data.data;
-    console.info('status', data.status);
-    console.info('headers', data.headers);
-    console.info('config', data.config);
+    console.log($scope.trending)
 
   },function(data){
     console.log('error', data)
