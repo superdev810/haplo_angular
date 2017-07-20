@@ -8,14 +8,13 @@
   <div ng-show="isSet(1)">
     <div class="row">
       <div class="category"> Hot feeds</div>
-
-      <div class="" ng-repeat="x in trending.data">
+      <a class="card" ui-sref="app.feed({ name: x.name })" ng-repeat="x in trending.data">
         <div class="image" style="background-image: url({{x.mediaFile}}); background-repeat: no-repeat;   background-size: cover;">
           <div class="image-h2">
-            <a class= "name" ui-sref="app.feed({ name: x.name })">{{x.name}}</a>
+            <div class="name" >{{x.name}}</div>
           </div>
         </div>
-      </div>
+      </a>
     </div>
   </div>
   <div ng-show="isSet(2)">
