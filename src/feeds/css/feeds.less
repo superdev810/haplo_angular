@@ -25,6 +25,8 @@
 
 .secondary-nav-tab {
   margin-left: 10px;
+  padding-bottom: 10px;
+  text-decoration: none;
   border-bottom: thick solid white;
 
   @media (min-width : @screen-xs) {
@@ -50,7 +52,23 @@
 }
 
 .secondary-nav-anchor {
+
   &:hover {
+    text-decoration: none;
     color: green;
   }
+}
+
+.usActive {
+
+  a {
+    cursor: pointer;
+    cursor: hand;
+    color: green;
+  }
+  cursor: pointer;
+  cursor: hand;
+  color: green;
+  border-bottom: thick solid green;
+
 }
