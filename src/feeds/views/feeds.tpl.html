@@ -1,43 +1,33 @@
-<div class="container feedPage">
+<div class="feeds-page">
   <nav class="secondary-nav"> <!-- secondary nav-->
-    <div class="secondary-nav-tab" ng-class="{ active: isSet(1) }">
-      <a class="secondary-nav-anchor" ng-click="setTab(1)"> Hot </a>
-
-    </div>
-    <div class="secondary-nav-tab" g-class="{ active: isSet(2) }">
-      <a class="secondary-nav-anchor" ng-click="setTab(2)"> New </a>
-    </div>
-    <div class="secondary-nav-tab" ng-class="{ active: isSet(3) }">
-      <a class="secondary-nav-anchor" ng-click="setTab(3)"> Subscribed </a>
-    </div>
-    <div class="secondary-nav-tab" ng-class="{ active: isSet(4) }">
-      <a class="secondary-nav-anchor" ng-click="setTab(4)"> Created </a>
-    </div>
+      <a class="secondary-nav-anchor" ng-click="setTab(1)" ng-class="{ usActive: isSet(1) }"> Hot </a>
+      <a class="secondary-nav-anchor" ng-click="setTab(2)" ng-class="{ usActive: isSet(2) }"> New </a>
+      <a class="secondary-nav-anchor" ng-click="setTab(3)" ng-class="{ usActive: isSet(3) }"> Subscribed </a>
+      <a class="secondary-nav-anchor" ng-click="setTab(4)" ng-class="{ usActive: isSet(4) }"> Created </a>
   </nav>
   <div ng-show="isSet(1)">
     <div class="row">
       <div class="category"> Hot feeds</div>
-
-      <div class="col-xs-12 col-sm-4" ng-repeat="x in trending.data">
+      <a class="card" ui-sref="app.feed({ name: x.name })" ng-repeat="x in trending.data">
         <div class="image" style="background-image: url({{x.mediaFile}}); background-repeat: no-repeat;   background-size: cover;">
           <div class="image-h2">
-            <a class= "name" ui-sref="app.feed({ name: x.name })">{{x.name}}</a>
+            <div class="name" >{{x.name}}</div>
           </div>
         </div>
-      </div>
+      </a>
     </div>
   </div>
   <div ng-show="isSet(2)">
     <div class="row">
       <div class="category">New</div>
-      <div class="card col-xs-6 col-sm-4" ng-repeat="x in feeds.data.feeds">
+      <a ui-sref="app.feed({ name: x.name })" class="card" ng-repeat="x in feeds.data.feeds">
         <div class="image" style="background-image: url({{x.mediaFile}}); background-repeat: no-repeat;   background-size: cover;">
           <div class="image-h2">
-            <a class= "name" ui-sref="app.feed({ name: x.name })">{{x.name}}</a>
+            <div class= "name">{{x.name}}</div>
             <div class="name"> {{x.author.username}}</div>
           </div>
         </div>
-      </div>
+      </a>
     </div>
   </div>
 </div>
