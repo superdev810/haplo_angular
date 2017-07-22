@@ -182,7 +182,7 @@ angular.module('loginService', ['ui.router'])
             self.doneLoading = true;
             // duplicated logic from $stateChangeStart, slightly different, now we surely have the userRole informations.
             console.log('Pending State -> ', pendingState);
-            if (true || pendingState.to.accessLevel === undefined || pendingState.to.accessLevel.bitMask & self.userRole.bitMask) {
+            if (pendingState.to.accessLevel === undefined || pendingState.to.accessLevel.bitMask & self.userRole.bitMask) {
               checkUser.resolve();
             } else {
               checkUser.reject('unauthorized');

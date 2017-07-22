@@ -6,12 +6,13 @@ angular.module('ustadium', [
 
   // different app sections
   'ustadium.home',
-  'ustadium.users',
   'ustadium.feeds',
+  'ustadium.users',
   'ustadium.pages',
   'ustadium.error',
   'ustadium.constants',
   'ustadium.restapi',
+  'ustadium.menuservice',
 
   // components
   'ngAnimate',
@@ -33,7 +34,7 @@ angular.module('ustadium', [
       positionY: 'top'
     });
   })
-  .run(function ($rootScope, $window) {
+  .run(function ($rootScope, $window, menuService) {
     // google analytics
     $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams) {
       var realURL = toState.url;
@@ -58,8 +59,62 @@ angular.module('ustadium', [
     $rootScope.$on('$stateChangeSuccess', resolveDone);
     $rootScope.$on('$stateChangeError', resolveDone);
     $rootScope.$on('$statePermissionError', resolveDone);
+
+    // add menu list on topbar
+    menuService.addMenuItem('topbar', {
+      title: 'Register',
+      state: 'app.register',
+      roles: ['*'],
+      position: 5
+    });
+
+    menuService.addMenuItem('topbar', {
+      title: 'Feeds',
+      state: 'app.feeds',
+      type: 'dropdown',
+      roles: ['*'],
+      position: 0
+    });
+
+    // Add the dropdown list item
+    menuService.addSubMenuItem('topbar', 'app.feeds', {
+      title: 'Hot',
+      state: 'app.feed',
+      roles: ['*']
+    });
+
+    menuService.addSubMenuItem('topbar', 'app.feeds', {
+      title: 'New',
+      state: 'app.feed',
+      roles: ['*']
+    });
+
+    menuService.addSubMenuItem('topbar', 'app.feeds', {
+      title: 'Subscribed',
+      state: 'app.feed',
+      roles: ['*']
+    });
+
+    menuService.addSubMenuItem('topbar', 'app.feeds', {
+      title: 'Created',
+      state: 'app.feed',
+      roles: ['*']
+    });
+
   })
-  .controller('BodyController', function ($scope, $rootScope, $state, $stateParams, loginService, $http, $timeout, $uibModal, $log) {
+  .controller('BodyController', function ($scope, $rootScope, $state, $stateParams, loginService, $http, $timeout, $uibModal, $log, menuService) {
+
+    var vm = this;
+    // Initial menuService
+    // vm.accountMenu = menuService.getMenu('account').items[0];
+    $scope.authentication = {
+      user: {
+        roles: '*'
+      }
+    }
+    $scope.menu = menuService.getMenu('topbar');
+    console.log($scope.menu);
+    console.log('Menu View Flag: ', $scope.menu.shouldRender($scope.authentication.user));
     // Expose $state and $stateParams to the <body> tag
     $scope.$state = $state;
     $scope.$stateParams = $stateParams;
@@ -83,23 +138,23 @@ angular.module('ustadium', [
       var userInfo = loginService.loginUser(loginPromise);
       console.log('User INFO: ', userInfo);
 
-      // loginPromise.catch(function (err) {
-      //   console.log(err);
-      //   $scope.login.wrong = true;
-      //   $scope.login.errMsg = err.data.data.message;
-      //   var errCode = err.data.code;
-      //
-      //   $timeout(function () {
-      //     $scope.login.wrong = false;
-      //     if(errCode == "002"){
-      //       $scope.login.email = err.data.data.data.userEmail;
-      //       $scope.open();
-      //     }
-      //   }, 3000);
-      // });
-      // loginPromise.finally(function () {
-      //   $scope.login.working = false;
-      // });
+      loginPromise.catch(function (err) {
+        console.log(err);
+        $scope.login.wrong = true;
+        $scope.login.errMsg = err.data.data.message;
+        var errCode = err.data.code;
+
+        $timeout(function () {
+          $scope.login.wrong = false;
+          if(errCode == "002"){
+            $scope.login.email = err.data.data.data.userEmail;
+            $scope.open();
+          }
+        }, 3000);
+      });
+      loginPromise.finally(function () {
+        $scope.login.working = false;
+      });
     };
 
     $rootScope.$on('VERIFY_CALLBACK', $scope.verifyCallback);

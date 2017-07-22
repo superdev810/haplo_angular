@@ -3,5 +3,5 @@ angular.module('ustadium.feeds', [
   'feeds.routes',
   'feeds.controllers',
   'feed.controllers',
-  'feeds.services'
+  'feeds.services',
 ]);

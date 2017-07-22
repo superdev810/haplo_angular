@@ -32,15 +32,26 @@
   <div class="navbar navbar-default" role="navigation">
     <div class="navbar-collapse">
       <!-- Navbar links -->
-      <ul class="nav navbar-nav">
-        <li ng-class="active">
-          <a ui-sref="app.home">Home</a>
-        </li>
-        <li ng-class="active">
-          <a ui-sref="app.feeds">Feeds </a>
-        </li>
-        <li ng-class="active" ng-hide="ls.isLogged">
-          <a ui-sref="app.register">Register <i class="fa fa-user"></i>+</a>
+      <!--<ul class="nav navbar-nav">-->
+        <!--<li ng-class="active">-->
+          <!--<a ui-sref="app.home">Home</a>-->
+        <!--</li>-->
+        <!--<li ng-class="active">-->
+          <!--<a ui-sref="app.feeds">Feeds </a>-->
+        <!--</li>-->
+        <!--<li ng-class="active" ng-hide="ls.isLogged">-->
+          <!--<a ui-sref="app.register">Register <i class="fa fa-user"></i>+</a>-->
+        <!--</li>-->
+      <!--</ul>-->
+      <ul class="nav navbar-nav" ng-if="menu.shouldRender(authentication.user);">
+        <li ng-repeat="item in menu.items | orderBy: 'position'" ng-hide="ls.isLogged && item.title=='Register'" ng-if="item.shouldRender(authentication.user);" ng-switch="item.type" ng-class="{ dropdown: item.type === 'dropdown' }" ui-sref-active="active" class="{{item.class}}" uib-dropdown="item.type === 'dropdown'">
+          <a ng-switch-when="dropdown" class="dropdown-toggle" uib-dropdown-toggle role="button">{{::item.title}}&nbsp;<span class="caret"></span></a>
+          <ul ng-switch-when="dropdown" class="dropdown-menu">
+            <li ng-repeat="subitem in item.items | orderBy: 'position'" ng-if="subitem.shouldRender(authentication.user);">
+              <a ui-sref="{{subitem.state}}({{subitem.params}})" ng-bind="subitem.title"></a>
+            </li>
+          </ul>
+          <a ng-switch-default ui-sref="{{item.state}}" ng-bind="item.title"></a>
         </li>
       </ul>
       <!-- Right side of the navbar -->
