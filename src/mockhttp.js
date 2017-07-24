@@ -189,5 +189,6 @@ angular.module('ustadium.mock', ['ngMockE2E', 'ustadium.constants'])
 
   //pass any requests that dont fit the fake ones through.
   $httpBackend.whenGET(/[\s\S]*/).passThrough();
+  $httpBackend.whenPOST(/[\s\S]*/).passThrough();
 
 });
