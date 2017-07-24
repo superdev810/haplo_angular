@@ -1,7 +1,11 @@
 <div class="jumbotron">
   <h1>Feed {{page.title}}</h1>
   <h3> posts </h3>
-  <div ng-repeat="x in posts.data.data">
+  <div class="post" ng-repeat="x in posts.data.data">
+    <div class="post-header">
+      <img src="{{x.author.profileImageThumbnail}}" alt="">
+      <div>{{x.author.nickname}}</div>
+    </div> <!-- post-header -->
     <div>{{x.text}}</div>
   </div>
 </div>

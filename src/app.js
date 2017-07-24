@@ -20,7 +20,7 @@ angular.module('ustadium', [
   'ui-notification',
   'ui.bootstrap'
 ])
-  .config(function ($urlRouterProvider) {
+  .config(function ($urlRouterProvider, $locationProvider) {
     $urlRouterProvider.otherwise('/');
   })
   .config(function (NotificationProvider) {
@@ -79,25 +79,29 @@ angular.module('ustadium', [
     // Add the dropdown list item
     menuService.addSubMenuItem('topbar', 'app.feeds', {
       title: 'Hot',
-      state: 'app.feed',
+      state: 'app.feeds',
+      params: '{type: "Hot"}',
       roles: ['*']
     });
 
     menuService.addSubMenuItem('topbar', 'app.feeds', {
       title: 'New',
-      state: 'app.feed',
+      state: 'app.feeds',
+      params: '{type: "New"}',
       roles: ['*']
     });
 
     menuService.addSubMenuItem('topbar', 'app.feeds', {
       title: 'Subscribed',
-      state: 'app.feed',
+      state: 'app.feeds',
+      params: '{type: "Subscribed"}',
       roles: ['*']
     });
 
     menuService.addSubMenuItem('topbar', 'app.feeds', {
       title: 'Created',
-      state: 'app.feed',
+      state: 'app.feeds',
+      params: '{type: "Created"}',
       roles: ['*']
     });
 
