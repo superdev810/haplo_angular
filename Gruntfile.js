@@ -37,7 +37,7 @@ module.exports = function (grunt) {
     connect: {
       server: {
         options: {
-          port: 8080,
+          port: 80,
           base: 'build/',
           hostname: '*',
           debug: true
