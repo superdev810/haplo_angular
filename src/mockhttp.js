@@ -28,9 +28,7 @@ angular.module('ustadium.mock', ['ngMockE2E', 'ustadium.constants'])
   };
 })
 // delay HTTP
-.config(['$httpProvider', function ($httpProvider) {
-  $httpProvider.interceptors.push('delayHTTP');
-}])
+
 .constant('loginExampleData', {
   version: '0.2.0'
 })

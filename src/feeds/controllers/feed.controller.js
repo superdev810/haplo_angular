@@ -10,6 +10,7 @@ angular.module('feed.controllers',[])
     $scope.showComment = showComment;
     $scope.postComment = postComment;
 
+    // initialize the controller
     function init() {
       FeedRequest.getFeed('feeds/name/'+$stateParams.name)
         .then(function(feed){
@@ -37,19 +38,25 @@ angular.module('feed.controllers',[])
       $scope.page.isComment = false;
     }
 
+    // toggle post comment view
     function showComment() {
       $scope.page.isComment = true;
       autosize(document.getElementById("comment-post"));
     }
 
+    // post comment handle
     function postComment() {
       let postParams = {
         text: $scope.commentText,
         feeds: [$scope.feed._id],
         contentType: PostConstants.type.text,
-        replyToPost: null,
+        // replyToPost: null,
       }
-
+      console.log(localStorage.getItem('userToken'));
+      console.log($http.defaults.headers.common['X-Token']);
+      delete $http.defaults.headers.common['X-Token'];
+      // $http.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('userToken');
+      // $http.defaults.headers.common['Access-Token'] = localStorage.getItem('userToken');
       console.log(postParams);
 
       FeedRequest.postComment(postParams)
