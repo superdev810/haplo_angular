@@ -1,0 +1,27 @@
+<div class="jumbotron">
+  <h1>Feed {{page.title}}</h1>
+  <h3> posts </h3>
+  <div class="comment-details border-top">
+    <div class="fa fa-thumbs-o-up like cursor-pointer"> Likes</div>
+    <div class="fa fa-thumbs-o-down like cursor-pointer"> Dislikes</div>
+    <div class="fa fa-comment like cursor-pointer" ng-click="showComment()"> Comments</div>
+  </div>
+  <div class="comment-action border-top">
+    <div class="fa fa-thumbs-o-up like cursor-pointer"> Like</div>
+    <div class="fa fa-thumbs-o-down like cursor-pointer"> Dislike</div>
+    <div class="fa fa-comment like cursor-pointer" ng-click="showComment()"> Comment</div>
+    <div class="comment-action-add" ng-show="page.isComment">
+      <textarea id="comment-post" rows="1" class="comment-action-content" ng-model="commentText"></textarea>
+      <button class="btn btn-default comment-post" ng-click="postComment()">Post</button>
+    </div>
+  </div>
+  <div class="comment" ng-repeat="comment in posts.data">
+    <div class="comment-content">
+      <img src="{{comment.author.profileImageThumbnail}}" class="comment-img" alt="">
+      <div class="wrapper">
+        <span class="comment-name">{{comment.author.nickname}}</span>
+        <span class="">{{comment.text}}</span>
+      </div>
+    </div> <!-- post-header -->
+  </div>
+</div>
