@@ -1,0 +1,17 @@
+extends ../layout
+
+block content
+  div.container
+    include header
+    h1 Welcome to #{globalStrings.company}!
+    form(method='post')
+      .form-group
+        p
+          label(for='username') Username
+          input.form-control.ab-form-control(type='text', name='username')
+      .form-group
+        p
+          label(for='password') Password
+          input.form-control.ab-form-control.mb-5(type='password', name='password')
+      input.fa.ab-btn-circle.float-right(type='submit' value='')
+    include footer

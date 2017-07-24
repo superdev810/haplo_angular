@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  include header
+  include message
+  form(method='post')
+    p
+      label(for='oldPassword') Old password or reset code
+      input(type='text', name='oldPassword')
+    p
+      label(for='newPassword') New password
+      input(type='password', name='newPassword')
+    input(type='submit')
+  include footer
