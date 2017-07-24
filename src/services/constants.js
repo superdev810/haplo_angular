@@ -30,4 +30,12 @@ angular.module('ustadium.constants', [])
       url: "https://ustadium-api-dev.herokuapp.com/api/feeds/trending",
       method: "GET"
     }
+  })
+  .constant('PostConstants', {
+    type: {
+      text: 'ContentTypeText',
+      photo: 'ContentTypePhoto',
+      audio: 'ContentTypeAudio',
+      video: 'ContentTypeVideo',
+    }
   });
