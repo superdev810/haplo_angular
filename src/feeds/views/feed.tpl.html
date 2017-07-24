@@ -1,6 +1,20 @@
 <div class="jumbotron">
   <h1>Feed {{page.title}}</h1>
   <h3> posts </h3>
+  <div class="comment-details">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <div class="comment-action border-top">
+    <div class="fa fa-thumbs-o-up like cursor-pointer"> Like</div>
+    <div class="fa fa-thumbs-o-down dislike cursor-pointer"> Dislike</div>
+    <div class="fa fa-comment comment-act cursor-pointer" ng-click="showComment()"> Comment</div>
+    <div class="comment-action-add" ng-show="page.isComment">
+      <textarea id="comment-post" rows="2" class="comment-action-content" ng-model="commentAddContent"></textarea>
+      <button class="btn btn-default comment-post" ng-click="">Post</button>
+    </div>
+  </div>
   <div class="comment" ng-repeat="comment in posts.data.data">
     <div class="comment-content">
       <img src="{{comment.author.profileImageThumbnail}}" class="comment-img" alt="">

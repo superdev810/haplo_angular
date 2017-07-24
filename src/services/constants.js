@@ -1,8 +1,8 @@
 /**
  * Created by superdev on 7/15/2017.
  */
-var base = "https://ustadium-api-dev.herokuapp.com";
-// var base = "http://localhost:3000";
+// var base = "https://ustadium-api-dev.herokuapp.com";
+var base = "http://localhost:3000";
 angular.module('ustadium.constants', [])
   .constant('ApiEndpoints', {
 

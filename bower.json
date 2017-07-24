@@ -10,6 +10,7 @@
     "AngularJS-Toaster": "angularjs-toaster#^2.1.0",
     "angular-toastr": "^2.1.1",
     "angular-ui-notification": "^0.3.6",
-    "angular-bootstrap": "^2.5.0"
+    "angular-bootstrap": "^2.5.0",
+    "font-awesome": "^4.7.0"
   }
 }
