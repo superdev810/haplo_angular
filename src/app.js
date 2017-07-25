@@ -55,6 +55,9 @@ angular.module('ustadium', [
       positionY: 'top'
     });
   })
+  .config(['$qProvider', function ($qProvider) {
+    $qProvider.errorOnUnhandledRejections(false);
+  }])
   .run(function ($rootScope, $window, menuService) {
     // google analytics
     $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams) {
