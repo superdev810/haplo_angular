@@ -179,11 +179,11 @@ angular.module('ustadium.mock', ['ngMockE2E', 'ustadium.constants'])
   // $httpBackend.whenPOST('https://ustadium-api-dev.herokuapp.com/auth/reset-forgotten-password').passThrough();
 
   // local dev rest apis
-  $httpBackend.whenPOST('http://localhost:3000/auth/signup').passThrough();
-  $httpBackend.whenPOST('http://localhost:3000/auth/token').passThrough();
-  $httpBackend.whenPOST('http://localhost:3000/auth/verify').passThrough();
-  $httpBackend.whenPOST('http://localhost:3000/auth/forgot-password').passThrough();
-  $httpBackend.whenPOST('http://localhost:3000/auth/reset-forgotten-password').passThrough();
+  // $httpBackend.whenPOST('http://localhost:3000/auth/signup').passThrough();
+  // $httpBackend.whenPOST('http://localhost:3000/auth/token').passThrough();
+  // $httpBackend.whenPOST('http://localhost:3000/auth/verify').passThrough();
+  // $httpBackend.whenPOST('http://localhost:3000/auth/forgot-password').passThrough();
+  // $httpBackend.whenPOST('http://localhost:3000/auth/reset-forgotten-password').passThrough();
 
   //pass any requests that dont fit the fake ones through.
   $httpBackend.whenGET(/[\s\S]*/).passThrough();
