@@ -2,25 +2,25 @@
   <h1>Feed {{page.title}}</h1>
   <h3> posts </h3>
 
-  <div class="comment-action border-top" ng-hide="true">
+  <div class="post-action border-top" ng-hide="true">
     <div class="fa fa-thumbs-o-up like cursor-pointer"> Like</div>
     <div class="fa fa-thumbs-o-down like cursor-pointer"> Dislike</div>
     <div class="fa fa-comment like cursor-pointer" ng-click="showComment()"> Comment</div>
-    <div class="comment-action-add" ng-show="page.isComment">
-      <textarea id="comment-post" rows="1" class="comment-action-content" ng-model="commentText"></textarea>
-      <button class="btn btn-default comment-post" ng-click="postComment()">Post</button>
+    <div class="post-action-add" ng-show="page.isComment">
+      <textarea id="post-post" rows="1" class="post-action-content" ng-model="commentText"></textarea>
+      <button class="btn btn-default post-post" ng-click="postComment()">Post</button>
     </div>
   </div>
   <div class="comment" ng-repeat="comment in posts.data">
-    <div class="comment-content">
-      <img src="{{comment.author.profileImageThumbnail}}" class="comment-img" alt="">
+    <div class="post-content">
+      <img src="{{comment.author.profileImageThumbnail}}" class="post-img" alt="">
       <div class="wrapper" style="width: 100%">
-        <span class="comment-name">{{comment.author.nickname}}</span>
+        <span class="post-name">{{comment.author.nickname}}</span>
         <span class="">{{comment.text}}</span>
         <div class="text-center">
-          <img src="{{comment.mediaFile}}" class="comment-media" ng-show="comment.mediaFile"/>
+          <img src="{{comment.mediaFileThumbnail}}" class="post-media" ng-show="comment.mediaFileThumbnail"/>
         </div>
-        <div class="comment-details border-top" >
+        <div class="post-details border-top" >
           <div class="fa fa-thumbs-o-up like cursor-pointer"> {{comment.likes}} Likes</div>
           <div class="fa fa-thumbs-o-down like cursor-pointer"> {{comment.dislikes}} Dislikes</div>
           <div class="fa fa-comment like cursor-pointer"> {{comment.numComments}} Comments</div>
