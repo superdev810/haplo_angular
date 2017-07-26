@@ -59,6 +59,15 @@ angular.module('ustadium', [
     $qProvider.errorOnUnhandledRejections(false);
   }])
   .run(function ($rootScope, $window, menuService) {
+    $rootScope.socialShare = {
+      appId: '2231777543',
+      title:'ustadium',
+      description: '',
+      siteName: 'ustadium web app',
+      url: 'https://ustadium-webapp.herokuapp.com',
+      image: 'http://ustadium-media.s3.amazonaws.com/content/images/48/c4ace0c47711e6a833a19fb4452bd3/master.jpg',
+      type: 'website'
+    }
     // google analytics
     $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams) {
       var realURL = toState.url;

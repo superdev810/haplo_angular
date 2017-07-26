@@ -1,5 +1,11 @@
 angular.module('feed.controllers',[])
-  .controller('FeedController', function ($http, $scope, FeedRequest, $stateParams, PostConstants) {
+  .run(function ($rootScope) {
+    console.log('run rootscope', $rootScope.socialShare);
+  })
+  .controller('FeedController', function ($http, $scope, FeedRequest, $stateParams, PostConstants, $rootScope, $location) {
+
+
+    $rootScope.socialShare.title = 'Feed Controller';
     console.log($stateParams);
 
     // define variables
@@ -15,7 +21,14 @@ angular.module('feed.controllers',[])
       FeedRequest.getFeed('feeds/name/'+$stateParams.name)
         .then(function(feed){
           $scope.feed = feed.data.data;
-          console.log($scope.feed);
+          console.log('single feed', $scope.feed);
+          console.log('state url', $location);
+
+          // change the social share info with feed info
+          $rootScope.socialShare.title = $scope.feed.name;
+          $rootScope.socialShare.description = $scope.feed.description;
+          $rootScope.socialShare.url = $location.absUrl();
+          $rootScope.socialShare.image = $scope.feed.mediaFileThumbnail?$scope.feed.mediaFileThumbnail:null;
           if (feed) {
             FeedRequest.getPosts($scope.feed._id)
               .then(function(data){
