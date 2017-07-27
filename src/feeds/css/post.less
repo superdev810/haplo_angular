@@ -4,7 +4,7 @@
   background-color: lighten(@slate-color, 40%);
   margin-bottom: 30px;
   margin-top: 10px;
-  border-radius: 5px;
+  border-radius: @radius;
   color: white;
 
   &-content {
@@ -21,7 +21,7 @@
     border-radius: 50%;
     width: 50px;
     height: 50px;
-    margin: 5px;
+    margin: @margin-small;
   }
 
   &-text{
@@ -37,10 +37,9 @@
   &-media{
     width: 70%;
     padding-right:10px;
-    border-radius: 5px;
+    border-radius: @radius;
     border-bottom-right-radius: 15px;
     border-top-right-radius: 15px;
-    //height: 200px;
     background-size: cover;
     background: no-repeat center center fixed;
   }
@@ -50,10 +49,10 @@
   border-top: 1px solid #f7f5fa;
 }
 .post-details {
-  margin: 5px;
+  margin: @margin-small;
   margin-top: 15px;
   .like{
-    margin: 5px;
+    margin: @margin-small;
     font-size: 15px;
   }
 }
@@ -61,7 +60,7 @@
 .post-action{
   margin: 10px;
   .like{
-    margin: 5px;
+    margin: @margin-small;
     font-size: 17px;
   }
 

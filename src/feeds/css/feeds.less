@@ -1,17 +1,39 @@
+@radius: 5px;
+@margin-small: 5px;
+
+.image-size-mixin(@size) {
+  @width-size: 3 * @size;
+  width: @size;
+  height: @size;
+}
+
+.border-radius-mixin(@radius-size) {
+  border-radius: @radius-size;
+}
+
 @import "./nav.less";
 @import "./post.less";
 
-.feeds-page {
-  max-width: @screen-xs;
-  padding: 15px;
-  margin: 0 auto;
-  background-color: lighten(@slate-color, 10%);
-  box-shadow: 1px 1px 2px 2px lighten(@slate-color, 20%);
-  border-radius: 5px;
-  .form-control:focus {
-    z-index: 2;
+
+.feed {
+  &-page {
+    max-width: @screen-xs;
+    padding: 15px;
+    margin: 0 auto;
+    background-color: lighten(@slate-color, 10%);
+    box-shadow: 1px 1px 2px 2px lighten(@slate-color, 20%);
+    border-radius: 5px;
+    .form-control:focus {
+      z-index: 2;
+    }
+  }
+
+  &-image {
+      .border-radius-mixin(@radius);
+      .image-size-mixin(120px);
   }
 }
+
 
 .image {
    position: relative;
