@@ -14,13 +14,13 @@ angular.module('feed.controllers',[])
 
     //Call service to trigger immediately the sharing method
     //*
-    Socialshare.share({
-      'provider': 'twitter',
-      'attrs': {
-        'socialshareUrl': $rootScope.socialShare.url,
-        'socialshareHashtags': 'ustadium, angular, socialshare'
-      }
-    });
+    // Socialshare.share({
+    //   'provider': 'twitter',
+    //   'attrs': {
+    //     'socialshareUrl': $rootScope.socialShare.url,
+    //     'socialshareHashtags': 'ustadium, angular, socialshare'
+    //   }
+    // });
     //*/
 
     // define functions
