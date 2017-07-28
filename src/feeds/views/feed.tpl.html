@@ -2,8 +2,15 @@
   <h1>Feed {{page.title}}</h1>
   <img class="feed-image" src="{{feed.mediaFile}}" alt="feed image"/>
   <p> {{feed.description}} </p>
-
-
+  <a href="{{socialShare.url}}"
+     socialshare
+     socialshare-provider="twitter"
+     socialshare-url="{{socialShare.url}}"
+     socialshare-text="Sharing it!"
+     socialshare-popup-height="800"
+     socialshare-popup-width="800">
+    Share with a bigger popup
+  </a>
   <div class="post-action border-top" ng-hide="true">
     <div class="fa fa-thumbs-o-up like cursor-pointer"> Like</div>
     <div class="fa fa-thumbs-o-down like cursor-pointer"> Dislike</div>

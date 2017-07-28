@@ -2,7 +2,7 @@ angular.module('feed.controllers',[])
   .run(function ($rootScope) {
     console.log('run rootscope', $rootScope.socialShare);
   })
-  .controller('FeedController', function ($http, $scope, FeedRequest, $stateParams, PostConstants, $rootScope, $location) {
+  .controller('FeedController', function ($http, $scope, FeedRequest, $stateParams, PostConstants, $rootScope, $location, Socialshare) {
 
 
     $rootScope.socialShare.title = 'Feed Controller';
@@ -11,6 +11,17 @@ angular.module('feed.controllers',[])
     // define variables
     $scope.page = {};
 
+
+    //Call service to trigger immediately the sharing method
+    //*
+    Socialshare.share({
+      'provider': 'twitter',
+      'attrs': {
+        'socialshareUrl': $rootScope.socialShare.url,
+        'socialshareHashtags': 'ustadium, angular, socialshare'
+      }
+    });
+    //*/
 
     // define functions
     $scope.showComment = showComment;
@@ -67,8 +78,6 @@ angular.module('feed.controllers',[])
       console.log(localStorage.getItem('userToken'));
       console.log($http.defaults.headers.common['X-Token']);
       delete $http.defaults.headers.common['X-Token'];
-      // $http.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('userToken');
-      // $http.defaults.headers.common['Access-Token'] = localStorage.getItem('userToken');
       console.log(postParams);
 
       FeedRequest.postComment(postParams)

@@ -100,7 +100,8 @@ module.exports = function (grunt) {
           'libs/angular-mocks/angular-mocks.js',
           'libs/angular-ui-router/release/angular-ui-router.js',
           'libs/angular-toastr/dist/angular-toastr.tpls.js',
-          'libs/angular-ui-notification/dist/angular-ui-notification.js'
+          'libs/angular-ui-notification/dist/angular-ui-notification.js',
+          'libs/angular-socialshare/dist/angular-socialshare.js'
         ],
         dest: 'build/libs.js'
       }

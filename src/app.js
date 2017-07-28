@@ -18,7 +18,8 @@ angular.module('ustadium', [
   'ngAnimate',
   'toastr',
   'ui-notification',
-  'ui.bootstrap'
+  'ui.bootstrap',
+  '720kb.socialshare'
 ])
   .config(function ($urlRouterProvider, $locationProvider) {
     $urlRouterProvider.otherwise('/');
