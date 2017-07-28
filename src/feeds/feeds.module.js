@@ -4,4 +4,5 @@ angular.module('ustadium.feeds', [
   'feeds.controllers',
   'feed.controllers',
   'feeds.services',
+  'ustadium.post'
 ]);
