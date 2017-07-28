@@ -196,8 +196,7 @@ module.exports = function (grunt) {
   // - concatenates all the source files in build/app.js - banner with git revision
   // - concatenates all the libraries in build/libs.js
   // - copies index.html over build/
-  grunt.registerTask('server', []);
-  grunt.registerTask('build', ['clean', 'html2js', 'less', 'concat_sourcemap:app', 'concat_sourcemap:libs', 'copy', 'express']);
-  grunt.registerTask('default', ['clean', 'concat_sourcemap:libs', 'configureProxies:server', 'connect', 'watch', 'express']);
+  grunt.registerTask('build', ['clean', 'html2js', 'less', 'concat_sourcemap:app', 'concat_sourcemap:libs', 'copy']);
+  grunt.registerTask('default', ['clean', 'concat_sourcemap:libs', 'html2js', 'less', 'concat_sourcemap:app', 'concat_sourcemap:libs']);
   grunt.registerTask('test', ['karma']);
 };
