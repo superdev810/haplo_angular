@@ -13,7 +13,7 @@
     "test": "grunt karma",
     "start": "grunt && npm run server",
     "server": "node ./server/bin/www",
-    "postinstall": "npm run build && npm install bower -g && cd server npm install && cd .."
+    "postinstall": "npm run build && npm install bower -g"
   },
   "devDependencies": {
     "grunt": "~0.4.5",
@@ -35,9 +35,16 @@
   },
   "dependencies": {
     "angular-toastr": "^2.1.1",
-    "express": "^4.15.3",
+    "express": "~4.15.2",
     "grunt-express": "^1.4.1",
     "grunt-parallel": "^0.5.1",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "body-parser": "~1.17.1",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.3",
+    "ejs": "~2.5.6",
+    "less-middleware": "~2.2.0",
+    "morgan": "~1.8.1",
+    "serve-favicon": "~2.4.2"
   }
 }
