@@ -1,7 +1,29 @@
 <!DOCTYPE html>
 <html ng-app="ustadium">
 <head>
+  <base href="/">
   <title>ustadium-social sports</title>
+
+  <!-- Facebook META -->
+  <!--<meta property="fb:app_id" content="{{socialShare.appId}}">-->
+  <!--<meta property="og:site_name" content="{{socialShare.siteName}}">-->
+  <!--<meta property="og:title" content="{{socialShare.title}}">-->
+  <!--<meta property="og:description" content="{{socialShare.description}}">-->
+  <!--<meta property="og:url" content="{{socialShare.url}}">-->
+  <!--<meta property="og:image" content="{{socialShare.image}}">-->
+  <!--<meta property="og:image:width" content="520">-->
+  <!--<meta property="og:image:height" content="397">-->
+  <!--<meta property="og:type" content="{{socialShare.type}}">-->
+
+  <meta property="fb:app_id" content="2231777543">
+  <meta property="og:site_name" content="ustadium web app">
+  <meta property="og:title" content="ustadium">
+  <meta property="og:description" content="This is ustadium website for sports fan">
+  <meta property="og:url" content="https://ustadium-webapp.herokuapp.com">
+  <meta property="og:image" content="http://ustadium-media.s3.amazonaws.com/content/feed/83/679440c47511e69db3ad3abdce3545/master.jpg">
+  <meta property="og:image:width" content="520">
+  <meta property="og:image:height" content="397">
+  <meta property="og:type" content="website">
 
   <!-- BootstrapCDN -->
   <link href="//netdna.bootstrapcdn.com/bootswatch/3.3.1/slate/bootstrap.min.css" rel="stylesheet">
@@ -30,6 +52,7 @@
     ga('send', 'pageview');
   </script>
 </head>
+
 <body ng-controller="BodyController">
 <div class="container">
   <div class="navbar navbar-default" role="navigation">

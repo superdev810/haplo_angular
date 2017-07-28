@@ -23,6 +23,7 @@ angular.module('ustadium', [
 ])
   .config(function ($urlRouterProvider, $locationProvider) {
     $urlRouterProvider.otherwise('/');
+    $locationProvider.html5Mode(true);
   })
   // .config(['$httpProvider', function ($httpProvider) {
   //   // $httpProvider.interceptors.push('delayHTTP');
