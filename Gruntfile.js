@@ -197,6 +197,6 @@ module.exports = function (grunt) {
   // - concatenates all the libraries in build/libs.js
   // - copies index.html over build/
   grunt.registerTask('build', ['clean', 'html2js', 'less', 'concat_sourcemap:app', 'concat_sourcemap:libs', 'copy']);
-  grunt.registerTask('default', ['clean', 'concat_sourcemap:libs']);
+  grunt.registerTask('default', ['clean', 'concat_sourcemap:libs', 'html2js', 'less', 'concat_sourcemap:app', 'concat_sourcemap:libs']);
   grunt.registerTask('test', ['karma']);
 };
