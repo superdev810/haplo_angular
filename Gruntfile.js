@@ -1,3 +1,5 @@
+var path = require('path');
+
 module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-html2js');
   grunt.loadNpmTasks('grunt-contrib-less');
@@ -9,10 +11,42 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-connect-proxy');
   grunt.loadNpmTasks('grunt-karma');
+  grunt.loadNpmTasks('grunt-parallel');
+  grunt.loadNpmTasks('grunt-express');
 
+  var yeomanConfig = {
+    app: 'app',
+    dist: 'dist'
+  };
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+    express: {
+      options: {
+        port: 9000,
+        hostname: '*'
+      },
+      // livereload: {
+      //   options: {
+      //     server: path.resolve('./server'),
+      //     livereload: true,
+      //     serverreload: true,
+      //     bases: [path.resolve('./.tmp'), path.resolve(__dirname, yeomanConfig.app)]
+      //   }
+      // },
+      // test: {
+      //   options: {
+      //     server: path.resolve('./server'),
+      //     bases: [path.resolve('./.tmp'), path.resolve(__dirname, 'test')]
+      //   }
+      // },
+      dist: {
+        options: {
+          server: path.resolve('./socialrender'),
+          bases: path.resolve(__dirname, yeomanConfig.dist)
+        }
+      }
+    },
     html2js: {
       /**
        * These are the templates from `src/app`.
@@ -162,7 +196,8 @@ module.exports = function (grunt) {
   // - concatenates all the source files in build/app.js - banner with git revision
   // - concatenates all the libraries in build/libs.js
   // - copies index.html over build/
-  grunt.registerTask('build', ['clean', 'html2js', 'less', 'concat_sourcemap:app', 'concat_sourcemap:libs', 'copy']);
-  grunt.registerTask('default', ['clean', 'concat_sourcemap:libs', 'configureProxies:server', 'connect', 'watch']);
+  grunt.registerTask('server', []);
+  grunt.registerTask('build', ['clean', 'html2js', 'less', 'concat_sourcemap:app', 'concat_sourcemap:libs', 'copy', 'express']);
+  grunt.registerTask('default', ['clean', 'concat_sourcemap:libs', 'configureProxies:server', 'connect', 'watch', 'express']);
   grunt.registerTask('test', ['karma']);
 };

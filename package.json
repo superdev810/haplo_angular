@@ -33,6 +33,10 @@
     "karma-phantomjs-launcher": "^0.1.4"
   },
   "dependencies": {
-    "angular-toastr": "^2.1.1"
+    "angular-toastr": "^2.1.1",
+    "express": "^4.15.3",
+    "grunt-express": "^1.4.1",
+    "grunt-parallel": "^0.5.1",
+    "path": "^0.12.7"
   }
 }
