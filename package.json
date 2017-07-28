@@ -11,7 +11,7 @@
   "scripts": {
     "build": "bower install",
     "test": "grunt karma",
-    "start": "node ./server/bin/www",
+    "start": "grunt && npm run server",
     "server": "node ./server/bin/www",
     "postinstall": "npm run build && npm install bower -g && cd server npm install && cd .."
   },
