@@ -11,9 +11,9 @@
   "scripts": {
     "build": "bower install",
     "test": "grunt karma",
-    "start": "grunt",
+    "start": "node ./server/bin/www",
     "server": "node ./server/bin/www",
-    "postinstall": "npm run build && npm install bower -g"
+    "postinstall": "npm run build && npm install bower -g && cd server npm install && cd .."
   },
   "devDependencies": {
     "grunt": "~0.4.5",
