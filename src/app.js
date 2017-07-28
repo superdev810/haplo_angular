@@ -66,7 +66,7 @@ angular.module('ustadium', [
       description: '',
       siteName: 'ustadium web app',
       url: 'https://ustadium-webapp.herokuapp.com',
-      image: 'http://ustadium-media.s3.amazonaws.com/content/images/48/c4ace0c47711e6a833a19fb4452bd3/master.jpg',
+      image: 'http://ustadium-media.s3.amazonaws.com/content/feed/83/679440c47511e69db3ad3abdce3545/master.jpg',
       type: 'website'
     }
     // google analytics
