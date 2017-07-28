@@ -12,6 +12,7 @@
     "build": "bower install",
     "test": "grunt karma",
     "start": "grunt",
+    "server": "node ./server/bin/www",
     "postinstall": "npm run build && npm install bower -g"
   },
   "devDependencies": {
