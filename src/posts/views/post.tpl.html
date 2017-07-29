@@ -1,4 +1,13 @@
 <div class="jumbotron">
-  <h1>Post {{page.title}}</h1>
+  <div id="myModal" class="modal" ng-class="{'mDisplay': open === 1}">
 
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span ng-click="closeModal(0)"class="close">&times;</span>
+      <img src="{{post.author.profileImage}}"/>
+      <p>{{post.author.nickname}}</p>
+      <p>{{post.text}}</p>
+    </div>
+
+  </div>
 </div>

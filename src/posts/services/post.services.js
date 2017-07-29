@@ -1,17 +1,16 @@
 angular.module('post.services', [])
-  .factory('postRequest', PostRequest);
+  .factory('PostRequest', PostRequest);
 
 PostRequest.$inject = ['$window', '$http', 'RestAPI', 'ApiEndpoints', 'toastr'];
 
 function PostRequest($window, $http, RestAPI, ApiEndpoints) {
 var postCall = {
-  postData: postData
+  getPost: getPost
 }
   return postCall;
 
-  function postData(data) {
-    // console.log('feedData', data);
-    return $http.get(base + '/api/'+ data);
+  function getPost(data) {
+    return $http.get(base + '/api/posts/'+ data);
 
   }
 }
