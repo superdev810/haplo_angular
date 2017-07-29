@@ -12,8 +12,10 @@ router.get('/', function(req, res, next) {
     url: 'https://ustadium-webapp.herokuapp.com',
     image: 'http://ustadium-media.s3.amazonaws.com/content/images/83/5bfaa0c56911e685d8934a6a5ce0af/small.jpg',
     type: 'website'
-  }
-  res.render('index', { socialShare: socialShare });
+  },
+  env = {};
+  env.hostName = process.env.HOST_NAME;
+  res.render('index', { socialShare: socialShare, env: env });
 });
 
 module.exports = router;
