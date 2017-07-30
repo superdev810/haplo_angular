@@ -44,6 +44,11 @@ router.get('/', function(req, res, next) {
   res.render('index', { socialShare: socialShare });
 });
 
+router.get('*', function(req, res, next) {
+  res.render('index', { socialShare: socialShare });
+});
+
+
 function requestFeedInfo(feedName, single, res, next) {
   var isSingle = !single ? feedType[feedName] : feedName;
   var requestEnd = '' + single + isSingle;
