@@ -25,7 +25,7 @@ app.use(lessMiddleware(path.join(__dirname, 'public')));
 app.use('/build', express.static(path.join(__dirname, '../build')));
 app.use('/lib', express.static(path.join(__dirname, '../libs')));
 
-app.use('*', index);
+app.use('/', index);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
