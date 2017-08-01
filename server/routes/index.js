@@ -24,7 +24,7 @@ router.get('/feeds/:name', function(req, res, next) {
   var single = '';
   requestFeedInfo(req.params.name, single, res, next)
 }, function(req, res, next) {
-  console.log(res.locals.socialShare);
+  // console.log(res.locals.socialShare);
   res.render('index', { socialShare: res.locals.socialShare });
 });
 
@@ -37,10 +37,19 @@ router.get('/feed/:name', function(req, res, next) {
 });
 
 router.get('/post/:id', function(req, res, next) {
-  res.render('index', { socialShare: socialShare });
+  console.log('post id: ', req.params.id);
+  requestPostInfo(req.params.id, res, next);
+
+}, function (req, res, next) {
+  res.render('index', { socialShare: res.locals.socialShare });
 })
 
 router.get('/', function(req, res, next) {
+  var ua = req.headers['user-agent'];
+  console.log('index.....................')
+  if (/^(facebookexternalhit)|(Twitterbot)|(Pinterest)/gi.test(ua)) {
+    console.log(ua,' is a bot');
+  }
   res.render('index', { socialShare: socialShare });
 });
 
@@ -57,7 +66,7 @@ function requestFeedInfo(feedName, single, res, next) {
     method: 'GET'
   }, function (error, response, feed) {
     var feedJson = JSON.parse(feed);
-    console.log(feedJson);
+    // console.log(feedJson);
     if (feedJson.data.mediaFileThumbnail) {
       res.locals.socialShare.image = feedJson.data.mediaFileThumbnail;
     }
@@ -68,6 +77,34 @@ function requestFeedInfo(feedName, single, res, next) {
 
     if (feedJson.data.description) {
       res.locals.socialShare.description = feedJson.data.description;
+    }
+
+    if(feedJson.data.mediaFileThumbnail) {
+      res.locals.socialShare.url = feedJson.data.mediaFileThumbnail;
+    }
+    next();
+  })
+
+}
+
+function requestPostInfo(postId, res, next) {
+  var requestEnd = '' + postId;
+  request({
+    uri: 'https://ustadium-api-dev.herokuapp.com/api/posts/'+ requestEnd ,
+    method: 'GET'
+  }, function (error, response, feed) {
+    var feedJson = JSON.parse(feed);
+    // console.log(feedJson);
+    if (feedJson.data.mediaFileThumbnail) {
+      res.locals.socialShare.image = feedJson.data.mediaFileThumbnail?feedJson.data.mediaFileThumbnail:feedJson.data.author.profileImageThumbnail;
+    }
+
+    if (feedJson.data.name) {
+      res.locals.socialShare.title = feedJson.data.author.username;
+    }
+
+    if (feedJson.data.description) {
+      res.locals.socialShare.description = feedJson.data.text;
     }
 
     if(feedJson.data.mediaFileThumbnail) {
