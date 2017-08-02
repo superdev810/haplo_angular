@@ -3,8 +3,7 @@ angular.module('post.controllers',[])
     console.log('run rootscope', $rootScope.socialShare);
   })
   .controller('PostController', function ($http, $scope, PostRequest, $stateParams, PostConstants, $rootScope, $location, Socialshare, $window, $document) {
-    console.log($window);
-    console.log($document);
+   
     $scope.open=1;
     console.log($stateParams);
     PostRequest.getPost($stateParams.id).then(function(data){
