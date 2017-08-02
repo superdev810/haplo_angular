@@ -1,6 +1,6 @@
 
 angular.module('feeds.controllers',[])
-  .controller('FeedsController', function ($http, $scope, FeedRequest, $state, $location, $stateParams) {
+  .controller('FeedsController', function ($http, $scope, FeedRequest, $state, $location, $stateParams, $filter) {
     FeedRequest.feedData('feeds').then(function(data){
       $scope.feeds = data.data;
     },function(data){
@@ -9,7 +9,9 @@ angular.module('feeds.controllers',[])
 
     FeedRequest.feedData('feeds/trending').then(function(data){
       $scope.trending = data.data;
-      console.log($scope.trending);
+      $scope.feeds = data.data;
+      $scope.filteredItems = $scope.trending.data;
+        console.log($scope.trending);
     },function(data){
       console.log('error', data)
     });
@@ -33,5 +35,13 @@ angular.module('feeds.controllers',[])
     $scope.isSet = function(tabNum){
       return $scope.tab === tabNum;
     };
+
+    /* search feeds by name */
+    $scope.searchFeed = function (searchText) {
+      console.log(searchText);
+      $scope.filteredItems = $filter('filter')($scope.feeds, {
+        $: searchText
+      });
+    }
 
   });

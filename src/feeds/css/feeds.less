@@ -17,7 +17,7 @@
 
 .feed {
   &-page {
-    max-width: @screen-xs;
+    max-width: @screen-md;
     padding: 15px;
     margin: 0 auto;
     background-color: lighten(@slate-color, 10%);
@@ -38,7 +38,7 @@
 .image {
    position: relative;
    width: 100%; /* for IE 6 */
-   min-height: 100px;
+   min-height: 200px;
    margin-bottom: 20px;
    border-radius: 25px;
 }
@@ -59,4 +59,22 @@
   &:hover {
     text-decoration: none;
   }
+}
+
+.search {
+  width: 100%;
+  &-input{
+    //float: right;
+  }
+
+  &-btn{
+    //float: right;
+    color: white;
+    font-size: 25px;
+    margin-right: 10px;
+  }
+}
+
+.twitter-btn{
+  background: #00B7FF!important;
 }
