@@ -11,7 +11,7 @@
   "scripts": {
     "build": "./node_modules/bower/bin/bower install",
     "test": "grunt karma",
-    "start": "grunt && npm run server",
+    "start": "./node_modules/grunt-cli/bin/grunt && npm run server",
     "server": "node ./server/bin/www",
     "postinstall": "npm run build"
   },
@@ -41,6 +41,7 @@
     "debug": "~2.6.3",
     "ejs": "~2.5.6",
     "express": "~4.15.2",
+    "grunt-cli": "^1.2.0",
     "grunt-express": "^1.4.1",
     "grunt-parallel": "^0.5.1",
     "less-middleware": "~2.2.0",
