@@ -15,6 +15,7 @@ angular.module('feeds.controllers',[])
     },function(data){
       console.log('error', data)
     });
+
     var feedsTypes = {
       Hot: 1,
       New: 2,
