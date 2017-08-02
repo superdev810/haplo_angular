@@ -9,7 +9,7 @@
     "example"
   ],
   "scripts": {
-    "build": "",
+    "build": "bower install",
     "test": "grunt karma",
     "start": "grunt && npm run server",
     "server": "node ./server/bin/www",
