@@ -12,7 +12,7 @@ angular.module('users.routes', [])
         accessLevel: accessLevels.anon
       })
       .state('app.profile', {
-        url: '/profile',
+        url: '/:postId/profile',
         templateUrl: 'users/views/user-profile.tpl.html',
         controller: 'UserProfileController',
         accessLevel: accessLevels.anon
