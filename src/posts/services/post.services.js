@@ -11,6 +11,5 @@ var postCall = {
 
   function getPost(data) {
     return $http.get(base + '/api/posts/'+ data);
-
   }
 }
