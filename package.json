@@ -9,9 +9,9 @@
     "example"
   ],
   "scripts": {
-    "build": "./node_modules/bower/bin/bower install",
-    "test": "./node_modules/grunt-cli/bin/grunt karma",
-    "start": "./node_modules/grunt-cli/bin/grunt && npm run server",
+    "build": "bower install",
+    "test": "grunt karma",
+    "start": "grunt && npm run server",
     "server": "node ./server/bin/www",
     "postinstall": "npm run build"
   },

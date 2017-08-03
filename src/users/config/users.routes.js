@@ -10,5 +10,11 @@ angular.module('users.routes', [])
         templateUrl: 'users/views/users.tpl.html',
         controller: 'RegisterController',
         accessLevel: accessLevels.anon
+      })
+      .state('app.profile', {
+        url: '/profile',
+        templateUrl: 'users/views/user-profile.tpl.html',
+        controller: 'UserProfileController',
+        accessLevel: accessLevels.anon
       });
   });
