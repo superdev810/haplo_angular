@@ -9,7 +9,6 @@ angular.module('feeds.controllers',[])
 
     FeedRequest.feedData('feeds/trending').then(function(data){
       $scope.trending = data.data;
-      $scope.feeds = data.data;
       $scope.filteredItems = $scope.trending.data;
         console.log($scope.trending);
     },function(data){
@@ -25,7 +24,7 @@ angular.module('feeds.controllers',[])
 
     $scope.tab = 1;
     // console.log('$stateParams.type', $stateParams.type);
-    // console.log(feedsTypes.types);
+    console.log(feedsTypes.types);
     if ($stateParams.type) {
       $scope.tab = feedsTypes[$stateParams.type]
     }
@@ -39,7 +38,7 @@ angular.module('feeds.controllers',[])
 
     /* search feeds by name */
     $scope.searchFeed = function (searchText) {
-      console.log(searchText);
+      console.log('searchText', searchText);
       $scope.filteredItems = $filter('filter')($scope.feeds, {
         $: searchText
       });
