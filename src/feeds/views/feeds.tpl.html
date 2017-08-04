@@ -21,7 +21,7 @@
   <div ng-show="isSet(2)">
     <div class="row">
       <div class="category">New</div>
-      <a ui-sref="app.feed({ name: x.name })" class="card" ng-repeat="x in feeds.data.feeds | filter:searchText">
+      <a ui-sref="app.feed({ name: x.name })" class="card col-xs-6" ng-repeat="x in feeds.data.feeds | filter:searchText">
         <div class="image" style="background-image: url({{x.mediaFile}}); background-repeat: no-repeat;   background-size: cover;">
           <div class="image-h2">
             <div class= "name">{{x.name}}</div>
