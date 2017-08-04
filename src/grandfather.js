@@ -14,6 +14,8 @@ angular.module('ustadium.grandfather', ['ui.router', 'templates-app'])
            *
            * Calling resolvePendingState makes the loginService retrieve his userRole remotely.
            */
+          console.log(localStorage.getItem('userInfo'));
+          console.log('Pending State Change -> ', loginService.pendingStateChange);
           if (loginService.pendingStateChange) {
             return loginService.resolvePendingState($http.get('/user'));
           } else {

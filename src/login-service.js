@@ -62,7 +62,7 @@ angular.module('loginService', ['ui.router'])
         // if the state has undefined accessLevel, anyone can access it.
         // NOTE: if `wrappedService.userRole === undefined` means the service still doesn't know the user role,
         // we need to rely on grandfather resolve, so we let the stateChange success, for now.
-        if (true || to.accessLevel === undefined || to.accessLevel.bitMask & wrappedService.userRole.bitMask) {
+        if (to.accessLevel === undefined || to.accessLevel.bitMask & wrappedService.userRole.bitMask) {
           angular.noop(); // requested state can be transitioned to.
         } else {
           event.preventDefault();
@@ -135,7 +135,7 @@ angular.module('loginService', ['ui.router'])
          *   $state.go('app.nagscreen');
          * }
          */
-        console.log(data);
+        // console.log(data);
         var userInfo = data.data.data;
 
         // setup token
@@ -146,13 +146,13 @@ angular.module('loginService', ['ui.router'])
           return;
         }
         setToken(userInfo.token);
-        localStorage.setItem('userInfo', userInfo.user);
+        localStorage.setItem('userInfo', angular.toJson(userInfo.user));
         // update user
         angular.extend(wrappedService.user, userInfo.user);
         // flag true on isLogged
         wrappedService.isLogged = true;
         // update userRole
-        wrappedService.userRole = 'Administrator';
+        wrappedService.userRole = userInfo.userRole;
         return userInfo;
       },
       loginUser: function (httpPromise) {

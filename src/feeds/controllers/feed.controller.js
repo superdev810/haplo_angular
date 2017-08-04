@@ -1,7 +1,4 @@
 angular.module('feed.controllers',[])
-  .run(function ($rootScope) {
-    console.log('run rootscope', $rootScope.socialShare);
-  })
   .controller('FeedController', function ($http, $scope, FeedRequest, $stateParams, PostConstants, $rootScope, $location, Socialshare) {
 
 

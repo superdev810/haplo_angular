@@ -3,7 +3,6 @@
  */
 angular.module('users.routes', [])
   .config(function ($stateProvider) {
-    console.log($stateProvider);
     $stateProvider
       .state('app.register', {
         url: '/register',

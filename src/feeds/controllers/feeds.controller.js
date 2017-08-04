@@ -24,7 +24,7 @@ angular.module('feeds.controllers',[])
 
     $scope.tab = 1;
     // console.log('$stateParams.type', $stateParams.type);
-    console.log(feedsTypes.types);
+    // console.log(feedsTypes.types);
     if ($stateParams.type) {
       $scope.tab = feedsTypes[$stateParams.type]
     }

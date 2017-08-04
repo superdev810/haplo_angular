@@ -1,4 +1,3 @@
-/* jshint -W084 */
 angular.module('ustadium.mock', ['ngMockE2E', 'ustadium.constants'])
 .factory('delayHTTP', function ($q, $timeout) {
   return {
@@ -126,8 +125,8 @@ angular.module('ustadium.mock', ['ngMockE2E', 'ustadium.constants'])
     // if is present in a registered users array.
     if (queryToken = headers['X-Token']) {
       if (localStorage.getItem('userToken')) {
-
-        return [200, {data: {token: queryToken, user: localStorage.getItem('userInfo'), name: 'aaaaa', userRole: null}}, {}];
+        var userInfo = angular.fromJson(localStorage.getItem('userInfo'));
+        return [200, {data: {token: queryToken, user: userInfo, name: 'aaaaa', userRole: userRoles.admin}}, {}];
       } else {
         return [401, 'auth token invalid or expired', {}];
       }

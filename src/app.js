@@ -152,8 +152,7 @@ angular.module('ustadium', [
       }
     }
     $scope.menu = menuService.getMenu('topbar');
-    console.log($scope.menu);
-    console.log('Menu View Flag: ', $scope.menu.shouldRender($scope.authentication.user));
+    // console.log('Menu View Flag: ', $scope.menu.shouldRender($scope.authentication.user));
     // Expose $state and $stateParams to the <body> tag
     $scope.$state = $state;
     $scope.$stateParams = $stateParams;
