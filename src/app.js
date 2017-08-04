@@ -173,8 +173,7 @@ angular.module('ustadium', [
       $scope.login.working = true;
       $scope.login.wrong = false;
 
-      var userInfo = loginService.loginUser(loginPromise);
-      console.log('User INFO: ', userInfo);
+      loginService.loginUser(loginPromise);
 
       loginPromise.catch(function (err) {
         console.log(err);
