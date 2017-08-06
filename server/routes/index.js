@@ -65,22 +65,24 @@ function requestFeedInfo(feedName, single, res, next) {
     uri: 'https://ustadium-api-dev.herokuapp.com/api/feeds'+ requestEnd ,
     method: 'GET'
   }, function (error, response, feed) {
-    var feedJson = JSON.parse(feed);
-    // console.log(feedJson);
-    if (feedJson.data.mediaFileThumbnail) {
-      res.locals.socialShare.image = feedJson.data.mediaFileThumbnail;
-    }
+    if(typeof feed != undefined) {
+      var feedJson = JSON.parse(feed);
+      // console.log(feedJson);
+      if (feedJson.data && typeof feedJson.data.mediaFileThumbnail != undefined) {
+        res.locals.socialShare.image = feedJson.data.mediaFileThumbnail;
+      }
 
-    if (feedJson.data.name) {
-      res.locals.socialShare.title = feedJson.data.name;
-    }
+      if (feedJson.data && typeof feedJson.data.name !== undefined) {
+        res.locals.socialShare.title = feedJson.data.name;
+      }
 
-    if (feedJson.data.description) {
-      res.locals.socialShare.description = feedJson.data.description;
-    }
+      if (feedJson.data && typeof feedJson.data.description !== undefined) {
+        res.locals.socialShare.description = feedJson.data.description;
+      }
 
-    if(feedJson.data.mediaFileThumbnail) {
-      res.locals.socialShare.url = feedJson.data.mediaFileThumbnail;
+      if (feedJson.data && typeof feedJson.data.mediaFileThumbnail !== undefined) {
+        res.locals.socialShare.url = feedJson.data.mediaFileThumbnail;
+      }
     }
     next();
   })

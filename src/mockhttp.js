@@ -5,7 +5,7 @@ angular.module('ustadium.mock', ['ngMockE2E', 'ustadium.constants'])
       var delayedResponse = $q.defer();
       $timeout(function () {
         delayedResponse.resolve(request);
-      }, 700);
+      }, 0);
       return delayedResponse.promise;
     },
     response: function (response) {
@@ -187,5 +187,6 @@ angular.module('ustadium.mock', ['ngMockE2E', 'ustadium.constants'])
   //pass any requests that dont fit the fake ones through.
   $httpBackend.whenGET(/[\s\S]*/).passThrough();
   $httpBackend.whenPOST(/[\s\S]*/).passThrough();
+  $httpBackend.whenPUT(/[\s\S]*/).passThrough();
 
 });

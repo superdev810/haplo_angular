@@ -12,4 +12,12 @@ angular.module('my.profile', [])
         console.log($scope.user);
       })
 
+    $scope.saveProfile = function () {
+      Authentication.updateUser($scope.user._id, $scope.user)
+        .then(function (success) {
+          console.log(success);
+        }, function (error) {
+          console.log(error);
+        });
+    }
   });

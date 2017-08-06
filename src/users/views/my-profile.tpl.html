@@ -3,7 +3,7 @@
     <div class="col-md-4 col-xs-4">
       <img style="width: 100%; border-radius: 50%" src="{{user.profileImageThumbnail}}">
     </div>
-    <div class="col-md-7 col-md-offset-1 col-xs-7 col-xs-offset-1">
+    <form class="col-md-7 col-md-offset-1 col-xs-7 col-xs-offset-1" role="myprofile" ng-submit="saveProfile()">
       <div class="row mt-10">
         <div class="col-md-5 fs-20">
           NickName:
@@ -44,6 +44,9 @@
           <input type="text" class="col-md-7 form-control fs-20" ng-model="user.phone">
         </div>
       </div>
-    </div>
+      <div class="row mt-10 col-md-offset-1 col-md-3">
+        <button type="submit" class="btn btn-default col-md-12">Save</button>
+      </div>
+    </form>
   </div>
 </div>
