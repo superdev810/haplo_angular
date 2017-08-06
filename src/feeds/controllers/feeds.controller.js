@@ -15,6 +15,13 @@ angular.module('feeds.controllers',[])
       console.log('error', data)
     });
 
+    FeedRequest.feedData('feeds/subscribed').then(function(data){
+      $scope.subscribed = data.data;
+      console.log('sub', $scope.subscribed);
+    },function(data){
+      console.log('error', data)
+    });
+
     var feedsTypes = {
       Hot: 1,
       New: 2,
