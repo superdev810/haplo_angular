@@ -2,7 +2,7 @@
  * Created by superdev on 8/3/2017.
  */
 angular.module('my.profile', [])
-  .controller('MyProfileController', function ($scope, $http, $timeout, $state, $stateParams, Authentication) {
+  .controller('MyProfileController', function ($scope, $http, $timeout, $state, $stateParams, Authentication, Notification) {
     console.log($stateParams.userId);
     $scope.user = {};
     Authentication.getUser($stateParams.userId)
@@ -15,9 +15,11 @@ angular.module('my.profile', [])
     $scope.saveProfile = function () {
       Authentication.updateUser($scope.user._id, $scope.user)
         .then(function (success) {
+          Notification.success({message: "User profile updated successfully", delay: 2000})
           console.log(success);
         }, function (error) {
           console.log(error);
+          Notification.success({message: "User profile updated failure", delay: 2000})
         });
     }
   });
