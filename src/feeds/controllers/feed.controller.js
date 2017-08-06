@@ -8,18 +8,6 @@ angular.module('feed.controllers',[])
     // define variables
     $scope.page = {};
 
-
-    //Call service to trigger immediately the sharing method
-    //*
-    // Socialshare.share({
-    //   'provider': 'twitter',
-    //   'attrs': {
-    //     'socialshareUrl': $rootScope.socialShare.url,
-    //     'socialshareHashtags': 'ustadium, angular, socialshare'
-    //   }
-    // });
-    //*/
-
     // define functions
     $scope.showComment = showComment;
     $scope.postComment = postComment;

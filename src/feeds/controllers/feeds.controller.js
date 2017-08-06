@@ -36,12 +36,4 @@ angular.module('feeds.controllers',[])
       return $scope.tab === tabNum;
     };
 
-    /* search feeds by name */
-    $scope.searchFeed = function (searchText) {
-      console.log('searchText', searchText);
-      $scope.filteredItems = $filter('filter')($scope.feeds, {
-        $: searchText
-      });
-    }
-
   });

@@ -10,10 +10,16 @@ angular.module('users.routes', [])
         controller: 'RegisterController',
         accessLevel: accessLevels.anon
       })
-      .state('app.profile', {
+      .state('app.otherprofile', {
         url: '/:postId/profile',
-        templateUrl: 'users/views/user-profile.tpl.html',
-        controller: 'UserProfileController',
+        templateUrl: 'users/views/other-profile.tpl.html',
+        controller: 'OtherProfileController',
         accessLevel: accessLevels.anon
+      })
+      .state('app.myprofile', {
+        url: '/profile/:userId',
+        templateUrl: 'users/views/my-profile.tpl.html',
+        controller: 'MyProfileController',
+        accessLevel: accessLevels.admin
       });
   });

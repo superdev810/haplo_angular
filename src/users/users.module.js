@@ -3,6 +3,7 @@ angular.module('ustadium.users', [
   'users.routes',
   'users.controllers',
   'users.profile',
+  'my.profile',
   'users.services',
 ]);
 

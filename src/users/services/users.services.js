@@ -12,7 +12,8 @@ function Authentication($window, $http, RestAPI, ApiEndpoints) {
     signup: signUp,
     verify: verify,
     forgotPassword: forgotPassword,
-    resetForgotPassword: resetForgotPassword
+    resetForgotPassword: resetForgotPassword,
+    getUser: getUser
   };
 
   return auth;
@@ -35,5 +36,10 @@ function Authentication($window, $http, RestAPI, ApiEndpoints) {
   function resetForgotPassword(data) {
     console.log(data);
     return $http.post(base + '/auth/reset-forgotten-password', data);
+  }
+
+  function getUser(data) {
+    console.log(data);
+    return $http.get(base + '/api/users/' + data);
   }
 }

@@ -14,7 +14,7 @@ angular.module('loginService', ['ui.router'])
         delete $http.defaults.headers.common['X-Token'];
         return;
       }
-      $http.defaults.headers.common['X-Token'] = token.toString();
+      $http.defaults.headers.common['Authorization'] = 'JWT ' + token.toString();
     };
 
     var setToken = function (token) {
@@ -152,7 +152,7 @@ angular.module('loginService', ['ui.router'])
         // flag true on isLogged
         wrappedService.isLogged = true;
         // update userRole
-        wrappedService.userRole = userInfo.userRole;
+        wrappedService.userRole = userRoles.admin;
         return userInfo;
       },
       loginUser: function (httpPromise) {
