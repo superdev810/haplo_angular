@@ -31,6 +31,20 @@
       </a>
     </div>
   </div>
+
+  <div ng-show="isSet(3)">
+    <div class="row">
+      <div class="category">Subscribed</div>
+      <a ui-sref="app.feed({ name: x.name })" class="card col-xs-6" ng-repeat="x in subscribed.data | filter:searchText">
+        <div class="image" style="background-image: url({{x.mediaFile}}); background-repeat: no-repeat;   background-size: cover;">
+          <div class="image-h2">
+            <div class= "name">{{x.name}}</div>
+            <div class="name"> {{x.author.username}}</div>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
 </div>
 
 
