@@ -7,8 +7,7 @@ function FeedRequest($window, $http, RestAPI, ApiEndpoints) {
 var feedCall = {
   feedData: feedData,
   getFeed: getFeed,
-  getPosts: getPosts,
-  postComment: postComment
+  getPosts: getPosts
 }
   return feedCall;
 
@@ -28,7 +27,4 @@ var feedCall = {
     return $http.get(base + '/api/feeds/'+feed_id+'/posts');
   }
 
-  function postComment(post_params) {
-    return $http.post(base + '/api/posts', post_params);
-  }
 }

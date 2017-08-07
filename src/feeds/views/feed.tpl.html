@@ -17,17 +17,16 @@
       <div class="fa fa-twitter fa-2x">Share</div>
     </a>
   </div>
-  <form class="search" name="searchForm" role="search" ng-submit="searchFeed(searchText)">
+  <form class="search col-md-12" name="searchForm" role="search" ng-submit="searchFeed(searchText)">
     <div class="" style="width: 100%">
       <div class="search-btn col-md-1 col-md-offset-7">Search:</div>
       <div class="form-group col-md-3 search-input">
         <input type="text" class="form-control" placeholder="Post Name" ng-model="searchText" name="searchText">
       </div>
       <!--<button type="submit" class="btn btn-primary search-btn col-md-1">Search</button>-->
-
     </div>
   </form>
-  <div class="post-action border-top" ng-hide="true">
+  <div class="post-action border-top" ng-hide="false">
     <div class="fa fa-thumbs-o-up like cursor-pointer"> Like</div>
     <div class="fa fa-thumbs-o-down like cursor-pointer"> Dislike</div>
     <div class="fa fa-comment like cursor-pointer" ng-click="showComment()"> Comment</div>
@@ -41,20 +40,25 @@
       <a ui-sref="app.otherprofile({postId:post._id})">
         <img src="{{post.author.profileImageThumbnail}}" class="post-img" alt="">
       </a>
-      <a ui-sref="app.post({id:post._id})">
-        <div class="wrapper mt-10" style="width: 100%">
+      <div class="wrapper mt-10" style="width: 100%">
+        <a ui-sref="app.post({id:post._id})">
           <span class="post-name">{{post.author.nickname}}</span>
           <span class="">{{post.text}}</span>
           <div class="text-center">
             <img src="{{post.mediaFileThumbnail}}" class="post-media" ng-show="post.mediaFileThumbnail"/>
           </div>
-          <div class="post-details border-top" >
-            <div class="fa fa-thumbs-o-up like cursor-pointer"> {{post.likes}} Likes</div>
-            <div class="fa fa-thumbs-o-down like cursor-pointer"> {{post.dislikes}} Dislikes</div>
-            <div class="fa fa-comment like cursor-pointer"> {{post.numComments}} Comments</div>
-          </div>
+        </a>
+        <div class="post-details border-top" >
+          <div class="fa fa-thumbs-o-up like cursor-pointer" ng-click="postLike(post._id)"> {{post.likes}} Likes</div>
+          <div class="fa fa-thumbs-o-down like cursor-pointer"> {{post.dislikes}} Dislikes</div>
+          <div class="fa fa-comment like cursor-pointer"> {{post.numComments}} Comments</div>
         </div>
-      </a>
+        <div class="post-action-add" ng-show="true">
+          <textarea rows="1" class="post-action-content post-comment" ng-model="post.commentText"></textarea>
+          <button class="btn btn-default post-post" ng-click="postComment(post._id, post.commentText)">Post</button>
+        </div>
+      </div>
+
     </div> <!-- post-header -->
   </div>
 </div>

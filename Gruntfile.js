@@ -131,6 +131,7 @@ module.exports = function (grunt) {
           'libs/angular/angular.js',
           'libs/angular-animate/angular-animate.js',
           'libs/angular-bootstrap/ui-bootstrap-tpls.js',
+          'libs/jquery/dist/jquery.min.js',
           'libs/angular-mocks/angular-mocks.js',
           'libs/angular-ui-router/release/angular-ui-router.js',
           'libs/angular-toastr/dist/angular-toastr.tpls.js',

@@ -1,5 +1,5 @@
 angular.module('feed.controllers',[])
-  .controller('FeedController', function ($http, $scope, FeedRequest, $stateParams, PostConstants, $rootScope, $location, Socialshare) {
+  .controller('FeedController', function ($http, $scope, FeedRequest, $stateParams, PostConstants, $rootScope, $location, PostRequest) {
 
 
     $rootScope.socialShare.title = 'Feed Controller';
@@ -11,6 +11,7 @@ angular.module('feed.controllers',[])
     // define functions
     $scope.showComment = showComment;
     $scope.postComment = postComment;
+    $scope.postLike = postLike;
 
     // initialize the controller
     function init() {
@@ -29,6 +30,16 @@ angular.module('feed.controllers',[])
               .then(function(data){
                 $scope.posts = data.data;
                 console.log($scope.posts);
+                console.log($('#post-comment'));
+                angular.element(document).ready(function () {
+                  var postCommentElem = document.getElementsByClassName("post-comment");
+                  console.log(postCommentElem);
+                  Array.from(postCommentElem).forEach(function (elem) {
+                    console.log(elem);
+                      autosize(elem);
+                  })
+                });
+
 
               },function(data){
                 console.log('error', data)
@@ -36,6 +47,7 @@ angular.module('feed.controllers',[])
           } else {
             return q.reject();
           }
+
         }).then (function (result) {
         return {data: result};
       }).catch(function() {
@@ -44,28 +56,27 @@ angular.module('feed.controllers',[])
 
       $scope.page.title = $stateParams.name;
       $scope.page.isComment = false;
+      autosize(document.getElementById('post-post'));
+
+
     }
 
     // toggle post comment view
     function showComment() {
       $scope.page.isComment = true;
-      autosize(document.getElementById("comment-post"));
     }
 
     // post comment handle
-    function postComment() {
+    function postComment(postId, commentText) {
       let postParams = {
-        text: $scope.commentText,
-        feeds: [$scope.feed._id],
+        text: commentText,
+        // feeds: [$scope.feed._id],
         contentType: PostConstants.type.text,
-        // replyToPost: null,
+        replyToPost: postId,
       }
-      console.log(localStorage.getItem('userToken'));
-      console.log($http.defaults.headers.common['X-Token']);
-      delete $http.defaults.headers.common['X-Token'];
       console.log(postParams);
 
-      FeedRequest.postComment(postParams)
+      PostRequest.postComment(postParams)
         .then(function (data) {
           console.log(data.data);
         }, function (error) {
@@ -74,6 +85,21 @@ angular.module('feed.controllers',[])
         .catch(function (excep) {
           console.log(excep);
         });
+    }
+
+    function postLike(postId) {
+      PostRequest.postLike(postId)
+        .then(function (success) {
+          Notification.success({message: "Like post successfully", delay: 2000});
+          console.log(success);
+        }, function (error) {
+          Notification.success({message: "Like post failure", delay: 2000});
+          console.log(error);
+        })
+        .catch(function (error) {
+          Notification.success({message: "Like post failure", delay: 2000});
+          console.log(error);
+        })
     }
 
     init();
