@@ -12,6 +12,7 @@ angular.module('feed.controllers',[])
     $scope.showComment = showComment;
     $scope.postComment = postComment;
     $scope.postLike = postLike;
+    $scope.postDislike = postDislike;
 
     // initialize the controller
     function init() {
@@ -29,18 +30,21 @@ angular.module('feed.controllers',[])
             FeedRequest.getPosts($scope.feed._id)
               .then(function(data){
                 $scope.posts = data.data;
+
+                /* set default img when profile img is null */
+                // for(var i=0; i<$scope.posts.length; i++){
+                //   $scope.posts[i].author.profileImageThumbnail = $scope.posts[i].author.profileImageThumbnail?$scope.posts[i].author.profileImageThumbnail:defaulProfileImage;
+                // }
                 console.log($scope.posts);
                 console.log($('#post-comment'));
+
+                /* autosize setting to all textarea */
                 angular.element(document).ready(function () {
                   var postCommentElem = document.getElementsByClassName("post-comment");
-                  console.log(postCommentElem);
                   Array.from(postCommentElem).forEach(function (elem) {
-                    console.log(elem);
                       autosize(elem);
                   })
                 });
-
-
               },function(data){
                 console.log('error', data)
               });
@@ -67,9 +71,10 @@ angular.module('feed.controllers',[])
     }
 
     // post comment handle
-    function postComment(postId, commentText) {
+    function postComment(postId, post) {
+
       let postParams = {
-        text: commentText,
+        text: post.commentText,
         // feeds: [$scope.feed._id],
         contentType: PostConstants.type.text,
         replyToPost: postId,
@@ -79,21 +84,28 @@ angular.module('feed.controllers',[])
       PostRequest.postComment(postParams)
         .then(function (data) {
           console.log(data.data);
-        }, function (error) {
+          post.numComments++;
+          Notification.success({message: "Comment post successfully", delay: 2000});
 
+        }, function (error) {
+          console.log(error);
         })
         .catch(function (excep) {
           console.log(excep);
         });
     }
 
-    function postLike(postId) {
-      PostRequest.postLike(postId)
+    function postLike(post) {
+      console.log(post);
+      PostRequest.postLike(post._id)
         .then(function (success) {
-          Notification.success({message: "Like post successfully", delay: 2000});
+          post.likes = success.data.data.post.likes;
+          post.dislikes = success.data.data.post.dislikes;
           console.log(success);
+          Notification.success({message: "Like post successfully", delay: 2000});
         }, function (error) {
           Notification.success({message: "Like post failure", delay: 2000});
+          console.log('Error occur');
           console.log(error);
         })
         .catch(function (error) {
@@ -102,6 +114,24 @@ angular.module('feed.controllers',[])
         })
     }
 
+    function postDislike(post) {
+      console.log(post);
+      PostRequest.postDislike(post._id)
+        .then(function (success) {
+          post.likes = success.data.data.post.likes;
+          post.dislikes = success.data.data.post.dislikes;
+          console.log(success);
+          Notification.success({message: "Like post successfully", delay: 2000});
+        }, function (error) {
+          Notification.success({message: "Like post failure", delay: 2000});
+          console.log('Error occur');
+          console.log(error);
+        })
+        .catch(function (error) {
+          Notification.success({message: "Like post failure", delay: 2000});
+          console.log(error);
+        })
+    }
     init();
 
 

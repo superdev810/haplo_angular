@@ -17,10 +17,11 @@ function PostRequest($window, $http, RestAPI, ApiEndpoints) {
   }
 
   function postLike(postId) {
+    console.log(postId);
     return $http.put(base + '/api/posts/'+ postId + '/like');
   }
 
-  function postDislike() {
+  function postDislike(postId) {
     return $http.put(base + '/api/posts/'+ postId + '/dislike');
   }
 
