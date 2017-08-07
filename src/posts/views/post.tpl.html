@@ -6,7 +6,10 @@
       <img class="modal-img"src="{{post.mediaFileThumbnail ? post.mediaFileThumbnail : post.author.profileImage}}"/>
       <p>{{post.author.nickname}}</p>
       <p>{{post.text}}</p>
+      <div ng-repeat="reply in replies">
+        <p> {{reply.author.nickname}} </p>
+        <p> {{reply.text}} </p>
+      </div>
     </div>
-
   </div>
 </div>

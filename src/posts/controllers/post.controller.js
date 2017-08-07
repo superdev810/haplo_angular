@@ -5,11 +5,18 @@ angular.module('post.controllers',[])
     console.log($stateParams);
     PostRequest.getPost($stateParams.id).then(function(data){
         $scope.post = data.data.data;
-        console.log('hello', $scope.post);
+        // console.log('hello', $scope.post);
 
       },function(data){
-        console.log('error', data)
+        // console.log('error', data)
       });
+
+      PostRequest.getPost($stateParams.id + '/replies').then(function(data){
+          $scope.replies = data.data.data;
+          console.log('replies', $scope.replies);
+        },function(data){
+          console.log('error', data)
+        });
 
     $scope.closeModal = function (id) {
       $scope.open = id;
