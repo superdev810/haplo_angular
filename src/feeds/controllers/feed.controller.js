@@ -1,5 +1,5 @@
 angular.module('feed.controllers',[])
-  .controller('FeedController', function ($http, $scope, FeedRequest, $stateParams, PostConstants, $rootScope, $location, PostRequest) {
+  .controller('FeedController', function ($http, $scope, FeedRequest, $stateParams, PostConstants, $rootScope, $location, PostRequest, Notification) {
 
 
     $rootScope.socialShare.title = 'Feed Controller';
@@ -121,9 +121,9 @@ angular.module('feed.controllers',[])
           post.likes = success.data.data.post.likes;
           post.dislikes = success.data.data.post.dislikes;
           console.log(success);
-          Notification.success({message: "Like post successfully", delay: 2000});
+          Notification.success({message: "Dislike post successfully", delay: 2000});
         }, function (error) {
-          Notification.success({message: "Like post failure", delay: 2000});
+          Notification.success({message: "Dislike post failure", delay: 2000});
           console.log('Error occur');
           console.log(error);
         })

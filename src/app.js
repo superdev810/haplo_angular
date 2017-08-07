@@ -53,8 +53,8 @@ angular.module('ustadium', [
       startRight: 10,
       verticalSpacing: 50,
       horizontalSpacing: 50,
-      positionX: 'right',
-      positionY: 'top'
+      positionX: 'left',
+      positionY: 'bottom'
     });
   })
   .config(['$qProvider', function ($qProvider) {
