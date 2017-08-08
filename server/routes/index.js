@@ -5,12 +5,13 @@ var router = express.Router();
 
 var socialShare = {
   appId: '2231777543',
-  title:'ustadium',
+  title:'user on uSTADIUM',
   description: 'This is ustadium website for sports fan',
   siteName: 'Nextgen social sports website',
   url: 'https://ustadium-webapp.herokuapp.com',
   image: 'http://ustadium-media.s3.amazonaws.com/content/images/83/5bfaa0c56911e685d8934a6a5ce0af/small.jpg',
-  type: 'website'
+  imageAlt: 'ustadium',
+  type: 'article'
 },
   feedType = {
     New: '/',
@@ -19,6 +20,7 @@ var socialShare = {
     created: '/created'
   };
 
+var defaultProfileImage = 'http://ustadium-media.s3.amazonaws.com/content/feed/81/9bb200294b11e7bb99538ff4cfc91a/master.jpg';
 router.get('/feeds/:name', function(req, res, next) {
   res.locals.socialShare = socialShare;
   var single = '';
@@ -39,7 +41,7 @@ router.get('/feed/:name', function(req, res, next) {
 router.get('/post/:id', function(req, res, next) {
   res.locals.socialShare = socialShare;
   console.log('post id: ', req.params.id);
-  requestPostInfo(req.params.id, res, next);
+  requestPostInfo(req.params.id, req, res, next);
 }, function (req, res, next) {
   res.render('index', { socialShare: res.locals.socialShare });
 })
@@ -89,28 +91,31 @@ function requestFeedInfo(feedName, single, res, next) {
 
 }
 
-function requestPostInfo(postId, res, next) {
+function requestPostInfo(postId, req, res, next) {
   var requestEnd = '' + postId;
   request({
     uri: 'https://ustadium-api-dev.herokuapp.com/api/posts/'+ requestEnd ,
     method: 'GET'
   }, function (error, response, feed) {
-    var feedJson = JSON.parse(feed);
-    // console.log(feedJson);
-    if (feedJson.data.mediaFileThumbnail) {
-      res.locals.socialShare.image = feedJson.data.mediaFileThumbnail?feedJson.data.mediaFileThumbnail:feedJson.data.author.profileImageThumbnail;
-    }
+    console.log(feed);
+    if(feed != undefined) {
+      var feedJson = JSON.parse(feed);
+      console.log(feedJson);
+      res.locals.socialShare.imageAlt = feedJson.data.author.username;
+      if (feedJson.data.mediaFileThumbnail) {
+        res.locals.socialShare.image = feedJson.data.author.profileImageThumbnail ? feedJson.data.author.profileImageThumbnail : defaulProfileImage;
+      }
 
-    if (feedJson.data.name) {
-      res.locals.socialShare.title = feedJson.data.author.username;
-    }
+      if (feedJson.data.author.nickname) {
+        res.locals.socialShare.title = feedJson.data.author.nickname + ' on uSTADIUM';
+      }
 
-    if (feedJson.data.description) {
-      res.locals.socialShare.description = feedJson.data.text;
-    }
+      if (feedJson.data.text) {
+        res.locals.socialShare.description = feedJson.data.text;
+      }
 
-    if(feedJson.data.mediaFileThumbnail) {
-      res.locals.socialShare.url = feedJson.data.mediaFileThumbnail;
+      var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
+      res.locals.socialShare.url = fullUrl;
     }
     next();
   })
