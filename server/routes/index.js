@@ -3,13 +3,15 @@ var url = require('url');
 var request = require('request');
 var router = express.Router();
 
+var defaultProfileImage = 'http://ustadium-media.s3.amazonaws.com/content/feed/81/9bb200294b11e7bb99538ff4cfc91a/master.jpg';
+
 var socialShare = {
   appId: '2231777543',
   title:'user on uSTADIUM',
   description: 'This is ustadium website for sports fan',
   siteName: 'Nextgen social sports website',
   url: 'https://ustadium-webapp.herokuapp.com',
-  image: 'http://ustadium-media.s3.amazonaws.com/content/images/83/5bfaa0c56911e685d8934a6a5ce0af/small.jpg',
+  image: defaultProfileImage,
   imageAlt: 'ustadium',
   type: 'article'
 },
@@ -20,7 +22,7 @@ var socialShare = {
     created: '/created'
   };
 
-var defaultProfileImage = 'http://ustadium-media.s3.amazonaws.com/content/feed/81/9bb200294b11e7bb99538ff4cfc91a/master.jpg';
+
 router.get('/feeds/:name', function(req, res, next) {
   res.locals.socialShare = socialShare;
   var single = '';
@@ -102,7 +104,7 @@ function requestPostInfo(postId, req, res, next) {
       var feedJson = JSON.parse(feed);
       console.log(feedJson);
       res.locals.socialShare.imageAlt = feedJson.data.author.username;
-      if (feedJson.data.mediaFileThumbnail) {
+      if (feedJson.data.author.profileImageThumbnail) {
         res.locals.socialShare.image = feedJson.data.author.profileImageThumbnail ? feedJson.data.author.profileImageThumbnail : defaulProfileImage;
       }
 
