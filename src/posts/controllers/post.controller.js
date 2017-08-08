@@ -5,7 +5,7 @@ angular.module('post.controllers',[])
     console.log($stateParams);
     PostRequest.getPost($stateParams.id).then(function(data){
         $scope.post = data.data.data;
-        // console.log('hello', $scope.post);
+        console.log('hello', $scope.post);
 
       },function(data){
         // console.log('error', data)

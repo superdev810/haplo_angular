@@ -3,8 +3,9 @@
     <!-- Modal content -->
     <div class="modal-content">
       <span ng-click="closeModal(0)"class="close">&times;</span>
-      <img class="modal-img"src="{{post.mediaFileThumbnail ? post.mediaFileThumbnail : post.author.profileImage}}"/>
+      <img class="post-img" src="{{post.author.profileImageThumbnail}}"/>
       <p>{{post.author.nickname}}</p>
+      <img class="modal-img" src="{{post.mediaFileThumbnail ? post.mediaFileThumbnail : post.author.profileImage}}"/>
       <p>{{post.text}}</p>
       <p> Replies</p>
       <div ng-repeat="reply in replies">
