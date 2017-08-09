@@ -1,20 +1,17 @@
 <div class="jumbotron">
   <div id="myModal" class="modal" ng-class="{'mDisplay': open === 1}">
     <!-- Modal content -->
-    <div class="modal-content">
-      <div class="post-background">
-        <span ng-click="closeModal(0)"class="close">&times;</span>
-        <img class="post-img" src="{{post.author.profileImageThumbnail}}"/>
-        <p>{{post.author.nickname}}</p>
-        <img class="modal-img" src="{{post.mediaFileThumbnail ? post.mediaFileThumbnail : post.author.profileImage}}"/>
-        <p>{{post.text}}</p>
-      </div>
-      <p> Replies</p>
-      <div class="post-background" ng-repeat="reply in replies">
-        <img class="post-img" src="{{reply.author.profileImageThumbnail}}"/>
-        <p> {{reply.author.nickname}} </p>
-        <p> {{reply.text}} </p>
-      </div>
+    <div class="modal-content post-background">
+      <span ng-click="closeModal(0)"class="close">&times;</span>
+      <img class="post-img" src="{{post.author.profileImageThumbnail}}"/>
+      <p>{{post.author.nickname}}</p>
+      <img class="modal-img" src="{{post.mediaFileThumbnail ? post.mediaFileThumbnail : post.author.profileImage}}"/>
+      <p>{{post.text}}</p>
     </div>
   </div>
+  <p class="layer"> 10 </p>
+  <p class="layer"> 20 </p>
+  <p class="layer"> 30 </p>
+  <p class="layer"> 40 </p>
+  <p class="layer"> 50 </p>
 </div>

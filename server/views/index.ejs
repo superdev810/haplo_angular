@@ -26,7 +26,7 @@
   <meta property="og:type" content="<%= socialShare.type %>">
 
   <!-- BootstrapCDN -->
-  <link href="//netdna.bootstrapcdn.com/bootswatch/3.3.1/slate/bootstrap.min.css" rel="stylesheet">
+  <!-- <link href="//netdna.bootstrapcdn.com/bootswatch/3.3.1/slate/bootstrap.min.css" rel="stylesheet"> -->
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
   <!-- compiled css -->
   <link href="/build/style.css" rel="stylesheet">
@@ -54,6 +54,7 @@
 
 <body ng-controller="BodyController">
 <div class="container">
+  <%if (!isPost) { %>
   <div class="navbar navbar-default" role="navigation">
     <div class="navbar-collapse">
       <ul class="nav navbar-nav" ng-if="menu.shouldRender(authentication.user);">
@@ -106,6 +107,7 @@
       <div class="alert alert-danger"><b>Error:</b> {{login.errMsg}} </div>
     </div>
   </div>
+  <% } %>
   <ui-view ng-hide="doingResolve"></ui-view>
   <div class="jumbotron loading-jumbo" ng-show="doingResolve">
     <h1><i class="fa fa-refresh fa-2x fa-spin"></i> Loading</h1>

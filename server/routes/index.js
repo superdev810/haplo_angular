@@ -45,7 +45,7 @@ router.get('/post/:id', function(req, res, next) {
   console.log('post id: ', req.params.id);
   requestPostInfo(req.params.id, req, res, next);
 }, function (req, res, next) {
-  res.render('index', { socialShare: res.locals.socialShare });
+  res.render('index', { socialShare: res.locals.socialShare, isPost: true });
 })
 
 router.get('/', function(req, res, next) {
