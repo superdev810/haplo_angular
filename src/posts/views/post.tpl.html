@@ -1,12 +1,34 @@
-<div class="jumbotron">
+<div class="">
   <div id="myModal" class="modal" ng-class="{'mDisplay': open === 1}">
     <!-- Modal content -->
     <div class="modal-content post-background">
       <span ng-click="closeModal(0)"class="close">&times;</span>
-      <img class="post-img" src="{{post.author.profileImageThumbnail}}"/>
-      <p>{{post.author.nickname}}</p>
-      <img class="modal-img" src="{{post.mediaFileThumbnail ? post.mediaFileThumbnail : post.author.profileImage}}"/>
-      <p>{{post.text}}</p>
+      <div class="row">
+        <div class="col-xs-1">
+          <img class="post-img" src="{{post.author.profileImageThumbnail}}"/>
+        </div>
+        <div class="col-xs-5">
+          <div><b>{{post.author.nickname}}</b></div>
+          <div>{{post.createdAt | timeago:Date.now}}</div>
+        </div>
+      </div>
+      <div class="col-md-12 mt-10">
+        {{post.text}}{{imgCount}}
+      </div>
+      <div class="mt-10 text-center modal-img-wrapper">
+        <div ng-class="{'modal-img-scroller': imgCount==3}">
+          <img class="mt-10" ng-class="{'modal-img-one': imgCount==1, 'modal-img-two': imgCount == 2, 'modal-img-three': imgCount==3, 'modal-img-two': imgCount==4}" src="{{post.mediaFileThumbnail ? post.mediaFileThumbnail : post.author.profileImage}}"/>
+          <img class="mt-10" ng-class="{'modal-img-one': imgCount==1, 'modal-img-two': imgCount == 2, 'modal-img-three': imgCount==3, 'modal-img-two': imgCount==4}" src="{{post.mediaFileThumbnail ? post.mediaFileThumbnail : post.author.profileImage}}"/>
+          <img class="mt-10" ng-class="{'modal-img-one': imgCount==1, 'modal-img-two': imgCount == 2, 'modal-img-three': imgCount==3, 'modal-img-two': imgCount==4}" src="{{post.mediaFileThumbnail ? post.mediaFileThumbnail : post.author.profileImage}}"/>
+          <img class="mt-10" ng-class="{'modal-img-one': imgCount==1, 'modal-img-two': imgCount == 2, 'modal-img-three': imgCount==3, 'modal-img-two': imgCount==4}" src="{{post.mediaFileThumbnail ? post.mediaFileThumbnail : post.author.profileImage}}"/>
+        </div>
+      </div>
+      <div class="mt-10">
+        <div style="float: left; margin-right: 20px; color: #34c083;" class="fa fa-thumbs-o-up">   {{post.likes}}</div>
+        <div style="float: left; color: #e7202a;" class="fa fa-thumbs-o-down">   {{post.dislikes}}</div>
+        <div style="float: right;color: #000000;opacity:0.5; margin-right:20px; padding-left: 10px" class="fa fa-comment">   {{post.numComments}}</div>
+
+      </div>
     </div>
   </div>
   <div class="number-container">

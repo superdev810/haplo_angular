@@ -5,5 +5,6 @@
    'ustadium.grandfather',
    'post.routes',
    'post.controllers',
-   'post.services'
+   'post.services',
+   'post.filters'
  ]);
