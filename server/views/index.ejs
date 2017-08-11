@@ -54,8 +54,7 @@
 
 <body ng-controller="BodyController">
 <div class="container">
-  <%if (!isPost) { %>
-  <div class="navbar navbar-default" role="navigation">
+  <div class="navbar navbar-default hiddenDev" role="navigation">
     <div class="navbar-collapse">
       <ul class="nav navbar-nav" ng-if="menu.shouldRender(authentication.user);">
         <li ng-repeat="item in menu.items | orderBy: 'position'" ng-hide="ls.isLogged && item.title=='Register'" ng-if="item.shouldRender(authentication.user);" ng-switch="item.type" ng-class="{ dropdown: item.type === 'dropdown' }" ui-sref-active="active" class="{{item.class}}" uib-dropdown="item.type === 'dropdown'">
@@ -107,7 +106,6 @@
       <div class="alert alert-danger"><b>Error:</b> {{login.errMsg}} </div>
     </div>
   </div>
-  <% } %>
   <ui-view ng-hide="doingResolve"></ui-view>
   <div class="jumbotron loading-jumbo" ng-show="doingResolve">
     <h1><i class="fa fa-refresh fa-2x fa-spin"></i> Loading</h1>
