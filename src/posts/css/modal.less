@@ -91,6 +91,85 @@
 .number-container {
   position: fixed;
   bottom: 0;
+  left: 0;
   display: flex;
   flex-direction: row;
+}
+
+.number-wrapper1 {
+  position: relative;
+  float: left;
+  width: 404px;
+  height: 183px;
+}
+
+.number-wrapper1 .layer {
+  margin-left: 144px;
+  margin-right: 144px;
+  margin-bottom: 64px;
+}
+
+.number-wrapper2 {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+}
+
+.number-wrapper2.wraper2-1{
+  left: 0;
+  right: 202px;
+}
+
+.number-wrapper2.wraper2-2{
+  left: 202px;
+  right: 0;
+}
+
+.number-wrapper2:before {
+  position: absolute;
+  content: '';
+  left: 43px;
+  bottom: 0px;
+  width: 20px;
+  height: 40px;
+  background-color: rgba(0, 0, 0, .05);
+}
+
+.number-wrapper2:after {
+  position: absolute;
+  content: '';
+  right: 43px;
+  bottom: 0px;
+  width: 20px;
+  height: 40px;
+  background-color: rgba(0, 0, 0, .05);
+}
+
+.number-wrapper3 {
+  position: relative;
+  float: left;
+  margin-top: 183px;
+  margin-left: 0;
+  margin-right: 0;
+  width: 202px;
+}
+
+.number-wrapper3:before {
+  position: absolute;
+  content: '';
+  left: 74px;
+  bottom: 0px;
+  width: 20px;
+  height: 40px;
+  background-color: rgba(0, 0, 0, .05);
+}
+
+.number-wrapper3:after {
+  position: absolute;
+  content: '';
+  right: 74px;
+  bottom: 0px;
+  width: 20px;
+  height: 40px;
+  background-color: rgba(0, 0, 0, .05);
 }
