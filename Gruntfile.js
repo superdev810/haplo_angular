@@ -1,8 +1,10 @@
 var path = require('path');
+// const mozjpeg = require('imagemin-mozjpeg');
 
 module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-html2js');
   grunt.loadNpmTasks('grunt-contrib-less');
+  // grunt.loadNpmTasks('grunt-contrib-imagemin');
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-concat');
@@ -68,6 +70,26 @@ module.exports = function (grunt) {
         }
       }
     },
+    // imagemin: {
+    //   static: {
+    //     options: {
+    //       optimizationLevel: 3,
+    //       svgoPlugins: [{removeViewBox: false}],
+    //       use: [mozjpeg()] // Example plugin usage
+    //     },
+    //     files: {
+    //       'build/': 'public/img/*.png'
+    //     }
+    //   },
+    //   dynamic: {
+    //     files: [{
+    //       expand: true,
+    //       cwd: 'public/img/',
+    //       src: ['**/*.{png,jpg,gif}'],
+    //       dest: 'build/'
+    //     }]
+    //   }
+    // },
     connect: {
       server: {
         options: {
@@ -105,6 +127,10 @@ module.exports = function (grunt) {
       index: {
         files: 'index.html',
         tasks: ['copy:index']
+      },
+      imagemin: {
+        files: ['public/img/*.png'],
+        tasks: ['imagemin']
       },
       css: {
         files: [
@@ -163,6 +189,23 @@ module.exports = function (grunt) {
           'libs/angular-ui-notification/dist/angular-ui-notification.css',
         ],
         dest: 'build/angular-libs.css',
+        options: {
+          processContent: function (content, srcpath) {
+            // Compiling index.html file!
+            var packageVersion = require('./package.json').version;
+            return grunt.template.process(content, {
+              data: {
+                version: packageVersion
+              }
+            });
+          }
+        }
+      },
+      img: {
+        src: [
+          'public/img/*.png'
+        ],
+        dest: 'build/',
         options: {
           processContent: function (content, srcpath) {
             // Compiling index.html file!

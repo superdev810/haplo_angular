@@ -2,7 +2,7 @@ angular.module('post.controllers',[])
   .controller('PostController', function ($http, $scope, PostRequest, $stateParams, PostConstants, $rootScope, $location, Socialshare, $window, $document) {
 
     $scope.open=1;
-    $scope.imgCount = 4;
+    $scope.imgCount = 3;
     console.log($stateParams);
     PostRequest.getPost($stateParams.id).then(function(data){
         $scope.post = data.data.data;
