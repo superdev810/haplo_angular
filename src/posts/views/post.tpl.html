@@ -12,16 +12,16 @@
     <div class="modal-content post-background">
       <span ng-click="closeModal(0)"class="close">&times;</span>
       <div class="row">
-        <div class="col-xs-2" style="margin-left: 10px">
+        <div class="col-xs-2 col-md-2" style="margin-left: 10px">
           <img class="post-img" src="{{post.author.profileImageThumbnail}}"/>
         </div>
-        <div class="col-xs-5" style="margin-left: 10px">
+        <div class="col-xs-5 col-md-9" style="padding: 0 0 0 0!important; margin-top: -30px; margin-left: 20px;">
           <div class="post-user">{{post.author.nickname}}</div>
           <div class="post-time">{{post.createdAt | timeago:Date.now}}</div>
         </div>
       </div>
       <div class="col-md-12 mt-10 post-text-content">
-        {{post.text}}{{imgCount}}
+        {{post.text}}
       </div>
       <div class="mt-10 text-center modal-img-wrapper">
         <div ng-class="{'modal-img-scroller': imgCount==3}">
