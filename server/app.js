@@ -24,6 +24,7 @@ app.use(cookieParser());
 app.use(lessMiddleware(path.join(__dirname, 'public')));
 app.use('/build', express.static(path.join(__dirname, '../build')));
 app.use('/lib', express.static(path.join(__dirname, '../libs')));
+app.use('/public', express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 
