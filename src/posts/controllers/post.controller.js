@@ -6,6 +6,8 @@ angular.module('post.controllers',[])
     console.log($stateParams);
     PostRequest.getPost($stateParams.id).then(function(data){
         $scope.post = data.data.data;
+        console.log($scope.post.media.length);
+        $scope.imgCount = $scope.post.media.length;
         console.log('hello', $scope.post);
 
       },function(data){

@@ -26,20 +26,33 @@
         {{post.text}}
       </div>
       <div class="mt-10 text-center modal-img-wrapper">
-        <div ng-class="{'modal-img-scroller': imgCount==3}">
-          <img class="mt-10" ng-class="{'modal-img-one': imgCount==1, 'modal-img-two': imgCount == 2, 'modal-img-three': imgCount==3, 'modal-img-two': imgCount==4}" src="{{post.mediaFileThumbnail ? post.mediaFileThumbnail : post.author.profileImage}}"/>
-          <img class="mt-10" ng-class="{'modal-img-one': imgCount==1, 'modal-img-two': imgCount == 2, 'modal-img-three': imgCount==3, 'modal-img-two': imgCount==4}" src="{{post.mediaFileThumbnail ? post.mediaFileThumbnail : post.author.profileImage}}"/>
-          <img class="mt-10" ng-class="{'modal-img-one': imgCount==1, 'modal-img-two': imgCount == 2, 'modal-img-three': imgCount==3, 'modal-img-two': imgCount==4}" src="{{post.mediaFileThumbnail ? post.mediaFileThumbnail : post.author.profileImage}}"/>
-          <img class="mt-10" ng-class="{'modal-img-one': imgCount==1, 'modal-img-two': imgCount == 2, 'modal-img-three': imgCount==3, 'modal-img-two': imgCount==4}" src="{{post.mediaFileThumbnail ? post.mediaFileThumbnail : post.author.profileImage}}"/>
+        <div ng-class="{'modal-img-scroller': imgCount==3}" class="text-center">
+          <span ng-class="{'modal-img-item': $index<=3}" ng-repeat="postImg in post.media"  ng-if="$index<=3">
+            <img class="mt-10" ng-class="{'modal-img-one': imgCount==1, 'modal-img-two': imgCount == 2, 'modal-img-three': imgCount==3, 'modal-img-two': imgCount==4, 'modal-img-two': imgCount>4}" src="{{postImg.link}}"/>
+            <div class="modal-img-title" ng-show="$index==3 && imgCount>4">+{{imgCount - 4}}</div>
+          </span>
         </div>
       </div>
       <div class="stats">
         <div class="like-dislike ml-10">
-          <a href="#"><img src="public/images/like.png"><span class="count">20</span></a>
-          <a href="#"><img src="public/images/dislike.png"><span class="count">20</span></a>
+          <a href="#"><img src="public/images/like.png"><span class="count">{{post.likes}}</span></a>
+          <a href="#"><img src="public/images/dislike.png"><span class="count">{{post.dislikes}}</span></a>
         </div>
         <div class="comments">
-          <a href="#"><span class="count">5</span> comments</a>
+          <a href="#"><span class="count">{{post.numComments}}</span> comments</a>
+        </div>
+      </div>
+
+    </div>
+    <div class="comment-outer" ng-repeat="reply in replies">
+      <div class="mt-10">
+        <div class="float-left ml-20 mr-20 col-md-2 col-xs-2">
+          <img class="comment-img" src="{{reply.author.profileImageThumbnail}}"/>
+        </div>
+        <div class="pl-0 ml-0 float-left col-md-9 col-xs-9">
+          <div class="post-user float-left">{{reply.author.nickname}}</div>
+          <div class="post-time float-right">{{reply.createdAt | timeago:Date.now}}</div>
+          <div class="post-text-content">{{reply.text}}</div>
         </div>
       </div>
     </div>
