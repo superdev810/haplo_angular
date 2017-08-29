@@ -1,26 +1,28 @@
-<div class="">
-  <img class="u-mark" src="http://ustadium-media.s3.amazonaws.com/content/feed/81/9bb200294b11e7bb99538ff4cfc91a/master.jpg">
+<div class="row">
+  <!--<div class="row">-->
+  <header>
+    <div class="container flex-out">
+      <div class="logo">
+        <a href="#"><img src="public/images/logo.png" alt="uSTADIUM"></a>
+      </div>
+      <div class="app-links">
+        <a href="#"><img src="public/images/google-play.png" alt="uSTADIUM"></a>
+        <a href="#"><img src="public/images/app-store.png" alt="uSTADIUM"></a>
+      </div>
+    </div>
+  </header>
 
-  <a href="" class="apple-link">
-    <img src="http://online.daymarcollege.edu/sites/default/files/app%20store%20button.png" class="social-btn">
-  </a>
-  <a href="#" class="google-link">
-    <img src="http://bitcoinchaser.com/wp-content/uploads/2017/06/google-play-get-app.png" class="social-btn">
-  </a>
-  <div id="myModal" class="modal" ng-class="{'mDisplay': open === 1}">
-    <!-- Modal content -->
-    <div class="modal-content post-background">
-      <span ng-click="closeModal(0)"class="close">&times;</span>
-      <div class="row">
-        <div class="col-xs-2 col-md-2" style="margin-left: 10px">
-          <img class="post-img" src="{{post.author.profileImageThumbnail}}"/>
-        </div>
-        <div class="col-xs-5 col-md-9" style="padding: 0 0 0 0!important; margin-top: -30px; margin-left: 20px;">
+  <div class="main-content">
+    <div class="post-outer">
+      <div class="mt-30">
+        <img class="post-img float-left ml-20 mr-20" src="{{post.author.profileImageThumbnail}}"/>
+
+        <div class="pl-0 ml-0 float-left">
           <div class="post-user">{{post.author.nickname}}</div>
           <div class="post-time">{{post.createdAt | timeago:Date.now}}</div>
         </div>
       </div>
-      <div class="col-md-12 mt-10 post-text-content">
+      <div class="post-text-content ml-20">
         {{post.text}}
       </div>
       <div class="mt-10 text-center modal-img-wrapper">
@@ -28,13 +30,19 @@
           <img class="mt-10" ng-class="{'modal-img-one': imgCount==1, 'modal-img-two': imgCount == 2, 'modal-img-three': imgCount==3, 'modal-img-two': imgCount==4}" src="{{post.mediaFileThumbnail ? post.mediaFileThumbnail : post.author.profileImage}}"/>
           <img class="mt-10" ng-class="{'modal-img-one': imgCount==1, 'modal-img-two': imgCount == 2, 'modal-img-three': imgCount==3, 'modal-img-two': imgCount==4}" src="{{post.mediaFileThumbnail ? post.mediaFileThumbnail : post.author.profileImage}}"/>
           <img class="mt-10" ng-class="{'modal-img-one': imgCount==1, 'modal-img-two': imgCount == 2, 'modal-img-three': imgCount==3, 'modal-img-two': imgCount==4}" src="{{post.mediaFileThumbnail ? post.mediaFileThumbnail : post.author.profileImage}}"/>
+          <img class="mt-10" ng-class="{'modal-img-one': imgCount==1, 'modal-img-two': imgCount == 2, 'modal-img-three': imgCount==3, 'modal-img-two': imgCount==4}" src="{{post.mediaFileThumbnail ? post.mediaFileThumbnail : post.author.profileImage}}"/>
         </div>
       </div>
-      <div class="mt-10">
-        <div style="float: left; margin-right: 20px; color: #34c083; line-height: 1; font-size: 24px;" class="icon-like">   {{post.likes}}</div>
-        <div style="float: left; color: #e7202a; line-height: 1; font-size: 24px;" class="icon-dislike">   {{post.dislikes}}</div>
-        <div style="float: right;color: #000000;opacity:0.3; margin-right:20px; padding-left: 10px;  line-height: 1; font-size: 24px;" class="icon-bubble">   {{post.numComments}}</div>
+      <div class="stats">
+        <div class="like-dislike">
+          <a href="#"><img src="public/images/like.png"><span class="count">20</span></a>
+          <a href="#"><img src="public/images/dislike.png"><span class="count">20</span></a>
+        </div>
+        <div class="comments">
+          <a href="#"><span class="count">5</span> comments</a>
+        </div>
       </div>
     </div>
   </div>
+  <!--</div>-->
 </div>
