@@ -36,7 +36,7 @@
       <div class="stats">
         <div class="like-dislike ml-30">
           <a href="#"><img src="public/images/like.png"><span class="count">{{post.likes}}</span></a>
-          <a href="#" class="ml-10"><img src="public/images/dislike.png"><span class="count">{{post.dislikes}}</span></a>
+          <a href="#" class="ml-5"><img src="public/images/dislike.png"><span class="count">{{post.dislikes}}</span></a>
         </div>
         <div class="comments mr-30">
           <a href="#"><span class="count">{{post.numComments}}</span> comments</a>
@@ -46,10 +46,10 @@
     </div>
     <div class="comment-outer" ng-repeat="reply in replies">
       <div class="mt-10">
-        <div class="float-left ml-20 mr-20 col-md-2 col-xs-2">
+        <div class="comment-wrapper">
           <img class="comment-img" src="{{reply.author.profileImageThumbnail}}"/>
         </div>
-        <div class="pl-0 ml-0 float-left col-md-9 col-xs-9">
+        <div class="pl-10 ml-0 float-left col-md-9 col-xs-9">
           <div class="post-user float-left">{{reply.author.nickname}}</div>
           <div class="post-time float-right">{{reply.createdAt | timeago:Date.now}}</div>
           <div class="post-text-content">{{reply.text}}</div>

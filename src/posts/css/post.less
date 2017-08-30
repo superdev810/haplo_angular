@@ -94,6 +94,12 @@
   overflow:hidden;
 }
 
+.comment-wrapper {
+  float: left;
+  margin: 0 20px;
+  width: 55px;
+}
+
 .comment-img {
   border-radius: 50%;
   width: 55px;
@@ -123,4 +129,17 @@
   line-height: 152px;
   font-size: 30px;
   color: white;
+}
+
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 414px)
+and (orientation : portrait) {
+  /* STYLES GO HERE */
+  .comment-wrapper {
+    float: left;
+    margin-left: 20px;
+    margin-right: 0px;
+    width: 55px;
+  }
 }
