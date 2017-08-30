@@ -17,10 +17,11 @@
   }
 
   &-img-two {
-    max-width: 218px;
-    max-height: 152px;
-    width: auto;
-    height: auto;
+    width: 218px;
+    height: 152px;
+    //width: auto;
+    //height: auto;
+    //overflow: auto;
     border-radius: 4px;
     position: relative;
   }
@@ -189,4 +190,15 @@
   width: 20px;
   height: 40px;
   background-color: rgba(0, 0, 0, .05);
+}
+
+@media (max-width: 375px) {
+  modal-img-two {
+    width: 198px;
+    height: 132px;
+    //width: auto;
+    //height: auto;
+    border-radius: 4px;
+    position: relative;
+  }
 }
