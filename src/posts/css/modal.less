@@ -22,6 +22,7 @@
     //width: auto;
     //height: auto;
     //overflow: auto;
+    object-fit: cover;
     border-radius: 4px;
     position: relative;
   }
@@ -191,14 +192,23 @@
   height: 40px;
   background-color: rgba(0, 0, 0, .05);
 }
-
-@media (max-width: 375px) {
-  modal-img-two {
-    width: 198px;
-    height: 132px;
-    //width: auto;
-    //height: auto;
-    border-radius: 4px;
-    position: relative;
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 414px)
+and (orientation : portrait) {
+  /* STYLES GO HERE */
+  .modal{
+    &-img-two {
+      width: 138px;
+      height: 152px;
+      object-fit: cover;
+      //width: auto;
+      //height: auto;
+      border-radius: 4px;
+      position: relative;
+    }
   }
+}
+@media (max-width: 374px) {
+
 }
