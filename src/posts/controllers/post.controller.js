@@ -9,6 +9,8 @@ angular.module('post.controllers',[])
         $scope.post = data.data.data;
         console.log($scope.post.media.length);
         console.log('POST MEDIA: ');
+        console.log($scope.post);
+
         angular.forEach($scope.post.media, function (item) {
           if(item.quality > 0.1){
             $scope.postMedia.push(item);
@@ -16,7 +18,8 @@ angular.module('post.controllers',[])
         })
         console.log('POST MEDIA: ');
         console.log($scope.postMedia);
-        $scope.imgCount = $scope.postMedia.length;
+        $scope.imgCount = $scope.post.media.length / 2;
+        console.log('image count: ', $scope.imgCount);
         console.log('hello', $scope.post);
 
       },function(data){

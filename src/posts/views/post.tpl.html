@@ -28,7 +28,7 @@
       <div class="mt-10 text-center modal-img-wrapper">
         <div ng-class="{'modal-img-scroller': imgCount==3}" class="text-center">
           <span ng-class="{'modal-img-item': $index<=3}" ng-repeat="postImg in postMedia"  ng-if="$index<=3">
-            <img class="mt-10" ng-class="{'modal-img-one': imgCount==1, 'modal-img-two': imgCount == 2, 'modal-img-three': imgCount==3, 'modal-img-two': imgCount==4, 'modal-img-two': imgCount>4}" src="{{postImg.link}}"/>
+            <img class="mt-10" ng-class="{'modal-img-one': imgCount==1, 'modal-img-two': imgCount == 2, 'modal-img-three': imgCount == 3, 'modal-img-two': imgCount == 4, 'modal-img-two': imgCount>=3}" src="{{postImg.link}}"/>
             <div class="modal-img-title" ng-show="$index==3 && imgCount>4">+{{imgCount - 4}}</div>
           </span>
         </div>
