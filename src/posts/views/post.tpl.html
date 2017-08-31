@@ -28,7 +28,8 @@
       <div class="mt-10 text-center modal-img-wrapper">
         <div ng-class="{'modal-img-scroller': imgCount==3}" class="text-center">
           <span ng-class="{'modal-img-item': $index<=3}" ng-repeat="postImg in postMedia"  ng-if="$index<=3">
-            <img class="mt-10" ng-class="{'modal-img-one': imgCount==1, 'modal-img-two': imgCount == 2, 'modal-img-three': imgCount == 3, 'modal-img-two': imgCount == 4, 'modal-img-two': imgCount>=3}" src="{{postImg.link}}"/>
+            <img class="mt-10" ng-if="post.hasPhotos" ng-class="{'modal-img-one': imgCount==1, 'modal-img-two': imgCount == 2, 'modal-img-three': imgCount == 3, 'modal-img-two': imgCount == 4, 'modal-img-two': imgCount>=3}" src="{{postImg.link}}"/>
+            <video src="{{postImg.link}}" ng-if="post.hasVideos" controls ng-class="{'modal-img-one': imgCount==1, 'modal-img-two': imgCount == 2, 'modal-img-three': imgCount == 3, 'modal-img-two': imgCount == 4, 'modal-img-two': imgCount>=3}"></video>
             <div class="modal-img-title" ng-show="$index==3 && imgCount>4">+{{imgCount - 4}}</div>
           </span>
         </div>
@@ -38,7 +39,7 @@
           <a href="#"><img src="public/images/like.png"><span class="count">{{post.likes}}</span></a>
           <a href="#" class="ml-5"><img src="public/images/dislike.png"><span class="count">{{post.dislikes}}</span></a>
         </div>
-        <div class="comments mr-30">
+        <div class="comments mr-10">
           <a href="#"><span class="count">{{post.numComments}}</span> comments</a>
         </div>
       </div>

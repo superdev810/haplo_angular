@@ -2,7 +2,8 @@ angular.module('post.controllers',[])
   .controller('PostController', function ($http, $scope, PostRequest, $stateParams, PostConstants, $rootScope, $location, Socialshare, $window, $document) {
 
     $scope.open=1;
-    $scope.imgCount = 4;
+    $scope.imgCount = 0;
+    $scope.videoCount = 0;
     $scope.postMedia = [];
     console.log($stateParams);
     PostRequest.getPost($stateParams.id).then(function(data){
@@ -18,7 +19,13 @@ angular.module('post.controllers',[])
         })
         console.log('POST MEDIA: ');
         console.log($scope.postMedia);
-        $scope.imgCount = $scope.post.media.length / 2;
+        if($scope.post.hasPhotos) {
+          $scope.imgCount = $scope.post.media.length / 2;
+        } else if($scope.post.hasVideos){
+          $scope.imgCount = $scope.post.media.length;
+        } else {
+
+        }
         console.log('image count: ', $scope.imgCount);
         console.log('hello', $scope.post);
 
