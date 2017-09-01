@@ -14,7 +14,7 @@
 
   <div class="main-content">
     <div class="post-outer">
-      <div class="mt-30">
+      <div class="">
         <img class="post-img float-left ml-20 mr-20" src="{{post.author.profileImageThumbnail}}"/>
 
         <div class="pl-0 ml-0 mt-10 float-left">
@@ -52,8 +52,8 @@
         </div>
         <div class="pl-10 ml-0 float-left col-md-9 col-xs-9">
           <div class="post-user float-left">{{reply.author.nickname}}</div>
-          <div class="post-time float-right">{{reply.createdAt | timeago:Date.now}}</div>
-          <div class="post-text-content">{{reply.text}}</div>
+          <div class="comment-time float-right mt-10">{{reply.createdAt | timeago:Date.now}}</div>
+          <div class="comment-text-content">{{reply.text}}</div>
         </div>
       </div>
     </div>
