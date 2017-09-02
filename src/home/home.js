@@ -9,5 +9,5 @@ angular.module('ustadium.home', ['ustadium.grandfather'])
 })
 .controller('HomeController', function ($scope, $state) {
   $scope.users = angular.fromJson(localStorage.getItem('userStorage'));
-  $state.go('app.feeds', {type: 'Hot'});
+  //$state.go('app.feeds', {type: 'Hot'});
 });

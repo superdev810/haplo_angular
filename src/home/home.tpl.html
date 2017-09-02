@@ -1,21 +1,43 @@
-<div class="jumbotron">
-  <h1>This is home!</h1>
-  <p>Everybody can access this page, the other credentials stored are:</p>
-  <div ng-repeat="user in users">
-    <h2>{{ user.name }}</h2>
-    <p ng-class="{ 'text-info': user.userRole.title === 'user', 'text-danger': user.userRole.title === 'admin' }">
-      username: {{ user.username }}, password: {{ user.password }}, email: {{ user.email }}, permission: {{ user.userRole.title }}
-    </p>
+<!---Header Begins
+ -->
+<header class="mt-0 mb-0">
+  <div class="header" id="signup-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <a href="/"><img src="public/images/u-logo-usefirst.png" class="U-Logo-FIRST" id="header-logo" alt=""></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<!-- Header Ends
+ -->
+<div class="signup">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <p class="signup-promo">uSTADIUM.com</p>
+        <p class="signup-promo">is almost here!</p>
+        <p class="Enter-email text-center">Entering your email gets you first access</p>
+        <form action="/" method='post'>
+          <div class="form-group">
+            <input type="text" name='email' id='email' placeholder="Enter Your Email" class='signup-email'> <br>
+            <input type="submit" value='Submit' class='signup-button form-control'> <br>
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
 </div>
-
-<h2>native json</h2>
-<p>angular provides the real json object</p>
-<pre>
-  <code>
-{{ users | json }}
-  </code>
-</pre>
-
-<h2>You can keep track of mocked http requests</h2>
-<p>Just open the console of your favourite browser and the ngMock will print out the requests as console.info.</p>
+<!-- Footer Begins -->
+<div>
+  <div class="footer" id="signup-footer">
+    <div class="col-md-12 text-center">
+      <a href="/"><img src="public/images/u-logo-usefirst.png" class="U-Logo-FIRST" id='footer-logo' alt=""></a>
+      <p>Copyright 2017 Next Gen Sports Inc. All Rights Reserved</p>
+      <a href="https://itunes.apple.com/us/app/ustadium/id1184610766?mt=8"><img src="public/images/app-store.png" id="footer_app_store" alt=""></a>
+    </div>
+  </div>
+</div>
+<!-- Footer Ends-->
