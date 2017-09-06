@@ -22,6 +22,7 @@ var socialShare = {
     created: '/created'
   };
 var prod = process.env.NODE_ENV === 'production' ? true : false;
+var base = prod ? "https://ustadium-api.herokuapp.com" : "https://ustadium-api-dev.herokuapp.com";
 
 router.get('/feeds/:name', function(req, res, next) {
   res.locals.socialShare = socialShare;
@@ -66,7 +67,7 @@ function requestFeedInfo(feedName, single, res, next) {
   var isSingle = !single ? feedType[feedName] : feedName;
   var requestEnd = '' + single + isSingle;
   request({
-    uri: 'https://ustadium-api-dev.herokuapp.com/api/feeds'+ requestEnd ,
+    uri: base + '/api/feeds'+ requestEnd ,
     method: 'GET'
   }, function (error, response, feed) {
     if(typeof feed != undefined) {
@@ -96,24 +97,24 @@ function requestFeedInfo(feedName, single, res, next) {
 function requestPostInfo(postId, req, res, next) {
   var requestEnd = '' + postId;
   request({
-    uri: 'https://ustadium-api-dev.herokuapp.com/api/posts/'+ requestEnd ,
+    uri: base + '/api/posts/'+ requestEnd ,
     method: 'GET'
   }, function (error, response, feed) {
 
     if(feed != undefined) {
       var feedJson = JSON.parse(feed);
-      if (feedJson.data.author.username) {
+      if (feedJson && feedJson.data && feedJson.data.author && feedJson.data.author.username) {
         res.locals.socialShare.imageAlt = feedJson.data.author.username;
       }
-      if (feedJson.data.author.profileImageThumbnail) {
+      if (feedJson && feedJson.data && feedJson.data.author && feedJson.data.author.profileImageThumbnail) {
         res.locals.socialShare.image = feedJson.data.author.profileImageThumbnail ? feedJson.data.author.profileImageThumbnail : defaulProfileImage;
       }
 
-      if (feedJson.data.author.nickname) {
+      if (feedJson && feedJson.data && feedJson.data.author && feedJson.data.author.nickname) {
         res.locals.socialShare.title = feedJson.data.author.nickname + ' on uSTADIUM';
       }
 
-      if (feedJson.data.text) {
+      if (feedJson && feedJson.data && feedJson.data.text) {
         res.locals.socialShare.description = feedJson.data.text;
       }
 
