@@ -21,7 +21,7 @@ var socialShare = {
     subscribed: '/subscribed',
     created: '/created'
   };
-
+var prod = process.env.NODE_ENV === 'production' ? true : false;
 
 router.get('/feeds/:name', function(req, res, next) {
   res.locals.socialShare = socialShare;
@@ -29,7 +29,7 @@ router.get('/feeds/:name', function(req, res, next) {
   requestFeedInfo(req.params.name, single, res, next)
 }, function(req, res, next) {
   // console.log(res.locals.socialShare);
-  res.render('index', { socialShare: res.locals.socialShare });
+  res.render('index', { socialShare: res.locals.socialShare, prod: prod });
 });
 
 router.get('/feed/:name', function(req, res, next) {
@@ -37,28 +37,28 @@ router.get('/feed/:name', function(req, res, next) {
   var single = '/name/'
   requestFeedInfo(req.params.name, single, res, next)
 }, function(req, res, next) {
-  res.render('index', { socialShare: res.locals.socialShare });
+  res.render('index', { socialShare: res.locals.socialShare, prod: prod });
 });
 
 router.get('/post/:id', function(req, res, next) {
   res.locals.socialShare = socialShare;
-  console.log('post id: ', req.params.id);
+
   requestPostInfo(req.params.id, req, res, next);
 }, function (req, res, next) {
-  res.render('index', { socialShare: res.locals.socialShare, isPost: true });
+  res.render('index', { socialShare: res.locals.socialShare, isPost: true, prod: prod });
 })
 
 router.get('/', function(req, res, next) {
   var ua = req.headers['user-agent'];
-  console.log('index.....................')
+
   if (/^(facebookexternalhit)|(Twitterbot)|(Pinterest)/gi.test(ua)) {
     console.log(ua,' is a bot');
   }
-  res.render('index', { socialShare: socialShare });
+  res.render('index', { socialShare: socialShare, prod: prod });
 });
 
 router.get('*', function(req, res, next) {
-  res.render('index', { socialShare: socialShare });
+  res.render('index', { socialShare: socialShare, prod: prod });
 });
 
 
@@ -99,13 +99,11 @@ function requestPostInfo(postId, req, res, next) {
     uri: 'https://ustadium-api-dev.herokuapp.com/api/posts/'+ requestEnd ,
     method: 'GET'
   }, function (error, response, feed) {
-    console.log(feed);
+
     if(feed != undefined) {
       var feedJson = JSON.parse(feed);
-      console.log(feedJson);
-      if (feedJson.data.author.username) {
-        res.locals.socialShare.imageAlt = feedJson.data.author.username;
-      }
+
+      res.locals.socialShare.imageAlt = feedJson.data.author.username;
       if (feedJson.data.author.profileImageThumbnail) {
         res.locals.socialShare.image = feedJson.data.author.profileImageThumbnail ? feedJson.data.author.profileImageThumbnail : defaulProfileImage;
       }
