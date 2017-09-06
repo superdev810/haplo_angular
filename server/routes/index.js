@@ -7,10 +7,10 @@ var defaultProfileImage = 'http://ustadium-media.s3.amazonaws.com/content/feed/8
 
 var socialShare = {
   appId: '2231777543',
-  title:'user on uSTADIUM',
-  description: 'This is ustadium website for sports fan',
-  siteName: 'Nextgen social sports website',
-  url: 'https://ustadium-webapp.herokuapp.com',
+  title:'uSTADIUM - Your Sports Hub',
+  description: 'uSTADIUM is the all-in-one hub for you to connect with fans, topics and opinions you love (or hate)',
+  siteName: 'uSTADIUM',
+  url: 'http://www.ustadium.com',
   image: defaultProfileImage,
   imageAlt: 'ustadium',
   type: 'article'
