@@ -88,6 +88,8 @@ function requestFeedInfo(feedName, single, res, next) {
       if (feedJson.data && typeof feedJson.data.mediaFileThumbnail !== undefined) {
         res.locals.socialShare.url = feedJson.data.mediaFileThumbnail;
       }
+    }else{
+      res.redirect('/');
     }
     next();
   })
