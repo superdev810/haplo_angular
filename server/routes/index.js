@@ -100,8 +100,7 @@ function requestPostInfo(postId, req, res, next) {
     uri: base + '/api/posts/'+ requestEnd ,
     method: 'GET'
   }, function (error, response, feed) {
-
-    if(feed != undefined) {
+    if(response.statusCode === 200 && feed != undefined ) {
       var feedJson = JSON.parse(feed);
       if (feedJson && feedJson.data && feedJson.data.author && feedJson.data.author.username) {
         res.locals.socialShare.imageAlt = feedJson.data.author.username;
