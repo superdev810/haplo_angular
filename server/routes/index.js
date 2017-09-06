@@ -103,7 +103,9 @@ function requestPostInfo(postId, req, res, next) {
     if(feed != undefined) {
       var feedJson = JSON.parse(feed);
       console.log(feedJson);
-      res.locals.socialShare.imageAlt = feedJson.data.author.username;
+      if (feedJson.data.author.username) {
+        res.locals.socialShare.imageAlt = feedJson.data.author.username;
+      }
       if (feedJson.data.author.profileImageThumbnail) {
         res.locals.socialShare.image = feedJson.data.author.profileImageThumbnail ? feedJson.data.author.profileImageThumbnail : defaulProfileImage;
       }

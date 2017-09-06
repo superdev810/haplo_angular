@@ -14,5 +14,9 @@ angular.module('ustadium.pages', ['ustadium.grandfather'])
       .state('app.terms', {
         url: '/terms-and-service',
         templateUrl: 'pages/terms_and_service.tpl.html',
+      })
+      .state('app.support', {
+        url: '/support',
+        templateUrl: 'pages/support.tpl.html',
       });
   });
