@@ -101,24 +101,26 @@ function requestPostInfo(postId, req, res, next) {
     method: 'GET'
   }, function (error, response, feed) {
     if(response.statusCode === 200 && feed != undefined ) {
-      var feedJson = JSON.parse(feed);
-      if (feedJson && feedJson.data && feedJson.data.author && feedJson.data.author.username) {
-        res.locals.socialShare.imageAlt = feedJson.data.author.username;
-      }
-      if (feedJson && feedJson.data && feedJson.data.author && feedJson.data.author.profileImageThumbnail) {
-        res.locals.socialShare.image = feedJson.data.author.profileImageThumbnail ? feedJson.data.author.profileImageThumbnail : defaulProfileImage;
-      }
+      if(feed.indexOf('<') == -1) {
+        var feedJson = JSON.parse(feed);
+        if (feedJson && feedJson.data && feedJson.data.author && feedJson.data.author.username) {
+          res.locals.socialShare.imageAlt = feedJson.data.author.username;
+        }
+        if (feedJson && feedJson.data && feedJson.data.author && feedJson.data.author.profileImageThumbnail) {
+          res.locals.socialShare.image = feedJson.data.author.profileImageThumbnail ? feedJson.data.author.profileImageThumbnail : defaulProfileImage;
+        }
 
-      if (feedJson && feedJson.data && feedJson.data.author && feedJson.data.author.nickname) {
-        res.locals.socialShare.title = feedJson.data.author.nickname + ' on uSTADIUM';
-      }
+        if (feedJson && feedJson.data && feedJson.data.author && feedJson.data.author.nickname) {
+          res.locals.socialShare.title = feedJson.data.author.nickname + ' on uSTADIUM';
+        }
 
-      if (feedJson && feedJson.data && feedJson.data.text) {
-        res.locals.socialShare.description = feedJson.data.text;
-      }
+        if (feedJson && feedJson.data && feedJson.data.text) {
+          res.locals.socialShare.description = feedJson.data.text;
+        }
 
-      var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
-      res.locals.socialShare.url = fullUrl;
+        var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
+        res.locals.socialShare.url = fullUrl;
+      }
     }
     next();
   })
