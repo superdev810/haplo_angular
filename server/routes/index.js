@@ -88,8 +88,6 @@ function requestFeedInfo(feedName, single, res, next) {
       if (feedJson.data && typeof feedJson.data.mediaFileThumbnail !== undefined) {
         res.locals.socialShare.url = feedJson.data.mediaFileThumbnail;
       }
-    }else{
-      res.redirect('/');
     }
     next();
   })
@@ -122,6 +120,8 @@ function requestPostInfo(postId, req, res, next) {
 
         var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
         res.locals.socialShare.url = fullUrl;
+      }else{
+        res.redirect('/');
       }
     }
     next();
