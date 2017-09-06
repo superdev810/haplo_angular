@@ -19,15 +19,15 @@ angular.module('ustadium.constants', [])
      },
      */
     api_signup_url: {
-      url : "https://ustadium-api-dev.herokuapp.com/auth/signup/",
+      url : base + "/auth/signup/",
       method: "POST"
     },
     api_feedlist_url: {
-      url: "https://ustadium-api-dev.herokuapp.com/api/feeds",
+      url: base + "/api/feeds",
       method: "GET"
     },
     api_trending_feedlist_url: {
-      url: "https://ustadium-api-dev.herokuapp.com/api/feeds/trending",
+      url: base + "/api/feeds/trending",
       method: "GET"
     }
   })
