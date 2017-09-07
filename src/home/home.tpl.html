@@ -57,7 +57,10 @@
   <h1 class="main-heading">Sign Up Now</h1>
   <p class="text-center">Enter Your Phone #</p>
   <form action="" method="post">
-    <input class="dash-input" name="phone" maxlength='7' autofocus/>
+    <div>
+    <input class="dash-input" name="phone" maxlength='12' autofocus/>
+    </div>
+    <div class="ctc-btn cursor-pointer" ng-click="signUp()">Send</div>
   </form>
   <p class="small">We’ll send your phone a Download Link</p>
 </div>

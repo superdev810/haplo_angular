@@ -77,24 +77,36 @@ angular.module('post.controllers',['ui.bootstrap'])
     function init () {
       $scope.closeModal(1);
     }
-
+    $scope.openModal = false;
     $scope.signUp = function () {
       console.log($scope.phone_number);
 
       $('.modal-close').trigger('click');
       $('#thankyoubtn').trigger('click');
+      $scope.openModal = false;
     }
     // click anywhere to singup popup
-    $window.onclick = function (event) {
-      console.log(event.target);
+    $document.on('click', function (event) {
+      event.preventDefault();
+      if($scope.openModal){
+        if($(event.target).hasClass('modal')){
+          $('.modal-close').trigger('click');
+          $scope.openModal = false;
+          return;
+        }
+        return;
+      }
       console.log(event.target.className);
+      var class_name = event.target.className;
 
-      console.log($(event.target).hasClass('ng-scope'));
-      if ($(event.target).hasClass('ng-scope')) {
+      if (!$(event.target).hasClass('comments-click') && !$(event.target).hasClass('like-click') && !$(event.target).hasClass('dislike-click')) {
         console.log('Click Sing up');
         $('#signupbtn').trigger('click');
+        $scope.openModal = true;
+        return;
       }
-    }
+      $scope.openModal = false;
+    });
 
     init();
 

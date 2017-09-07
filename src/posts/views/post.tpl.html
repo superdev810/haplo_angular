@@ -43,11 +43,11 @@
       </div>
       <div class="stats">
         <div class="like-dislike ml-30">
-          <a href="#"><img src="public/images/like.png"><span class="count">{{post.likes}}</span></a>
-          <a href="#" class="ml-5"><img src="public/images/dislike.png"><span class="count">{{post.dislikes}}</span></a>
+          <a href="#" class="like-click"><img src="public/images/like.png"><span class="count">{{post.likes}}</span></a>
+          <a href="#" class="ml-5 dislike-click"><img src="public/images/dislike.png"><span class="count">{{post.dislikes}}</span></a>
         </div>
         <div class="comments mr-10">
-          <a href="#"><span class="count">{{post.numComments}}</span> comments</a>
+          <a href="#" class="comments-click"><span class="count">{{post.numComments}}</span> comments</a>
         </div>
       </div>
 
@@ -95,7 +95,7 @@
           <h1 class="text-center">Sign Up Today</h1>
           <p class="text-center">Sign up for uSTADIUM by entering your Phone # and we’ll<br>send a download link to your mobile device.</p>
           <form action="" method="post">
-            <input name="phone" maxlength='7' value='' autofocus ng-model="phone_number"/>
+            <input name="phone" maxlength='11' value='' autofocus ng-model="phone_number"/>
           </form>
           <div class="ctc-btn cursor-pointer" ng-click="signUp()">Send</div>
         </div>
