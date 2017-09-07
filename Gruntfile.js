@@ -154,6 +154,7 @@ module.exports = function (grunt) {
       },
       libs: {
         src: [
+          'libs/bootstrap/dis/js/bootstrap.js',
           'libs/angular/angular.js',
           'libs/angular-animate/angular-animate.js',
           'libs/angular-bootstrap/ui-bootstrap-tpls.js',
@@ -185,6 +186,7 @@ module.exports = function (grunt) {
       },
       css: {
         src: [
+          'libs/bootstrap/dist/css/bootstrap.css',
           'libs/angular-toastr/dist/angular-toastr.css',
           'libs/angular-ui-notification/dist/angular-ui-notification.css',
         ],

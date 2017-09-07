@@ -1,5 +1,35 @@
-angular.module('post.controllers',[])
+angular.module('post.controllers',['ui.bootstrap'])
   .controller('PostController', function ($http, $scope, PostRequest, $stateParams, PostConstants, $rootScope, $location, Socialshare, $window, $document) {
+
+    this.message = 'It works!';
+
+    var key = 1000;
+
+    this.modal = function() {
+      var modalInstance = $modal.open({
+        controller: 'ModalController',
+        templateUrl: '../views/modal.tpl.html',
+        resolve: {
+          key: function() {
+            return key;
+          }
+        }
+      });
+      modalInstance.result.then(function(optionSelected) {
+        if (optionSelected === 'yes') {
+          console.log("Yes selected!")
+        }
+      })
+    }
+
+    $(".btn.btn-info.btn-lg").click(function () {
+      // var data_target = $(this).attr("data-target");
+      // $(data_target).addClass("show");
+      // $(data_target).addClass("in");
+      // $("body").append("<div class='modal-backdrop'></div>");
+      // $('.modal-backdrop').addClass("show");
+      // $('.modal-backdrop').addClass("in");
+    });
 
     $scope.open=1;
     $scope.imgCount = 0;
@@ -48,14 +78,26 @@ angular.module('post.controllers',[])
       $scope.closeModal(1);
     }
 
-    init();
-    var modal = document.getElementById('myModal');
+    $scope.signUp = function () {
+      console.log($scope.phone_number);
+
+      $('.modal-close').trigger('click');
+      $('#thankyoubtn').trigger('click');
+    }
+    // click anywhere to singup popup
     $window.onclick = function (event) {
-      console.log(event.target == modal);
-      if (event.target == modal) {
-        window.location = "https://itunes.apple.com/us/app/ustadium/id1184610766?mt=8"
+      console.log(event.target);
+      console.log(event.target.className);
+
+      console.log($(event.target).hasClass('ng-scope'));
+      if ($(event.target).hasClass('ng-scope')) {
+        console.log('Click Sing up');
+        $('#signupbtn').trigger('click');
       }
     }
+
+    init();
+
 
 
   });

@@ -1,5 +1,12 @@
 <div class="row">
   <!--<div class="row">-->
+  <button id="signupbtn" class="btn btn-info btn-lg" data-toggle="modal" data-target="#signUp" style="display: none">Sign Up</button>
+  <button id="thankyoubtn" class="btn btn-info btn-lg" data-toggle="modal" data-target="#thankYou" style="display: none">Thank You</button>
+  <!--<script>-->
+    <!--$(document).ready(function(){-->
+      <!--$("#btn2").trigger("click");-->
+    <!--});-->
+  <!--</script>-->
   <header>
     <div class="container flex-out">
       <div class="logo">
@@ -58,6 +65,45 @@
       </div>
     </div>
   </div>
-  <div class="float-right">SingUp and PhoneNumber</div>
   <!--</div>-->
+
+  <!-- Thank You Modal -->
+  <div class="modal fade" id="thankYou" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-body text-center">
+          <span class="modal-close" data-dismiss="modal"><img src="img/close-icon.png"></span>
+          <h1 class="text-center">Thank You for<br>Signing Up!</h1>
+          <p class="text-center">You should have recieved a download link<br>If not, can resend below.</p>
+          <a href="#" class="ctc-btn">Resend</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Sign Up Modal -->
+  <div class="modal fade" id="signUp" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-body text-center">
+          <span class="modal-close" data-dismiss="modal"><img src="public/images/close-icon.png"></span>
+          <h1 class="text-center">Sign Up Today</h1>
+          <p class="text-center">Sign up for uSTADIUM by entering your Phone # and we’ll<br>send a download link to your mobile device.</p>
+          <form action="" method="post">
+            <input name="phone" maxlength='7' value='' autofocus ng-model="phone_number"/>
+          </form>
+          <div class="ctc-btn cursor-pointer" ng-click="signUp()">Send</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
 </div>
+
+
