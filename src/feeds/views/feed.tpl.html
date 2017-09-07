@@ -1,64 +1,115 @@
-<div class="jumbotron">
-  <h1>Feed {{page.title}}</h1>
-  <img class="feed-image" src="{{feed.mediaFile}}" alt="feed image"/>
-  <p> {{feed.description}} </p>
-  <div class="btn btn-default twitter-btn">
-    <a href="{{socialShare.url}}"
-       socialshare
-       socialshare-provider="twitter"
-       socialshare-type="share"
-       socialshare-via="{{socialShare.appId}}"
-       socialshare-url="{{socialShare.url}}"
-       socialshare-text="Sharing it!"
-       socialshare-title="Sharing it!"
-       socialshare-popup-height="800"
-       socialshare-popup-width="800"
-    >
-      <div class="fa fa-twitter fa-2x">Share</div>
-    </a>
-  </div>
-  <form class="search col-md-12" name="searchForm" role="search" ng-submit="searchFeed(searchText)">
-    <div class="" style="width: 100%">
-      <div class="search-btn col-md-1 col-md-offset-7">Search:</div>
-      <div class="form-group col-md-3 search-input">
-        <input type="text" class="form-control" placeholder="Post Name" ng-model="searchText" name="searchText">
-      </div>
-      <!--<button type="submit" class="btn btn-primary search-btn col-md-1">Search</button>-->
-    </div>
-  </form>
-  <div class="post-action border-top" ng-hide="true">
-    <div class="fa fa-thumbs-o-up like cursor-pointer"> Like</div>
-    <div class="fa fa-thumbs-o-down like cursor-pointer"> Dislike</div>
-    <div class="fa fa-comment like cursor-pointer" ng-click="showComment()"> Comment</div>
-    <div class="post-action-add" ng-show="page.isComment">
-      <textarea id="post-post" rows="1" class="post-action-content" ng-model="commentText"></textarea>
-      <button class="btn btn-default post-post" ng-click="postComment()">Post</button>
-    </div>
-  </div>
-  <div class="post" ng-repeat="post in posts.data | filter:searchText">
-    <div class="post-content">
-      <a ui-sref="app.otherprofile({postId:post._id})">
-        <img src="{{post.author.profileImageThumbnail?post.author.profileImageThumbnail:'http://ustadium-media.s3.amazonaws.com/content/feed/81/9bb200294b11e7bb99538ff4cfc91a/master.jpg'}}" class="post-img" alt="">
-      </a>
-      <div class="wrapper mt-10" style="width: 100%">
-        <a ui-sref="app.post({id:post._id})">
-          <span class="post-name">{{post.author.nickname}}</span>
-          <span class="">{{post.text}}</span>
-          <div class="text-center">
-            <img src="{{post.mediaFileThumbnail}}" class="post-media" ng-show="post.mediaFileThumbnail"/>
-          </div>
-        </a>
-        <div class="post-details border-top" >
-          <div class="fa fa-thumbs-o-up like cursor-pointer" ng-click="postLike(post)"> {{post.likes}} Likes</div>
-          <div class="fa fa-thumbs-o-down like cursor-pointer" ng-click="postDislike(post)"> {{post.dislikes}} Dislikes</div>
-          <div class="fa fa-comment like cursor-pointer"> {{post.numComments}} Comments</div>
-        </div>
-        <div class="post-action-add" ng-show="true">
-          <textarea rows="1" class="post-action-content post-comment" ng-model="post.commentText"></textarea>
-          <button class="btn btn-default post-post" ng-click="postComment(post._id, post)">Post</button>
-        </div>
-      </div>
+<!--<div class="jumbotron">-->
+  <!--<h1>Feed {{page.title}}</h1>-->
+  <!--<img class="feed-image" src="{{feed.mediaFile}}" alt="feed image"/>-->
+  <!--<p> {{feed.description}} </p>-->
+  <!--<div class="btn btn-default twitter-btn">-->
+    <!--<a href="{{socialShare.url}}"-->
+       <!--socialshare-->
+       <!--socialshare-provider="twitter"-->
+       <!--socialshare-type="share"-->
+       <!--socialshare-via="{{socialShare.appId}}"-->
+       <!--socialshare-url="{{socialShare.url}}"-->
+       <!--socialshare-text="Sharing it!"-->
+       <!--socialshare-title="Sharing it!"-->
+       <!--socialshare-popup-height="800"-->
+       <!--socialshare-popup-width="800"-->
+    <!--&gt;-->
+      <!--<div class="fa fa-twitter fa-2x">Share</div>-->
+    <!--</a>-->
+  <!--</div>-->
+  <!--<form class="search col-md-12" name="searchForm" role="search" ng-submit="searchFeed(searchText)">-->
+    <!--<div class="" style="width: 100%">-->
+      <!--<div class="search-btn col-md-1 col-md-offset-7">Search:</div>-->
+      <!--<div class="form-group col-md-3 search-input">-->
+        <!--<input type="text" class="form-control" placeholder="Post Name" ng-model="searchText" name="searchText">-->
+      <!--</div>-->
+      <!--&lt;!&ndash;<button type="submit" class="btn btn-primary search-btn col-md-1">Search</button>&ndash;&gt;-->
+    <!--</div>-->
+  <!--</form>-->
+  <!--<div class="post-action border-top" ng-hide="true">-->
+    <!--<div class="fa fa-thumbs-o-up like cursor-pointer"> Like</div>-->
+    <!--<div class="fa fa-thumbs-o-down like cursor-pointer"> Dislike</div>-->
+    <!--<div class="fa fa-comment like cursor-pointer" ng-click="showComment()"> Comment</div>-->
+    <!--<div class="post-action-add" ng-show="page.isComment">-->
+      <!--<textarea id="post-post" rows="1" class="post-action-content" ng-model="commentText"></textarea>-->
+      <!--<button class="btn btn-default post-post" ng-click="postComment()">Post</button>-->
+    <!--</div>-->
+  <!--</div>-->
+  <!--<div class="post" ng-repeat="post in posts.data | filter:searchText">-->
+    <!--<div class="post-content">-->
+      <!--<a ui-sref="app.otherprofile({postId:post._id})">-->
+        <!--<img src="{{post.author.profileImageThumbnail?post.author.profileImageThumbnail:'http://ustadium-media.s3.amazonaws.com/content/feed/81/9bb200294b11e7bb99538ff4cfc91a/master.jpg'}}" class="post-img" alt="">-->
+      <!--</a>-->
+      <!--<div class="wrapper mt-10" style="width: 100%">-->
+        <!--<a ui-sref="app.post({id:post._id})">-->
+          <!--<span class="post-name">{{post.author.nickname}}</span>-->
+          <!--<span class="">{{post.text}}</span>-->
+          <!--<div class="text-center">-->
+            <!--<img src="{{post.mediaFileThumbnail}}" class="post-media" ng-show="post.mediaFileThumbnail"/>-->
+          <!--</div>-->
+        <!--</a>-->
+        <!--<div class="post-details border-top" >-->
+          <!--<div class="fa fa-thumbs-o-up like cursor-pointer" ng-click="postLike(post)"> {{post.likes}} Likes</div>-->
+          <!--<div class="fa fa-thumbs-o-down like cursor-pointer" ng-click="postDislike(post)"> {{post.dislikes}} Dislikes</div>-->
+          <!--<div class="fa fa-comment like cursor-pointer"> {{post.numComments}} Comments</div>-->
+        <!--</div>-->
+        <!--<div class="post-action-add" ng-show="true">-->
+          <!--<textarea rows="1" class="post-action-content post-comment" ng-model="post.commentText"></textarea>-->
+          <!--<button class="btn btn-default post-post" ng-click="postComment(post._id, post)">Post</button>-->
+        <!--</div>-->
+      <!--</div>-->
 
-    </div> <!-- post-header -->
+    <!--</div> &lt;!&ndash; post-header &ndash;&gt;-->
+  <!--</div>-->
+<!--</div>-->
+
+<header>
+  <div class="container flex-out">
+    <div class="logo">
+      <a href="/"><img src="public/images/logo.png" alt="uSTADIUM"></a>
+    </div>
+    <div class="app-links">
+      <a href="https://play.google.com/store/apps/details?id=com.ustadium.android&hl=en"><img src="public/images/google-play.png" alt="uSTADIUM"></a>
+      <a href="https://itunes.apple.com/us/app/ustadium/id1184610766?mt=8"><img src="public/images/app-store.png" alt="uSTADIUM"></a>
+    </div>
+  </div>
+</header>
+
+<h1 class="main-heading">{{page.title}}</h1>
+<div class="wrapper">
+  <div class="feed-outer" ng-repeat="post in posts.data | filter:searchText">
+    <div class="profile out">
+      <div class="img">
+        <img class="" style="border-radius: 50%" src="{{post.author.profileImageThumbnail?post.author.profileImageThumbnail:'http://ustadium-media.s3.amazonaws.com/content/feed/81/9bb200294b11e7bb99538ff4cfc91a/master.jpg'}}">
+      </div>
+      <div class="data">
+        <h1><a href="#">{{post.author.nickname}}</a> shared <a href="#">Isabel Griffith</a>'s photo to <a href="#">Westbrook</a></h1>
+        <h4>{{post.updatedAt | timeago:Date.now}}</h4>
+      </div>
+    </div>
+    <div class="content">
+      <p style="word-wrap: break-word">{{post.text}}</p>
+    </div>
+    <div class="feed-inner">
+      <div class="profile in">
+        <div class="img">
+          <img src="public/images/profile02.png">
+        </div>
+        <div class="data">
+          <h1><a href="#">Lida Ingram</a> to <a href="#">{{page.title}}</a></h1>
+          <h4>23 minutes</h4>
+        </div>
+      </div>
+      <img class="feature-img img-responsive" src="{{post.mediaFileThumbnail}}" >
+    </div>
+    <div class="stats">
+      <div class="like-dislike">
+        <a href="#"><img src="public/images/like.png"><span class="count">{{post.likes}}</span></a>
+        <a href="#"><img src="public/images/dislike.png"><span class="count">{{post.dislikes}}</span></a>
+      </div>
+      <div class="comments">
+        <a href="#"><span class="count">{{post.numComments}}</span> comments</a>
+      </div>
+    </div>
   </div>
 </div>
