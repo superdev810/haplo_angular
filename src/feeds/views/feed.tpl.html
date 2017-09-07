@@ -96,8 +96,8 @@
           <img src="public/images/profile02.png">
         </div>
         <div class="data">
-          <h1><a href="#">Lida Ingram</a> to <a href="#">{{page.title}}</a></h1>
-          <h4>23 minutes</h4>
+          <h1><a href="#">{{post.author.nickname}}</a> to <a href="#">{{page.title}}</a></h1>
+          <h4>{{post.updatedAt | timeago:Date.now}}</h4>
         </div>
       </div>
       <img class="feature-img img-responsive" src="{{post.mediaFileThumbnail}}" >
