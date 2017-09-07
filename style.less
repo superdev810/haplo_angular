@@ -490,3 +490,281 @@ input[type='text'].signup-email::-webkit-input-placeholder {
 
 
 
+
+
+
+
+
+/**********************/
+/*    common styles    */
+/**********************/
+body {
+  background: white;
+  font-family: 'Roboto', sans-serif;
+  font-weight: normal;
+}
+
+a {
+  color: #000000;
+}
+
+a:hover, a:active, a:focus {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.9);
+}
+
+.clear-fix {
+  clear: both;
+}
+
+.flex-out {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  list-style: none;
+}
+
+/**********************/
+/*    modal styles    */
+/**********************/
+.dash-input {
+  border: none;
+  padding: 0;
+  width: 10.5ch;
+  background-image: repeating-linear-gradient(90deg, #15C281 0, #15C281 1ch, transparent 0, transparent 1.5ch);
+  background-position: 0 100%;
+  background-size: 10ch 2px;
+  background-repeat: no-repeat;
+  letter-spacing: 0.5ch;
+  font-family: 'Roboto', sans-serif;
+  letter-spacing: 0.5ch;
+  font-size: 5ch;
+  font-weight: 300;
+  color: #15C281;
+}
+
+.dash-input:focus {
+  outline: none;
+}
+
+.dash-input.small {
+  font-size: 4ch;
+}
+
+.modal-content {
+  border-radius: 20px;
+}
+
+.modal-body {
+  padding: 25px 15px;
+}
+
+.modal-body .modal-close {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  cursor: pointer;
+}
+
+.modal-body h1 {
+  font-size: 48px;
+  line-height: 56px;
+  font-weight: 300;
+}
+
+.modal-body p {
+  margin: 24px 0;
+  font-size: 17px;
+  line-height: 27px;
+  color: #505050;
+}
+
+.modal-body form {
+  margin-bottom: 24px;
+}
+
+.modal-body .ctc-btn {
+  color: grey;
+  border: 1px solid grey;
+  padding: 10px 30px;
+  display: inline-block;
+  border-radius: 50px;
+  font-size: 17px;
+}
+
+.modal-body .ctc-btn:hover {
+  border-color: #15C281;
+  color: #15C281;
+}
+
+@media (min-width: 767px) {
+  .modal.show .modal-dialog {
+    min-width: 600px !important;
+  }
+}
+
+
+/**********************/
+/*    header styles    */
+/**********************/
+header {
+  margin: 20px 0;
+}
+
+header .logo img {
+  height: 70px;
+}
+
+header .app-links a:first-child {
+  margin-right: 10px;
+}
+
+h1.main-heading {
+  font-size: 33px;
+  font-weight: normal;
+  text-align: center;
+  margin-bottom: 0;
+  background: white;
+  padding-bottom: 20px;
+}
+
+/**********************/
+/*    Landing page styles    */
+/**********************/
+.sign-up-top h1 {
+  font-size: 50px;
+  margin-top: 60px;
+}
+
+.sign-up-top p {
+  color: #888888;
+  font-size: 25px;
+  margin: 20px 0 10px 0px;
+}
+
+.sign-up-top p.small {
+  font-size: 20px;
+}
+
+
+/**********************/
+/*    wrapper styles    */
+/**********************/
+.wrapper {
+  max-width: 440px;
+  margin: 0 auto;
+  background: #F1F1F1;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  margin-bottom: 100px;
+  position: relative;
+}
+
+.wrapper .sign-up {
+  position: absolute;
+  left: 110%;
+  top: 100px;
+}
+
+.wrapper .sign-up h1 {
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 50px;
+}
+
+.wrapper .sign-up p {
+  color: #888888;
+  font-size: 20px;
+  line-height: 26px;
+  margin: 20px 0 10px 0px;
+}
+
+.wrapper .sign-up p a {
+  color: #888888;
+}
+
+.wrapper .sign-up p a:hover {
+  color: #505050;
+}
+
+.wrapper .pictures {
+  margin: 40px 0;
+}
+
+.wrapper .pictures img {
+  max-height: 200px;
+}
+
+.wrapper .finally {
+  font-weight: 400;
+  margin-bottom: 40px;
+}
+
+.wrapper .link ul li {
+  display: inline-block;
+}
+
+.wrapper .link ul li a {
+  color: #818488;
+  text-transform: uppercase;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 28px;
+}
+
+.wrapper .link ul li a:hover {
+  color: #000000;
+}
+
+.wrapper.transparent {
+  background: transparent;
+  border: none;
+}
+
+.direct-download {
+  display: none;
+}
+
+.direct-download h1 {
+  font-size: 32px;
+  font-weight: 400;
+  margin-bottom: 20px;
+}
+
+
+@media (max-width: 991px) {
+  .app-links a:first-child {
+    margin-bottom: 10px;
+  }
+  .app-links {
+    display: flex;
+    flex-flow: column;
+  }
+  .app-links a img {
+    height: 32px;
+  }
+  .sign-up {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  header .flex-out {
+    display: block;
+    text-align: center;
+  }
+  .app-links {
+    display: none;
+  }
+  .direct-download {
+    display: block;
+    margin: 100px 0 40px 0;
+  }
+}
