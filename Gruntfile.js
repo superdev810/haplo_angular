@@ -203,6 +203,23 @@ module.exports = function (grunt) {
           }
         }
       },
+      font: {
+        src: [
+          'San_Francisco.ttf',
+        ],
+        dest: 'build/',
+        // options: {
+        //   processContent: function (content, srcpath) {
+        //     // Compiling index.html file!
+        //     var packageVersion = require('./package.json').version;
+        //     return grunt.template.process(content, {
+        //       data: {
+        //         version: packageVersion
+        //       }
+        //     });
+        //   }
+        // }
+      },
       img: {
         src: [
           'public/img/*.png'
