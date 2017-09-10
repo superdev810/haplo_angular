@@ -95,7 +95,8 @@
           <h1 class="text-center">Sign Up Today</h1>
           <p class="text-center">Sign up for uSTADIUM by entering your Phone # and we’ll<br>send a download link to your mobile device.</p>
           <form action="" method="post">
-            <input name="phone" maxlength='11' value='' autofocus ng-model="phone_number"/>
+            <!--<input type="text" class="dash-input" maxlength="15" ng-model="model.tel" ng-intl-tel-input>-->
+            <input name="text" maxlength='15' value='' autofocus ng-model="phone_number" ng-intl-tel-input/>
           </form>
           <div class="ctc-btn cursor-pointer" ng-click="signUp()">Send</div>
         </div>

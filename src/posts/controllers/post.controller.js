@@ -87,7 +87,7 @@ angular.module('post.controllers',['ui.bootstrap'])
     }
     // click anywhere to singup popup
     $document.on('click', function (event) {
-      event.preventDefault();
+      // event.preventDefault();
       if($scope.openModal){
         if($(event.target).hasClass('modal')){
           $('.modal-close').trigger('click');
@@ -101,8 +101,9 @@ angular.module('post.controllers',['ui.bootstrap'])
 
       if (!$(event.target).hasClass('comments-click') && !$(event.target).hasClass('like-click') && !$(event.target).hasClass('dislike-click')) {
         console.log('Click Sing up');
-        $('#signupbtn').trigger('click');
         $scope.openModal = true;
+        $('#signupbtn').trigger('click');
+
         return;
       }
       $scope.openModal = false;
