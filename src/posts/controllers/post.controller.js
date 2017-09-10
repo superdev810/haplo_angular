@@ -82,9 +82,16 @@ angular.module('post.controllers',['ui.bootstrap'])
       console.log($scope.phone_number);
 
       $('.modal-close').trigger('click');
+      // $scope.openModal = true;
+      sleep(1000);
       $('#thankyoubtn').trigger('click');
       $scope.openModal = false;
     }
+
+    var sleep = function(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
     // click anywhere to singup popup
     $document.on('click', function (event) {
       // event.preventDefault();
@@ -92,6 +99,7 @@ angular.module('post.controllers',['ui.bootstrap'])
         if($(event.target).hasClass('modal')){
           $('.modal-close').trigger('click');
           $scope.openModal = false;
+
           return;
         }
         return;
