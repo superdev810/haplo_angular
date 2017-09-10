@@ -158,15 +158,28 @@ module.exports = function (grunt) {
           'libs/angular/angular.js',
           'libs/angular-animate/angular-animate.js',
           'libs/angular-bootstrap/ui-bootstrap-tpls.js',
-          'libs/jquery/dist/jquery.min.js',
+          // 'libs/jquery/dist/jquery.min.js',
           'libs/angular-mocks/angular-mocks.js',
           'libs/angular-ui-router/release/angular-ui-router.js',
           'libs/angular-toastr/dist/angular-toastr.tpls.js',
           'libs/angular-ui-notification/dist/angular-ui-notification.js',
-          'libs/angular-socialshare/dist/angular-socialshare.js'
+          'libs/angular-socialshare/dist/angular-socialshare.js',
+          // 'libs/intl-tel-input/build/js/intlTelInput.js',
+          // 'libs/international-phone-number/releases/international-phone-number.js',
+          'libs/ng-intl-tel-input/dist/ng-intl-tel-input.js',
+
         ],
         dest: 'build/libs.js'
-      }
+      },
+      css: {
+        src: [
+          'libs/bootstrap/dist/css/bootstrap.css',
+          'libs/angular-toastr/dist/angular-toastr.css',
+          'libs/angular-ui-notification/dist/angular-ui-notification.css',
+          // 'libs/intl-tel-input/build/css/intlTelInput.css'
+        ],
+        dest: 'build/angular-libs.css'
+      },
     },
     copy: {
       index: {
@@ -189,53 +202,21 @@ module.exports = function (grunt) {
           'libs/bootstrap/dist/css/bootstrap.css',
           'libs/angular-toastr/dist/angular-toastr.css',
           'libs/angular-ui-notification/dist/angular-ui-notification.css',
+          'libs/intl-tel-input/build/css/intlTelInput.css'
         ],
-        dest: 'build/angular-libs.css',
-        options: {
-          processContent: function (content, srcpath) {
-            // Compiling index.html file!
-            var packageVersion = require('./package.json').version;
-            return grunt.template.process(content, {
-              data: {
-                version: packageVersion
-              }
-            });
-          }
-        }
+        dest: 'build/angular-libs.css'
       },
       font: {
         src: [
           'San_Francisco.ttf',
         ],
         dest: 'build/',
-        // options: {
-        //   processContent: function (content, srcpath) {
-        //     // Compiling index.html file!
-        //     var packageVersion = require('./package.json').version;
-        //     return grunt.template.process(content, {
-        //       data: {
-        //         version: packageVersion
-        //       }
-        //     });
-        //   }
-        // }
       },
       img: {
         src: [
-          'public/img/*.png'
+          'public/img/*.png',
         ],
-        dest: 'build/',
-        options: {
-          processContent: function (content, srcpath) {
-            // Compiling index.html file!
-            var packageVersion = require('./package.json').version;
-            return grunt.template.process(content, {
-              data: {
-                version: packageVersion
-              }
-            });
-          }
-        }
+        dest: 'build/'
       }
     },
     clean: {

@@ -1,44 +1,44 @@
 <!--&lt;!&ndash;-Header Begins-->
- <!--&ndash;&gt;-->
+<!--&ndash;&gt;-->
 <!--<header class="mt-0 mb-0">-->
-  <!--<div class="header" id="signup-header">-->
-    <!--<div class="container">-->
-      <!--<div class="row">-->
-        <!--<div class="col-md-12">-->
-          <!--<a href="/"><img src="public/images/u-logo-usefirst.png" class="U-Logo-FIRST" id="header-logo" alt=""></a>-->
-        <!--</div>-->
-      <!--</div>-->
-    <!--</div>-->
-  <!--</div>-->
+<!--<div class="header" id="signup-header">-->
+<!--<div class="container">-->
+<!--<div class="row">-->
+<!--<div class="col-md-12">-->
+<!--<a href="/"><img src="public/images/u-logo-usefirst.png" class="U-Logo-FIRST" id="header-logo" alt=""></a>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
 <!--</header>-->
 <!--&lt;!&ndash; Header Ends-->
- <!--&ndash;&gt;-->
+<!--&ndash;&gt;-->
 <!--<div class="signup">-->
-  <!--<div class="container">-->
-    <!--<div class="row">-->
-      <!--<div class="col-xs-12">-->
-        <!--<p class="signup-promo">uSTADIUM.com</p>-->
-        <!--<p class="signup-promo">is almost here!</p>-->
-        <!--<p class="Enter-email text-center">Entering your email gets you first access</p>-->
-        <!--<form action="/" method='post'>-->
-          <!--<div class="form-group">-->
-            <!--<input type="text" name='email' id='email' placeholder="Enter Your Email" class='signup-email'> <br>-->
-            <!--<input type="submit" value='Submit' class='signup-button form-control'> <br>-->
-          <!--</div>-->
-        <!--</form>-->
-      <!--</div>-->
-    <!--</div>-->
-  <!--</div>-->
+<!--<div class="container">-->
+<!--<div class="row">-->
+<!--<div class="col-xs-12">-->
+<!--<p class="signup-promo">uSTADIUM.com</p>-->
+<!--<p class="signup-promo">is almost here!</p>-->
+<!--<p class="Enter-email text-center">Entering your email gets you first access</p>-->
+<!--<form action="/" method='post'>-->
+<!--<div class="form-group">-->
+<!--<input type="text" name='email' id='email' placeholder="Enter Your Email" class='signup-email'> <br>-->
+<!--<input type="submit" value='Submit' class='signup-button form-control'> <br>-->
+<!--</div>-->
+<!--</form>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
 <!--</div>-->
 <!--&lt;!&ndash; Footer Begins &ndash;&gt;-->
 <!--<div>-->
-  <!--<div class="footer" id="signup-footer">-->
-    <!--<div class="col-md-12 text-center">-->
-      <!--<a href="/"><img src="public/images/u-logo-usefirst.png" class="U-Logo-FIRST" id='footer-logo' alt=""></a>-->
-      <!--<p>Copyright 2017 Next Gen Sports Inc. All Rights Reserved</p>-->
-      <!--<a href="https://itunes.apple.com/us/app/ustadium/id1184610766?mt=8"><img src="public/images/app-store.png" id="footer_app_store" alt=""></a>-->
-    <!--</div>-->
-  <!--</div>-->
+<!--<div class="footer" id="signup-footer">-->
+<!--<div class="col-md-12 text-center">-->
+<!--<a href="/"><img src="public/images/u-logo-usefirst.png" class="U-Logo-FIRST" id='footer-logo' alt=""></a>-->
+<!--<p>Copyright 2017 Next Gen Sports Inc. All Rights Reserved</p>-->
+<!--<a href="https://itunes.apple.com/us/app/ustadium/id1184610766?mt=8"><img src="public/images/app-store.png" id="footer_app_store" alt=""></a>-->
+<!--</div>-->
+<!--</div>-->
 <!--</div>-->
 <!--&lt;!&ndash; Footer Ends&ndash;&gt;-->
 <header>
@@ -58,7 +58,9 @@
   <p class="text-center">Enter Your Phone #</p>
   <form action="" method="post">
     <div>
-    <input class="dash-input" name="phone" maxlength='11' autofocus/>
+      <!--<input class="dash-input" name="phone" maxlength='11' autofocus/>-->
+      <!--<input value="+1" type="tel" international-phone-number auto-hide-dial-code="false" class="phone" id="phone" name="phoneCountryCode" ng-model="phone" required>-->
+      <input type="text" class="dash-input" maxlength="15" ng-model="model.tel" ng-intl-tel-input>
     </div>
     <div class="ctc-btn cursor-pointer" ng-click="signUp()">Send</div>
   </form>

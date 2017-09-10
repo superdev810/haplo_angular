@@ -19,7 +19,9 @@ angular.module('ustadium', [
   'toastr',
   'ui-notification',
   'ui.bootstrap',
-  '720kb.socialshare'
+  '720kb.socialshare',
+  'ngIntlTelInput'
+  // 'internationalPhoneNumber'
 ])
   .config(function ($urlRouterProvider, $locationProvider) {
     $urlRouterProvider.otherwise('/');
@@ -60,6 +62,13 @@ angular.module('ustadium', [
   .config(['$qProvider', function ($qProvider) {
     $qProvider.errorOnUnhandledRejections(false);
   }])
+  .config(function (ngIntlTelInputProvider) {
+    ngIntlTelInputProvider.set({initialCountry: 'us'});
+  })
+  // .config(function (ipnConfig) {
+  //   ipnConfig.defaultCountry = 'pl';
+  //   ipnConfig.preferredCountries = ['pl', 'de', 'fr', 'uk', 'es'];
+  // })
   .run(function ($rootScope, $window, menuService) {
     $rootScope.socialShare = {
       appId: '2231777543',

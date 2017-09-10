@@ -11,3 +11,4 @@ angular.module('ustadium.home', ['ustadium.grandfather'])
   $scope.users = angular.fromJson(localStorage.getItem('userStorage'));
   //$state.go('app.feeds', {type: 'Hot'});
 });
+
