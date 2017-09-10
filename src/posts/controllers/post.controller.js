@@ -99,7 +99,6 @@ angular.module('post.controllers',['ui.bootstrap'])
         if($(event.target).hasClass('modal')){
           $('.modal-close').trigger('click');
           $scope.openModal = false;
-
           return;
         }
         return;

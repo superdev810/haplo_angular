@@ -167,7 +167,9 @@ module.exports = function (grunt) {
           // 'libs/intl-tel-input/build/js/intlTelInput.js',
           // 'libs/international-phone-number/releases/international-phone-number.js',
           'libs/ng-intl-tel-input/dist/ng-intl-tel-input.js',
-
+          'libs/ng-intl-tel-input/ng-intl-tel-input.module.js',
+          'libs/ng-intl-tel-input/ng-intl-tel-input.directive.js',
+          'libs/ng-intl-tel-input/ng-intl-tel-input.provider.js',
         ],
         dest: 'build/libs.js'
       },
