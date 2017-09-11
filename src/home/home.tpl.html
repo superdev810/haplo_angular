@@ -56,13 +56,11 @@
 <div class="sign-up-top text-center">
   <h1 class="main-heading">Sign Up Now</h1>
   <p class="text-center">Enter Your Phone #</p>
-  <form action="" method="post">
+  <form>
     <div>
-      <!--<input class="dash-input" name="phone" maxlength='11' autofocus/>-->
-      <!--<input value="+1" type="tel" international-phone-number auto-hide-dial-code="false" class="phone" id="phone" name="phoneCountryCode" ng-model="phone" required>-->
       <input type="text" class="dash-input" maxlength="15" ng-model="model.tel" autocomplete="off" ng-intl-tel-input>
     </div>
-    <div class="ctc-btn cursor-pointer" ng-click="signUp()">Send</div>
+    <input type="submit" value="Send" class="ctc-btn cursor-pointer" ng-click="downloadLinkFunction(model)"></input>
   </form>
   <p class="small">We’ll send your phone a Download Link</p>
 </div>

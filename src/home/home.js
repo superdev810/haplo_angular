@@ -7,8 +7,32 @@ angular.module('ustadium.home', ['ustadium.grandfather'])
       controller: 'HomeController'
     });
 })
-.controller('HomeController', function ($scope, $state) {
+.controller('HomeController', function ($scope, $state, HomeRequest, $document, Notification) {
   $scope.users = angular.fromJson(localStorage.getItem('userStorage'));
-  //$state.go('app.feeds', {type: 'Hot'});
-});
 
+  console.log("home")
+  $scope.model= {};
+  $scope.downloadLinkFunction = function (data) {
+    console.log('downloadLinkFunction',data);
+    if (typeof data !== 'undefined') {
+
+      HomeRequest.requestDownloadLink(data.tel).then(function(dataRes){
+      }, function(data){
+        // console.log(data);
+        Notification.success({message: dataRes.data, delay: 2000});
+      })
+    } else {
+        Notification.success({message: "Phone number not valid", delay: 2000});
+    }
+  }
+}).factory('HomeRequest', function ($window, $http, RestAPI, ApiEndpoints, toastr) {
+  var homeApiRequest = {
+    requestDownloadLink: requestDownloadLink
+  }
+
+  return homeApiRequest;
+
+  function requestDownloadLink (phoneNumber) {
+    return $http.put(base + '/invite/phone/'+ phoneNumber);
+  }
+});
