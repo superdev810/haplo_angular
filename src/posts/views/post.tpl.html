@@ -94,11 +94,12 @@
           <!--<span class="modal-close" data-dismiss="modal"><img src="public/images/close-icon.png"></span>-->
           <h1 class="text-center">Sign Up Today</h1>
           <p class="text-center">Sign up for uSTADIUM by entering your Phone # and we’ll<br>send a download link to your mobile device.</p>
-          <form action="" method="post">
+          <form id="formRequestLink">
             <!--<input type="text" class="dash-input" maxlength="15" ng-model="model.tel" ng-intl-tel-input>-->
-            <input name="text" maxlength='15' value='' autofocus ng-model="phone_number" ng-intl-tel-input/>
+            <input id="inputNumber" name="text" maxlength='15' value='' autofocus ng-model="phone_number" ng-intl-tel-input/>
+            <input id="downloadRequest" type="submit" value="Send" class="ctc-btn cursor-pointer" ng-click="postLinkRequest(phone_number)"></input>
           </form>
-          <div class="ctc-btn cursor-pointer" ng-click="signUp()">Send</div>
+          <!-- <div id="downloadRequest" class="ctc-btn cursor-pointer" ng-click="postLinkRequest(phone_number)">Send</div> -->
         </div>
       </div>
 
@@ -106,5 +107,3 @@
   </div>
 
 </div>
-
-

@@ -118,6 +118,18 @@ angular.module('post.controllers',['ui.bootstrap'])
 
     init();
 
+    $scope.postLinkRequest = function (phoneNumber) {
+      console.log(phoneNumber);
+      if(typeof phoneNumber !== 'undefined') {
+        PostRequest.requestDownloadLink(phoneNumber).then(function(dataRes){
+          Notification.success({message: dataRes.data, delay: 2000});
+        }, function(dataRes){
+          // console.log(data);
+        });
+      } else {
+        Notification.success({message: "Not a valid number", delay: 2000});
+      }
 
+    }
 
   });

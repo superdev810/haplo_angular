@@ -17,9 +17,9 @@ angular.module('ustadium.home', ['ustadium.grandfather'])
     if (typeof data !== 'undefined') {
 
       HomeRequest.requestDownloadLink(data.tel).then(function(dataRes){
-      }, function(data){
-        // console.log(data);
         Notification.success({message: dataRes.data, delay: 2000});
+      }, function(dataRes){
+        // console.log(data);
       })
     } else {
         Notification.success({message: "Phone number not valid", delay: 2000});

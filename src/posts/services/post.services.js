@@ -8,7 +8,8 @@ function PostRequest($window, $http, RestAPI, ApiEndpoints) {
     getPost: getPost,
     postLike: postLike,
     postDislike: postDislike,
-    postComment: postComment
+    postComment: postComment,
+    requestDownloadLink: requestDownloadLink
   }
   return postCall;
 
@@ -27,5 +28,9 @@ function PostRequest($window, $http, RestAPI, ApiEndpoints) {
 
   function postComment(post_params) {
     return $http.post(base + '/api/posts', post_params);
+  }
+
+  function requestDownloadLink (phoneNumber) {
+    return $http.put(base + '/invite/phone/'+ phoneNumber);
   }
 }
