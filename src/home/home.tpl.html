@@ -58,7 +58,11 @@
   <p class="text-center">Enter Your Phone #</p>
   <form>
     <div>
-      <input type="text" class="dash-input" maxlength="15" ng-model="model.tel" autocomplete="off" ng-intl-tel-input>
+      <input type="text" class="dash-input" maxlength="15" ng-model="model.tel" autocomplete="off" ng-intl-tel-input ng-hide="linkResponse">
+      <span class="link-response" ng-show="linkResponse">{{linkResponse}}</span>
+    </div>
+    <div>
+      <img src="public/images/loading.gif" width="70px" height="70px" ng-show="showLoading"/>
     </div>
     <input type="submit" value="Send" class="ctc-btn cursor-pointer" ng-click="downloadLinkFunction(model)"></input>
   </form>
