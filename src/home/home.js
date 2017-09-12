@@ -15,10 +15,11 @@ angular.module('ustadium.home', ['ustadium.grandfather'])
   $scope.showLoading = false;
   $scope.linkResponse = null;
   $scope.downloadLinkFunction = function (data) {
-    $scope.showLoading = true;
+
     console.log('downloadLinkFunction',data);
     if (typeof data !== 'undefined') {
-
+      $scope.showLoading = true;
+      $('.ctc-btn').prop('disabled', true);
       HomeRequest.requestDownloadLink(data.tel).then(function(dataRes){
         Notification.success({message: dataRes.data, delay: 2000});
         $scope.showLoading = false;
@@ -29,6 +30,7 @@ angular.module('ustadium.home', ['ustadium.grandfather'])
         $scope.showLoading = false;
         $scope.linkResponse = 'Your download link sending failure'
         $('.intl-tel-input').hide();
+        // $('.ctc-btn').prop('disabled', false);
       })
     } else {
         Notification.success({message: "Phone number not valid", delay: 2000});
