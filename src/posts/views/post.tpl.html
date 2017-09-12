@@ -95,11 +95,15 @@
           <h1 class="text-center">Sign Up Today</h1>
           <p class="text-center">Sign up for uSTADIUM by entering your Phone # and we’ll<br>send a download link to your mobile device.</p>
           <form id="formRequestLink">
-            <!--<input type="text" class="dash-input" maxlength="15" ng-model="model.tel" ng-intl-tel-input>-->
-            <input id="inputNumber" name="text" maxlength='15' value='' autofocus ng-model="phone_number" ng-intl-tel-input/>
-            <input id="downloadRequest" type="submit" value="Send" class="ctc-btn cursor-pointer" ng-click="postLinkRequest(phone_number)"></input>
+            <input type="text" class="dash-input" maxlength="15" ng-model="model.tel" ng-intl-tel-input>
+            <!--<input id="inputNumber" name="text" maxlength='15' autofocus ng-model="model.phone_number" ng-intl-tel-input ng-hide="linkResponse"/>-->
+            <span class="link-response" ng-show="linkResponse">{{linkResponse}}</span>
+            <div>
+              <img src="public/images/loading.gif" width="70px" height="70px" ng-show="showLoading"/>
+            </div>
+            <!--<input id="downloadRequest" type="submit" value="Send" class="ctc-btn cursor-pointer" ng-click="postLinkRequest(model.phone_number)"></input>-->
           </form>
-          <!-- <div id="downloadRequest" class="ctc-btn cursor-pointer" ng-click="postLinkRequest(phone_number)">Send</div> -->
+           <div id="downloadRequest" class="ctc-btn cursor-pointer" ng-click="signUp(model.tel)">Send</div>
         </div>
       </div>
 

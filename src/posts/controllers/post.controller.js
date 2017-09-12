@@ -1,5 +1,5 @@
 angular.module('post.controllers',['ui.bootstrap'])
-  .controller('PostController', function ($http, $scope, PostRequest, $stateParams, PostConstants, $rootScope, $location, Socialshare, $window, $document) {
+  .controller('PostController', function ($http, $scope, PostRequest, $stateParams, PostConstants, $rootScope, $location, Notification, Socialshare, $window, $document) {
 
     this.message = 'It works!';
 
@@ -77,22 +77,49 @@ angular.module('post.controllers',['ui.bootstrap'])
     function init () {
       $scope.closeModal(1);
     }
-    $scope.openModal = false;
-    $scope.signUp = function () {
-      console.log($scope.phone_number);
 
-      $('.modal-close').trigger('click');
-      // $scope.openModal = true;
-      sleep(1000);
-      $('#thankyoubtn').trigger('click');
-      $scope.openModal = false;
+
+    // download link request
+    $scope.showLoading = false;
+    $scope.linkResponse = null;
+    $scope.model = {};
+    $scope.model.phone_number = '79';
+
+    $scope.signUp = function (phoneNumVal) {
+      console.log(phoneNumVal);
+
+      console.log(phoneNumVal);
+      console.log($scope.model.tel);
+      if(typeof phoneNumberVal !== 'undefined') {
+        $scope.showLoading = true;
+        PostRequest.requestDownloadLink(phoneNumberVal).then(function(dataRes){
+          // Notification.success({message: dataRes.data, delay: 2000});
+          $scope.showLoading = false;
+          $scope.linkResponse = 'A download link was sent to your phone successfully';
+          $('.intl-tel-input').hide();
+          $('.modal-close').trigger('click');
+          // $scope.openModal = true;
+          sleep(1000);
+          $('#thankyoubtn').trigger('click');
+          $scope.openModal = false;
+        }, function(dataRes){
+          // console.log(data);
+          $scope.showLoading = false;
+          $scope.linkResponse = 'Your download link sending failure'
+          $('.intl-tel-input').hide();
+        });
+      } else {
+        Notification.success({message: "Not a valid number", delay: 2000});
+      }
     }
 
+    // timer function
     var sleep = function(ms) {
       return new Promise(resolve => setTimeout(resolve, ms));
     }
 
     // click anywhere to singup popup
+    $scope.openModal = false;
     $document.on('click', function (event) {
       // event.preventDefault();
       if($scope.openModal){
@@ -116,20 +143,31 @@ angular.module('post.controllers',['ui.bootstrap'])
       $scope.openModal = false;
     });
 
-    init();
 
-    $scope.postLinkRequest = function (phoneNumber) {
-      console.log(phoneNumber);
-      if(typeof phoneNumber !== 'undefined') {
-        PostRequest.requestDownloadLink(phoneNumber).then(function(dataRes){
-          Notification.success({message: dataRes.data, delay: 2000});
+    $scope.postLinkRequest = function (phoneNumberVal) {
+      console.log(phoneNumberVal);
+      console.log($scope.model.tel);
+      if(typeof phoneNumberVal !== 'undefined') {
+        $scope.showLoading = true;
+        PostRequest.requestDownloadLink(phoneNumberVal).then(function(dataRes){
+          // Notification.success({message: dataRes.data, delay: 2000});
+          $scope.showLoading = false;
+          $scope.linkResponse = 'A download link was sent to your phone successfully';
+          $('.intl-tel-input').hide();
         }, function(dataRes){
           // console.log(data);
+          $scope.showLoading = false;
+          $scope.linkResponse = 'Your download link sending failure'
+          $('.intl-tel-input').hide();
         });
       } else {
         Notification.success({message: "Not a valid number", delay: 2000});
       }
 
     }
+
+    init();
+
+
 
   });
