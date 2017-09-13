@@ -21,7 +21,8 @@ angular.module('ustadium.home', ['ustadium.grandfather'])
       $scope.showLoading = true;
       $('.ctc-btn').prop('disabled', true);
       HomeRequest.requestDownloadLink(data.tel).then(function(dataRes){
-        Notification.success({message: dataRes.data, delay: 2000});
+        // Notification.success({message: dataRes.data, delay: 2000});
+        console.log(dataRes);
         $scope.showLoading = false;
         $scope.linkResponse = 'A download link was sent to your phone successfully';
         $('.intl-tel-input').hide();
