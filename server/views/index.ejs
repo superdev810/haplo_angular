@@ -130,10 +130,10 @@
       <form class="navbar-form navbar-right" role="logout" ng-submit="logoutMe()" ng-show="ls.isLogged">
         <div class="form-group">
           <a ui-sref="app.myprofile({userId : ls.user._id})">
-            <img src="{{ ls.user.profileImageThumbnail?ls.user.profileImageThumbnail:'http://ustadium-media.s3.amazonaws.com/content/feed/81/9bb200294b11e7bb99538ff4cfc91a/master.jpg' }}"
-                 class="post-img"
-                 style="margin:0!important; width: 40px!important; height: 40px!important;"
-            >
+            <!--<img src="{{ ls.user.profileImageThumbnail?ls.user.profileImageThumbnail:'http://ustadium-media.s3.amazonaws.com/content/feed/81/9bb200294b11e7bb99538ff4cfc91a/master.jpg' }}"-->
+                 <!--class="post-img"-->
+                 <!--style="margin:0!important; width: 40px!important; height: 40px!important;"-->
+            <!--&gt;-->
           </a>
           <label> {{ ls.user.nickname }} </label>
         </div>
