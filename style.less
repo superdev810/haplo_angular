@@ -798,7 +798,7 @@ h1.main-heading {
   }
 }
 
-@media (max-width: 767px) {
+@media screen and (max-width: 767px) {
   header .flex-out {
     display: block;
     text-align: center;
@@ -824,6 +824,9 @@ h1.main-heading {
     font-size: 3ch;
     font-weight: 300;
     color: #15C281;
+  }
+  .dash-input:focus {
+    outline: none;
   }
   .intl-tel-input.allow-dropdown input, .intl-tel-input.allow-dropdown input[type=text] {
     margin-left: 52px!important;
