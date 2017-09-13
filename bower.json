@@ -13,6 +13,7 @@
     "angular-bootstrap": "^2.5.0",
     "font-awesome": "^4.7.0",
     "angular-socialshare": "angularjs-socialshare#^2.3.11",
-    "ng-intl-tel-input": "^2.0.0"
+    "ng-intl-tel-input": "^2.0.0",
+    "ng-device-detector": "^4.0.3"
   }
 }

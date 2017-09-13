@@ -20,7 +20,8 @@ angular.module('ustadium', [
   'ui-notification',
   'ui.bootstrap',
   '720kb.socialshare',
-  'ngIntlTelInput'
+  'ngIntlTelInput',
+  'ng.deviceDetector'
   // 'internationalPhoneNumber'
 ])
   .config(function ($urlRouterProvider, $locationProvider) {
@@ -65,6 +66,13 @@ angular.module('ustadium', [
   .config(function (ngIntlTelInputProvider) {
     ngIntlTelInputProvider.set({initialCountry: 'us'});
   })
+  .config(['deviceDetectorProvider', function(deviceDetectorProvider) {
+    deviceDetectorProvider.addCustom("Custom_UA_Entry", {
+      and:["\\bCustom_UA_Entry\\b", {
+        not:"\\bChrome\\b"
+      }]
+    });
+  }])
   // .config(function (ipnConfig) {
   //   ipnConfig.defaultCountry = 'pl';
   //   ipnConfig.preferredCountries = ['pl', 'de', 'fr', 'uk', 'es'];

@@ -170,6 +170,8 @@ module.exports = function (grunt) {
           'libs/ng-intl-tel-input/ng-intl-tel-input.module.js',
           'libs/ng-intl-tel-input/ng-intl-tel-input.directive.js',
           'libs/ng-intl-tel-input/ng-intl-tel-input.provider.js',
+          'libs/ng-device-detector/ng-device-detector.min.js',
+          'libs/re-tree/re-tree.min.js'
         ],
         dest: 'build/libs.js'
       },
