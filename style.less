@@ -371,7 +371,9 @@ header {
 .hiddenDev {
   display: none;
 }
-
+.img-break {
+    display: none;
+}
 
 
 //First page css
@@ -560,15 +562,17 @@ li {
 }
 
 .link-response {
-  border: none;
-  padding: 0;
-  width: 18ch;
-  letter-spacing: 0.5ch;
-  //font-family: 'Roboto', sans-serif;
-  letter-spacing: 0.5ch;
-  font-size: 5ch;
-  font-weight: 300;
-  color: #15C281;
+    border: none;
+    padding: 0;
+    /* width: 18ch; */
+    // letter-spacing: 0.5ch;
+    font-size: 3ch;
+    font-weight: 300;
+    color: #15C281;
+    border: 1px solid #15C281;
+    padding: 10px;
+    display: inline-block;
+    margin: 20px 0;
 }
 
 .dash-input.small {
@@ -663,7 +667,8 @@ header {
 }
 
 header .logo img {
-  height: 70px;
+  max-height: 70px;
+  margin: 0 auto;
 }
 
 header .app-links a:first-child {
@@ -831,4 +836,21 @@ h1.main-heading {
   .intl-tel-input.allow-dropdown input, .intl-tel-input.allow-dropdown input[type=text] {
     margin-left: 52px!important;
   }
+}
+@media screen and (max-width: 450px) {
+    .wrapper .pictures img {
+        max-height: 140px;
+    }
+}
+.dash-input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: rgba(0,0,0,0.1);
+}
+.dash-input::-moz-placeholder { /* Firefox 19+ */
+  color: rgba(0,0,0,0.1);
+}
+.dash-input:-ms-input-placeholder { /* IE 10+ */
+  color: rgba(0,0,0,0.1);
+}
+.dash-input:-moz-placeholder { /* Firefox 18- */
+  color: rgba(0,0,0,0.1);
 }
