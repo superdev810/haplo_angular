@@ -33,7 +33,7 @@ angular.module('loginService', ['ui.router'])
       } else {
         wrappedService.userRole = userRoles.public;
         wrappedService.isLogged = false;
-        wrappedService.doneLoading = true;
+        wrappedService.doneLoading = false;
       }
     };
 
@@ -51,7 +51,7 @@ angular.module('loginService', ['ui.router'])
          * Grandfather.resolve will either let the user in or reject the promise later!
          */
         if (wrappedService.userRole === null) {
-          wrappedService.doneLoading = false;
+          wrappedService.doneLoading = true;
           wrappedService.pendingStateChange = {
             to: to,
             toParams: toParams
